@@ -1,0 +1,2973 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Amy's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="All problems in computer science can be solved by another level of indirection. -by David John Wheeler">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amy&#39;s Blog">
+<meta property="og:url" content="https://sailormillet.github.io/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="All problems in computer science can be solved by another level of indirection. -by David John Wheeler">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Amy Chen">
+<meta property="article:tag" content="frontend technology blog">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sailormillet.github.io/"/>
+
+
+
+
+
+  <title>Amy's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/" itemprop="url">git遇到的错误</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:20:52+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git%E3%80%81tool/" itemprop="url" rel="index">
+                    <span itemprop="name">git、tool</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/" class="leancloud_visitors" data-flag-title="git遇到的错误">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、Could-not-open-file-git-rebase-merge-done-for-reading-No-such-file-or-directory"><a href="#1、Could-not-open-file-git-rebase-merge-done-for-reading-No-such-file-or-directory" class="headerlink" title="1、Could not open file .git/rebase-merge/done for reading: No such file or directory"></a>1、Could not open file .git/rebase-merge/done for reading: No such file or directory</h3><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rebase --skip与--abort的区别是什么</span><br><span class="line">git rebase --abort 是无风险的操作，会回到rebase操作之前的状态，<span class="number">2</span>个分支的commits毫发无损。</span><br><span class="line">git rebase --skip 是高风险的操作，引起冲突的commits会被丢弃（这部分代码修改会丢失）。</span><br><span class="line">git rebase --<span class="keyword">continue</span> 用于修复冲突，提示开发者，一步一步地有没有解决冲突，fix conflicts and then run <span class="string">"git rebase --continue"</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url">git clone https 和 SSH 的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:20:01+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git%E3%80%81tool/" itemprop="url" rel="index">
+                    <span itemprop="name">git、tool</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/" class="leancloud_visitors" data-flag-title="git clone https 和 SSH 的区别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>1、https可以随意克隆github上的项目，而不管是谁的；SSH你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。</p>
+<p>2、https url 在push的时候是需要验证用户名和密码的；而 SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</p>
+<p>20、查看当前分支是从哪个分支拉取的 git log –oneline –graph –decorate</p>
+<p>git 配置ssh</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~<span class="regexp">/.ssh (or  cd $HOME/</span>.ssh) </span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
+
+<p>检查 id_rsa.pub等是否存在存在就通过</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub(如果报错clip: command not found的话可以用pbcopy &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub)</span><br><span class="line">或者</span><br><span class="line">cat ~<span class="regexp">/.ssh/i</span>d_rsa.pub| pbcopy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>拷贝id_rsa.pub</p>
+</li>
+<li><p>否则创建ssh key</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C<span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
+<p>输入文件以及密码可以为空</p>
+</li>
+</ul>
+<p>你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" itemprop="url">git常见命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:19:12+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git%E3%80%81tool/" itemprop="url" rel="index">
+                    <span itemprop="name">git、tool</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="git常见命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、设置户名和email</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[$ git config --global user.name gitaccount](http:<span class="comment">//lib.csdn.net/base/git)</span></span><br><span class="line"></span><br><span class="line">$ git config --global user.email gitaccount@example.com</span><br></pre></td></tr></table></figure>
+<p>2、查看用户名和email</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name/email。</span><br></pre></td></tr></table></figure>
+<p>3、取消全局配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global --unset user.name</span><br><span class="line"></span><br><span class="line">$ git config --global --unset user.email</span><br></pre></td></tr></table></figure>
+
+<p>4、#全局配置账户已经移除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name</span><br></pre></td></tr></table></figure>
+<p>5、#全局配置邮箱已经移除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> git config --global user.email</span><br></pre></td></tr></table></figure>
+<p>6、移除远程的库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+<p>7、添加现在库的地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remove add origin</span><br></pre></td></tr></table></figure>
+<p>8、git拉取新的远程分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
+<p>9、git 拉取远程分支，远程分支不存在自动删除本地分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch -p</span><br></pre></td></tr></table></figure>
+<p>10、git 切换分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名字</span><br></pre></td></tr></table></figure>
+<p>git创建并切换分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 分支名</span><br></pre></td></tr></table></figure>
+<p>git创建分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名</span><br></pre></td></tr></table></figure>
+<p>11、如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>12、如果不小心commit了一个不需要commit的文件，可以对其进行撤销。</p>
+<p>先使用git log 查看 commit日志</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset —hard commit_id</span><br><span class="line"></span><br><span class="line">git push origin HEAD —force</span><br></pre></td></tr></table></figure>
+<p>13、git 列出本地分支和远程分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+<p>14、git 查看远程分支(这个删除远程分支有时候并不能删掉)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+<p>15、git删除本地分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D xxxxx</span><br></pre></td></tr></table></figure>
+<p>16、git删除远程分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r -d origin/branch-name</span><br></pre></td></tr></table></figure>
+<p>17、git 删除远程分支</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --<span class="keyword">delete</span> <span class="keyword">new</span></span><br></pre></td></tr></table></figure>
+<p>18、git 重命名分支，如果newbranch名字分支已经存在，则需要使用-M强制重命名，否则，使用-m进行重命名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m | -M oldbranch newbranch</span><br></pre></td></tr></table></figure>
+<p>19、把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:michaelliao/learngit.git</span><br></pre></td></tr></table></figure>
+<p>一个目录的git初始化 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>取消一个目录的git初始化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br></pre></td></tr></table></figure>
+<p>git 克隆线上的库并重新命名<br>git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;</p>
+<p>git 将某个文件恢复<br>当你git status 看到某个文件修改了之后，你想撤回修改，可以执行以下命令就可以了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 文件名</span><br></pre></td></tr></table></figure>
+
+<p>git 合并分支<br>fast-forward方式就是当条件允许的时候，git直接把HEAD指针指向合并分支的头，完成合并。属于“快进方式”，不过这种情况如果删除分支，则会丢失分支信息。因为在这个过程中没有创建commit<br>要加–no-ff：不使用fast-forward方式合并，保留分支的commit历史<br>–squash：使用squash方式合并，把多次分支commit历史压缩为一次</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge master --no-ff</span><br></pre></td></tr></table></figure>
+<p>git 查看远端仓库的地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>git 修改远程仓库地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">set</span>-url origin [url]</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>提交到远程报错fatal: refusing to merge unrelated histories<br>git pull origin master –allow-unrelated-histories</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/" itemprop="url">zsh切换bash bash切换zsh</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:17:16+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7%E3%80%81tool%E3%80%81zsh%E3%80%81-oh-my-zsh%E3%80%81-oh-my-zsh%E6%8F%92%E4%BB%B6%E3%80%81iTerm2/" itemprop="url" rel="index">
+                    <span itemprop="name">工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/" class="leancloud_visitors" data-flag-title="zsh切换bash bash切换zsh">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>iTerm2是一种 OSX 的终端模拟器而非 Shell 本身。<br>   Bash是目前最通用、最常见的Shell，也是众多Linux发行版的标配。<br>   Zsh是一种更强大的、被成为“终极”的Shell，意思是Shell能具备的功能它基本都提供了。跟Bash相比，Zsh的补全功能强大了许多，可以自动补全命令、参数、文件名、进程、用户名、变量、权限符，等等…… 另外，还支持插件，通过插件又可以扩展出许多功能来。<br>   看到了一个写的很好的关于bash和Zsh的文章： <a href="https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html" target="_blank" rel="noopener">https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html</a></p>
+</blockquote>
+<h3 id="切换bash"><a href="#切换bash" class="headerlink" title="切换bash"></a>切换bash</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换zsh"><a href="#切换zsh" class="headerlink" title="切换zsh"></a>切换zsh</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/zsh%E3%80%81oh-my-zsh%E4%BB%A5%E5%8F%8Aoh-my-zsh%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/zsh%E3%80%81oh-my-zsh%E4%BB%A5%E5%8F%8Aoh-my-zsh%E6%8F%92%E4%BB%B6/" itemprop="url">zsh、oh-my-zsh以及oh-my-zsh插件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:16:13+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7%E3%80%81tool%E3%80%81zsh%E3%80%81-oh-my-zsh%E3%80%81-oh-my-zsh%E6%8F%92%E4%BB%B6%E3%80%81iTerm2/" itemprop="url" rel="index">
+                    <span itemprop="name">工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/zsh%E3%80%81oh-my-zsh%E4%BB%A5%E5%8F%8Aoh-my-zsh%E6%8F%92%E4%BB%B6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/zsh%E3%80%81oh-my-zsh%E4%BB%A5%E5%8F%8Aoh-my-zsh%E6%8F%92%E4%BB%B6/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/zsh%E3%80%81oh-my-zsh%E4%BB%A5%E5%8F%8Aoh-my-zsh%E6%8F%92%E4%BB%B6/" class="leancloud_visitors" data-flag-title="zsh、oh-my-zsh以及oh-my-zsh插件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是Zsh"><a href="#什么是Zsh" class="headerlink" title="什么是Zsh"></a>什么是Zsh</h1><blockquote>
+<p>Zsh是一款强大的虚拟终端，既是一个系统的虚拟终端，也可以作为一个脚本语言的交互解析器。</p>
+</blockquote>
+<p>Zsh的一些特性:</p>
+<ul>
+<li>兼容bash</li>
+<li>各种补全</li>
+<li>历史纪录功能</li>
+<li>多个终端会话共享历史记录<h1 id="什么是Oh-My-Zsh"><a href="#什么是Oh-My-Zsh" class="headerlink" title="什么是Oh My Zsh"></a>什么是Oh My Zsh</h1><blockquote>
+<p>Oh My Zsh是一款社区驱动的命令行工具，正如它的主页上说的，Oh My Zsh 是一种生活方式。它基于zsh命令行，提供了主题配置，插件机制，已经内置的便捷操作。给我们一种全新的方式使用命令行。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看oh-my-zsh插件"><a href="#查看oh-my-zsh插件" class="headerlink" title="查看oh-my-zsh插件"></a>查看oh-my-zsh插件</h3>安装好 zsh 和 oh-my-zsh 后，Oh My Zsh目录结构进入~/.oh-my-zsh目录后，看看该目录的结构<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls ~<span class="regexp">/.oh-my-zsh</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>lib 提供了核心功能的脚本库<br>tools 提供安装、升级等功能的快捷工具<br>plugins 自带插件的存在放位置<br>templates 自带模板的存在放位置<br>themes 自带主题文件的存在放位置<br>custom 个性化配置目录，自安装的插件和主题可放这里</p>
+</blockquote>
+</li>
+</ul>
+<p>可以进入~/.oh-my-zsh的文件夹下的plungins查看oh-my-zsh的所有的插件</p>
+<h3 id="vim添加oh-my-zsh插件"><a href="#vim添加oh-my-zsh插件" class="headerlink" title="vim添加oh-my-zsh插件"></a>vim添加oh-my-zsh插件</h3><p>vim 打开命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .zshrc</span><br></pre></td></tr></table></figure>
+<p>找到plugins =（）<br>添加插件即可<br>例如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> plugins=(</span><br><span class="line">  git</span><br><span class="line">  history-substring-search</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/" itemprop="url">SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:12:32+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7%E3%80%81tool%E3%80%81SecureCRT%E3%80%81windows/" itemprop="url" rel="index">
+                    <span itemprop="name">工具、tool、SecureCRT、windows</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/" class="leancloud_visitors" data-flag-title="SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版"><a href="#SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版" class="headerlink" title="SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版"></a>SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</h1><ul>
+<li><p>By <a href="https://ccie.lol/blog/author/viska/" target="_blank" rel="noopener" title="由Ricky发布">Ricky</a></p>
+</li>
+<li><p>Under <a href="https://ccie.lol/blog/category/software/" target="_blank" rel="noopener">Software</a></p>
+</li>
+</ul>
+<p>| 如需注册 @ccie.engineer、@ccde.engineer、@ccar.engineer、@hcie.engineer、@rhce.engineer 和 @cissp.engineer 邮箱，请<a href="https://ccie.lol/blog/2016/12/17/mail/" target="_blank" rel="noopener">点击这里</a>。 |</p>
+<h3 id="1、应用介绍："><a href="#1、应用介绍：" class="headerlink" title="1、应用介绍："></a><strong>1、应用介绍：</strong></h3><p>SecureCRT 是一款 Windows 上专业的终端 SSH 工具，类似于 Windows 中的 Putty ，SecureCRT 支持 SSH1 、SSH2 、Telnet 等远程连接，同时具有很多实用和专业的辅助功能，支持广泛的终端仿真、文件传输、脚本等，非常的优秀！</p>
+<h3 id="2、破解方法："><a href="#2、破解方法：" class="headerlink" title="2、破解方法："></a><strong>2、破解方法：</strong></h3><h4 id="7-3-4-amp-8-0-0"><a href="#7-3-4-amp-8-0-0" class="headerlink" title="7.3.4 &amp; 8.0.0"></a><strong>7.3.4 &amp; 8.0.0</strong></h4><ol>
+<li>安装好 SecureCRT 软件；</li>
+<li>确保 SecureCRT 软件处于关闭状态；</li>
+<li>将注册机（注册机文件在压缩包里，文件名一般是 keygen.exe ）复制到 SecureCRT 软件的安装目录下，安装目录默认是：C:\Program Files\VanDyke Software\SecureCRT\ ；</li>
+<li>运行注册机，点击 Patch 按钮，此时会让你替换掉两个可执行文件（分别是 SecureCRT.exe 和 LicenseHelper.exe ），在弹出的窗口中先选择 SecureCRT.exe ，然后再选择 LicenseHelper.exe 即可完成替换，替换是否成功是会有提示的；</li>
+<li>最后打开 SecureCRT 软件，此时会弹出一个输入 key 的页面，什么都不输入，点击 Continue ，再点击 Enter License Manually 就会看到输入 Name 和 Company 等信息的页面了，在这个页面输入注册机上显示的信息即可激活 SecureCRT 软件（在注册机上点击 Generate 按钮即可重新生成这些信息）。</li>
+</ol>
+<h3 id="3、下载链接："><a href="#3、下载链接：" class="headerlink" title="3、下载链接："></a><strong>3、下载链接：</strong></h3><p>（注：主链接下载服务器位于中国境内的阿里云数据中心华南区，每月大约有 100 GB 的下载流量，超量后会停止提供下载服务；备用链接下载服务器位于美国境内，为私有云，流量充足）</p>
+<p>SecureCRT 8.0.0（ build 1063 ）for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">SecureCRT_8.0.0.7z</a>（<a href="http://pan.baidu.com/s/1hs0rQ88" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">备用链接</a>）<br>SecureCRT 7.3.4 for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">SecureCRT_7.3.4.7z</a>（<a href="http://pan.baidu.com/s/1mhNAdeC" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">备用链接</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">md5sum ：</span><br><span class="line"></span><br><span class="line">1f1d6c12830ccc1915b37840c4a3de58 SecureCRT_7.3.4.7z</span><br><span class="line">e8cade759ada7112a18c7291c951444e SecureCRT_8.0.0.7z</span><br></pre></td></tr></table></figure>
+
+<p>设置密码记录按钮<br>view-&gt; button bar </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2790249-b27bc56d4c40c27b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="view"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-187b0dedc13f004e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" button bar 勾选上（会显示在操作界面底部）"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0b62dcf738fe38da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="按此图配置"><br>每次输入固定密码的时候可以点击即完毕，非常方便</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/H5%E5%94%A4%E8%B5%B7App/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" itemprop="url">H5唤起App</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:08:29+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript%E3%80%81%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%81h5/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript、移动开发、h5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" class="leancloud_visitors" data-flag-title="H5唤起App">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近总接到落地页的需求，落地页的职责主要是引流，有以下几种类型<br>1、引导已经下载App的用户打开App<br>2、引导未下载App的用户下载App<br>3、引导未注册的用户注册<br>4、引导已经注册的用户进入我们的主页或者其他的操作<br>从数据上可以体现在用户停留在App的时间多了，或者增加了用户量</p>
+</blockquote>
+<h3 id="唤起App主要的媒介是什么呢？"><a href="#唤起App主要的媒介是什么呢？" class="headerlink" title="唤起App主要的媒介是什么呢？"></a>唤起App主要的媒介是什么呢？</h3><h4 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h4><p>URL Scheme的组成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[scheme:][<span class="comment">//authority][path][?query][#fragment]</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>微信</th>
+<th>支付宝</th>
+<th>淘宝</th>
+<th>微博</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL Scheme</td>
+<td>weixin://</td>
+<td>alipay://</td>
+<td>taobao://</td>
+<td>sinaweibo://</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     行为(应用的某个功能)    </span><br><span class="line">            |</span><br><span class="line">scheme:&#x2F;&#x2F;[path][?query]</span><br><span class="line">   |               |</span><br><span class="line">应用标识       功能需要的参数</span><br></pre></td></tr></table></figure>
+
+<p><code>URL Scheme 在 ios 9+ 上诸如 safari、UC、QQ浏览器中， iframe 均无法成功唤起 APP，只能通过 window.location 才能成功唤端。</code></p>
+<h4 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h4><p>安卓的原生谷歌浏览器自从 chrome25 版本开始对于唤端功能做了一些变化，URL Scheme 无法再启动Android应用。 例如，通过 iframe 指向 weixin://，即使用户安装了微信也无法打开。所以，APP需要实现谷歌官方提供的 intent: 语法，或者实现让用户通过自定义手势来打开APP。<br><code>安卓版本 4.4.4 以上机型的安卓自带浏览器、chrome 浏览器，需要通过 intent 跳转</code><br><a href="https://developer.chrome.com/multidevice/android/intents" target="_blank" rel="noopener">intents文档</a></p>
+<ul>
+<li>Intent 语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">intent:</span><br><span class="line">   HOST&#x2F;URI-path &#x2F;&#x2F; Optional host </span><br><span class="line">   #Intent; </span><br><span class="line">      package&#x3D;[string]; </span><br><span class="line">      action&#x3D;[string]; </span><br><span class="line">      category&#x3D;[string]; </span><br><span class="line">      component&#x3D;[string]; </span><br><span class="line">      scheme&#x3D;[string]; </span><br><span class="line">   end;</span><br></pre></td></tr></table></figure>
+如果用户未安装 APP，则会跳转到系统默认商店。当然，如果你想要指定一个唤起失败的跳转地址，添加下面的字符串在 end; 前就可以了:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S.browser_fallback_url&#x3D;[encoded_full_url]</span><br></pre></td></tr></table></figure></li>
+<li>示例<br>下面是打开 Zxing 二维码扫描 APP 的 intent。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">intent:</span><br><span class="line">   &#x2F;&#x2F;scan&#x2F;</span><br><span class="line">   #Intent; </span><br><span class="line">      package&#x3D;com.google.zxing.client.android; </span><br><span class="line">      scheme&#x3D;zxing; </span><br><span class="line">   end;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;intent:&#x2F;&#x2F;scan&#x2F;#Intent;scheme&#x3D;zxing;package&#x3D;com.google.zxing.client.android;S.browser_fallback_url&#x3D;http%3A%2F%2Fzxing.org;end&quot;&gt; Take a QR code &lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h4><h4 id="为什么要使用-Universal-Link"><a href="#为什么要使用-Universal-Link" class="headerlink" title="为什么要使用 Universal Link"></a>为什么要使用 Universal Link</h4></li>
+</ul>
+<p>传统的 Scheme 链接有以下几个痛点：</p>
+<ul>
+<li>在 ios 上会有确认弹窗提示用户是否打开，对于用户来说唤端，多出了一步操作。若用户未安装 APP ，也会有一个提示窗，告知我们 “打不开该网页，因为网址无效”</li>
+<li>传统 Scheme 跳转无法得知唤端是否成功，Universal Link 唤端失败可以直接打开此链接对应的页面</li>
+<li>Scheme 在微信、微博、QQ浏览器、手百中都已经被禁止使用，使用 Universal Link 可以避开它们的屏蔽（ 截止到 18年8月21日，微信和QQ浏览器已经禁止了 Universal Link，其他主流APP未发现有禁止 ）</li>
+</ul>
+<h4 id="如何让-APP-支持-Universal-Link"><a href="#如何让-APP-支持-Universal-Link" class="headerlink" title="如何让 APP 支持 Universal Link"></a>如何让 APP 支持 Universal Link</h4><p>有大量的文章会详细的告诉我们如何配置，你也可以去看<a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="noopener">官方文档</a>，我这里简单的写一个12345。</p>
+<ol>
+<li>拥有一个支持 <strong>https</strong> 的域名</li>
+<li>在 <a href="https://developer.apple.com/" target="_blank" rel="noopener">开发者中心</a> ，Identifiers 下 AppIDs 找到自己的 App ID，编辑打开 Associated Domains 服务。</li>
+<li>打开工程配置中的 Associated Domains ，在其中的 Domains 中填入你想支持的域名，必须以 <code>applinks:</code> 为前缀</li>
+<li>配置 <code>apple-app-site-association</code> 文件，文件名必须为 <code>apple-app-site-association</code> ，<strong>不带任何后缀</strong></li>
+<li>上传该文件到你的 HTTPS 服务器的 <strong>根目录</strong> 或者 <code>.well-known</code> 目录下</li>
+</ol>
+<h4 id="Universal-Link-配置中的坑"><a href="#Universal-Link-配置中的坑" class="headerlink" title="Universal Link 配置中的坑"></a>Universal Link 配置中的坑</h4><p>这里放一下我们在配置过程中遇到的坑，当然首先你在配置过程中必须得严格按照上面的要求去做，尤其是加粗的地方。</p>
+<ul>
+<li>域名问题</li>
+</ul>
+<p>Universal Link 支持的域名最多只能支持到二级域名，如果你用到了三级域名，Universal Link 唤端是不会生效的。</p>
+<ul>
+<li>跨域问题</li>
+</ul>
+<p>IOS 9.2 以后，必须要触发跨域才能支持 Universal Link 唤端。</p>
+<p>IOS 那边有这样一个判断，如果你要打开的 Universal Link 和 当前页面是同一域名，ios 尊重用户最可能的意图，直接打开链接所对应的页面。如果不在同一域名下，则在你的 APP 中打开链接，也就是执行具体的唤端操作。</p>
+<ul>
+<li>Universal Link 是空页面</li>
+</ul>
+<p>Universal Link 本质上是个空页面，如果未安装 APP，Universal Link 被当做普通的页面链接，自然会跳到 404 页面，所以我们需要将它绑定到我们的中转页或者下载页。</p>
+<h4 id="唤端方式"><a href="#唤端方式" class="headerlink" title="唤端方式"></a>唤端方式</h4><ul>
+<li><p><code>Android</code>中，不同浏览器对唤起APP有严重的兼容性问题，主要处理方案有以下几种：<br>1、window.location.href<br>2、通过创建 iframe 并为其 src 赋值（主要）<br>3、通过 intent<br>4、通过制造不可见 a 链接，并触发点击</p>
+</li>
+<li><p><code>ios</code>中，不同浏览器对唤起APP有严重的兼容性问题，主要处理方案有以下几种：<br>1、系统版本在 8 以下时，可以监听页面的 pagehide / visibilitychange 事件。<br>2、 window.location.href （主要）<br><code>系统版本大于 8 以后可以 URL scheme 进行跳转。
+IOS9  可以使用 universal Link</code></p>
+</li>
+</ul>
+<p>这里我们结合了两种来处理。</p>
+<h4 id="判断唤端是否成功"><a href="#判断唤端是否成功" class="headerlink" title="判断唤端是否成功"></a>判断唤端是否成功</h4><blockquote>
+<p>在浏览器实际上是没有能力判断手机里是否安装了某个App的，所以只能够采取一种投机取巧的方式。APP 如果被唤起的话，页面就会进入后台运行。setInterval 在 ios 中不会停止运行，在 android 中停止运行。</p>
+</blockquote>
+<ul>
+<li>ios 通过 document.hidden 和 document.webkitHidden 属性来判断 APP 在 ios 中是否被正常唤起，2000ms 内，页面转入后台运行，document.hidden 会返回 true，代表唤端成功，反之则代表失败。</li>
+<li>Android 我们的判断条件比预期时间多设置了 500ms，所以如果安卓中 setInterval 内的函数执行 100 次以内所费时间超过 2500ms，则说明 APP 唤起成功，反之则代表失败。<br>在JavaScript中判断页面是否进入后台来判断打开成功。Html5提供了下列事件和属性可以利用：<br>pagehide : 页面隐藏时触发<br>visibilitychange : 页面隐藏没有在当前显示时触发(切换tab也会触发该事件)<br>document.hidden ： 当页面隐藏时，该值为true，显示时为false<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> waitTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> checkOpen = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   count++;</span><br><span class="line">   waitTime = <span class="keyword">new</span> <span class="built_in">Date</span>() - initialTime;</span><br><span class="line">   <span class="keyword">if</span> (waitTime &gt; <span class="number">2500</span>) &#123;</span><br><span class="line">      clearInterval(checkOpen);</span><br><span class="line">      cb();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (counter &lt; <span class="number">100</span>) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">const</span> hide = <span class="built_in">document</span>.hidden || <span class="built_in">document</span>.webkitHidden;</span><br><span class="line">   <span class="keyword">if</span> (!hide) &#123;</span><br><span class="line">      cb(); <span class="comment">// 唤端失败的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果唤端失败（APP 未安装），我们总是要做一些处理的，可以是跳转下载页，可以是 ios 下跳转 App Store… 但是Js 并不能提供给我们获取 APP 唤起状态的能力，Android Intent 以及 Universal Link 倒是不用担心，它们俩的自身机制允许它们唤端失败后直接导航至相应的页面，但是 URL Scheme 并不具备这样的能力，所以我们只能通过一些很 hack 的方式来实现 APP 唤起检测功能。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browser = &#123;</span><br><span class="line">    getBrowser: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> u = navigator.userAgent,</span><br><span class="line">            app = navigator.appVersion;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            trident: u.indexOf(<span class="string">'Trident'</span>) &gt; <span class="number">-1</span>, <span class="comment">//IE内核</span></span><br><span class="line">            presto: u.indexOf(<span class="string">'Presto'</span>) &gt; <span class="number">-1</span>, <span class="comment">//opera内核</span></span><br><span class="line">            webKit: u.indexOf(<span class="string">'AppleWebKit'</span>) &gt; <span class="number">-1</span>, <span class="comment">//苹果、谷歌内核</span></span><br><span class="line">            gecko: u.indexOf(<span class="string">'Gecko'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'KHTML'</span>) == <span class="number">-1</span>, <span class="comment">//火狐内核</span></span><br><span class="line">            opera: u.indexOf(<span class="string">'Opera'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            chrome: u.indexOf(<span class="string">'Chrome'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            firefox: u.indexOf(<span class="string">'Firefox'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            safari: u.indexOf(<span class="string">'Safari'</span>) &gt; <span class="number">-1</span>, <span class="comment">//注意chrome浏览器此项也为true，非chrome且此项为true则可确定为Safari</span></span><br><span class="line">            ie: u.indexOf(<span class="string">'compatible'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'MSIE'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'Gecko'</span>) == <span class="number">-1</span>,</span><br><span class="line">            mobile: u.search(<span class="regexp">/AppleWebKit.*Mobile/</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为移动终端</span></span><br><span class="line">            ios: u.search(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>) &gt; <span class="number">-1</span>, <span class="comment">//ios终端</span></span><br><span class="line">            android: u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Adr'</span>) &gt; <span class="number">-1</span>, <span class="comment">//android终端</span></span><br><span class="line">            winPhone: u.search(<span class="regexp">/Windows Phone/</span>) &gt; <span class="number">-1</span>, <span class="comment">//windows phone终端</span></span><br><span class="line">            iPhone: u.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为iPhon</span></span><br><span class="line">            iPad: u.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否iPad</span></span><br><span class="line">            webApp: u.indexOf(<span class="string">'Safari'</span>) == <span class="number">-1</span>, <span class="comment">//是否Safari web应该程序，没有头部与底部</span></span><br><span class="line">            weibo: u.search(<span class="regexp">/WeiBo/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否微博</span></span><br><span class="line">            weixin: u.search(<span class="regexp">/MicroMessenger/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否微信</span></span><br><span class="line">            qq: u.search(<span class="regexp">/\sQQ/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否QQ</span></span><br><span class="line">            mQQ: u.search(<span class="regexp">/MQQBrowser/</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否QQ手机浏览器</span></span><br><span class="line">            uc: u.search(<span class="regexp">/UCBrowser/</span>) &gt; <span class="number">-1</span> <span class="comment">//是否UC浏览器</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;(),</span><br><span class="line">  getIOSVersion:  <span class="function"><span class="keyword">function</span> <span class="title">getIOSVersion</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> verion = navigator.appVersion.match(<span class="regexp">/OS (\d+)_(\d+)_?(\d+)?/</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(verion[<span class="number">1</span>], <span class="number">10</span>);</span><br><span class="line">&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * [evokeApp 唤起APP]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param  <span class="type">&#123;[Object]&#125;</span> </span>config  [跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.ios.url &#123;[String]&#125; [iOS跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.ios.data &#123;[String]&#125; [iOS URL参数]</span></span><br><span class="line"><span class="comment"> * config.ios.callback &#123;[function]&#125; //android的回掉如果没有下载app就执行操作</span></span><br><span class="line"><span class="comment"> * config.android.url &#123;[String]&#125; [android跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.android.data &#123;[String]&#125; [android URL参数]</span></span><br><span class="line"><span class="comment"> * config.android.callback &#123;[function]&#125; //android的回掉如果没有下载app就执行操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> evokeApp = <span class="function">(<span class="params">config</span>) =&gt;</span>&#123;</span><br><span class="line"><span class="comment">//对微信，微博，qq做处理弹窗</span></span><br><span class="line"><span class="keyword">if</span> (browser.versions.weibo || browser.versions.weixin || browser.versions.qq) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">let</span> browserVersions = browser.versions;</span><br><span class="line"><span class="keyword">let</span> evokeAppURL = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">let</span> cb;</span><br><span class="line">    <span class="keyword">if</span> (browserVersions.ios) &#123;</span><br><span class="line">        evokeAppURL = config.ios.data ? <span class="string">'authority://'</span> + config.ios.url + <span class="string">'?'</span> + config.ios.dataArr.join(<span class="string">'&amp;'</span>) : <span class="string">'authority://'</span> + config.ios.url;</span><br><span class="line">cb = config.ios.callback;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (browserVersions.android) &#123;</span><br><span class="line">      evokeAppURL = config.android.data ? <span class="string">'authority://'</span> + config.android.url + <span class="string">'?'</span> + config.android.dataArr.join(<span class="string">'&amp;'</span>) : <span class="string">'authority://'</span> + config.android.url;</span><br><span class="line">cb = config.android.callback;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">const</span> initialTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> waitTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> checkOpen = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   count++;</span><br><span class="line">   waitTime = <span class="keyword">new</span> <span class="built_in">Date</span>() - initialTime;</span><br><span class="line">   <span class="keyword">if</span> (waitTime &gt; <span class="number">2500</span>) &#123;</span><br><span class="line">      clearInterval(checkOpen);</span><br><span class="line">      cb &amp;&amp; cb();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (counter &lt; <span class="number">100</span>) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">const</span> hide = <span class="built_in">document</span>.hidden || <span class="built_in">document</span>.webkitHidden;</span><br><span class="line">   <span class="keyword">if</span> (!hide) &#123;</span><br><span class="line">      cb &amp;&amp; cb(); <span class="comment">// 唤端失败的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;, <span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>1、h5在微信中无法唤醒App，需要“用浏览器打开”<br>微信对所有的分享连接做了scheme屏蔽，也就是说分享连接中所有对于scheme的调用都被微信封掉了。</p>
+<ol start="2">
+<li><p>在询问是否打开APP的时候，如果选择了“取消”，则再唤起APP的时候会不起作用。目前并没有什么解决方案，在chrome Android,UC Android上会复现问题。需再次刷新页面才行。</p>
+</li>
+<li><p>在ios手机中，用location.href唤起app，本地如果没装app，会弹窗提示<code>safari浏览器打不开该网页，网址无效</code>，后面在用location.href来下载安装包的话也会显示同样的错误，即使你的下载链接是有效的。解决办法：IOS9及以上使用  <strong><a href="https://www.jianshu.com/p/734c3eff8feb" target="_blank" rel="noopener">Universal Links</a></strong>。</p>
+</li>
+</ol>
+<p><a href="https://suanmei.github.io/2018/08/23/h5_call_app/" target="_blank" rel="noopener">感谢作者</a><br><a href="https://github.com/AlanZhang001/H5CallUpNative" target="_blank" rel="noopener">参考博客</a><br><a href="https://awhisper.github.io/2017/09/02/universallink/" target="_blank" rel="noopener">实现文章</a></p>
+<h2 id="问题跨域"><a href="#问题跨域" class="headerlink" title="问题跨域"></a>问题跨域</h2><p>前端开发经常面临跨域问题，恩Universal Link也有跨域问题，但不一样的是，Universal Link，必须要求跨域，如果不跨域，就不行，就失效，就不工作。（iOS 9.2之后的改动，苹果就这么规定这么设计的）</p>
+<p>这也是上面拿知乎举例子的时候重点强调的一个问题，知乎为什么使用<code>oia.zhihu.com</code>做Universal Link？</p>
+<ul>
+<li>假如当前网页的域名是 A</li>
+<li>当前网页发起跳转的域名是 B</li>
+<li>必须要求 B 和 A 是不同域名，才会触发Universal Link</li>
+<li>如果B 和 A 是相同域名，只会继续在当前WebView里面进行跳转，哪怕你的Universal Link一切正常，根本不会打开App</li>
+</ul>
+<p>是不是不太好理解，那直接拿知乎举例子</p>
+<p><a href="https://www.zhihu.com/question/22914651" target="_blank" rel="noopener">https://www.zhihu.com/question/22914651</a></p>
+<p>知乎的一般网页URL都是<code>www.zhihu.com</code>域名，你在微信朋友圈看到了知乎的问题分享，如果copy url 你就能看到这样的链接<br>微信里其实是屏蔽Schema的，但是你依然能看到大大的一个按钮App内打开，这确实就是通过Universal Link来实现的，但如果知乎把Universal Link 配在了<a href="http://www.zhihu.com域名，那么即便已经安装了App，Universal" target="_blank" rel="noopener">www.zhihu.com域名，那么即便已经安装了App，Universal</a> Link也是不会生效的。</p>
+<p>一般的公司都会有自己的主域名，比如知乎的<a href="http://www.zhihu.com，在各处分享传播的时候，也都是直接分享基于主域名的url，但为了解决苹果强制要求跨域才生效的问题，Universal" target="_blank" rel="noopener">www.zhihu.com，在各处分享传播的时候，也都是直接分享基于主域名的url，但为了解决苹果强制要求跨域才生效的问题，Universal</a> Link就不能配置在主域名下，于是知乎才会准备一个oia.zhihu.com域名，专为Universal Link使用，不会跟任何主动传播分享的域名撞车，从而在任何活动WAP页面里，都能顺利让Universal Link生效。</p>
+<p>简单一句话</p>
+<p>只有当前webview的url域名，与跳转目标url域名不一致时，Universal Link 才生效<br>Universal Link不是必须通过a标签的href来跳转，我遇到一个问题就是我的页面没有识别Universal Link，因为异步渲染页面，导致没有解析出来Universal Link，加了一个隐藏的a标签，href配置上Universal Link，页面里面所有需要跳转Universal Link都会被识别</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" itemprop="url">移动开发h5表单键盘弹出问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-09T19:12:28+08:00">
+                2020-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">开发机、虚拟机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="移动开发h5表单键盘弹出问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近在做移动端开发，每过一段时间，发现又出现新的兼容问题，这次也不例外。</p>
+</blockquote>
+<h4 id="ios手机"><a href="#ios手机" class="headerlink" title="ios手机"></a>ios手机</h4><p>之前ios手机是没有问题的，昨天测试的时候发现键盘弹出不会有遮挡input表单的问题，但是输入完成，键盘收回后发现，页面会有一个空白位置没有收回<br><img src="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="键盘收回.jpeg"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="键盘弹出.jpeg"><br>可以在失去input焦点blur的时候用scrollTo做个处理还原页面的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function getPlat() &#123;</span><br><span class="line">    let u &#x3D; navigator.userAgent;</span><br><span class="line">    let isAndroid &#x3D; u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Adr&#39;) &gt; -1;   &#x2F;&#x2F;判断是否是 android终端</span><br><span class="line">    let isIOS &#x3D; !!u.match(&#x2F;\(i[^;]+;( U;)? CPU.+Mac OS X&#x2F;);     &#x2F;&#x2F;判断是否是 iOS终端</span><br><span class="line">    if (isAndroid) &#123;</span><br><span class="line">      return &#39;Android&#39;;</span><br><span class="line">    &#125; else if (isIOS) &#123;</span><br><span class="line">      return &#39;IOS&#39;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return &#39;PC&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (getPlat() &#x3D;&#x3D;&#x3D; &#39;IOS&#39;) &#123;</span><br><span class="line">                    setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    const scrollHeight &#x3D; document.documentElement.scrollTop || document.body.scrollTop || 0;</span><br><span class="line">                        window.scrollTo(0, Math.max(scrollHeight - 1, 0));</span><br><span class="line">                    &#125;, 0);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Android手机（测试机有oppo、华为、三星、锤子）"><a href="#Android手机（测试机有oppo、华为、三星、锤子）" class="headerlink" title="Android手机（测试机有oppo、华为、三星、锤子）"></a>Android手机（测试机有oppo、华为、三星、锤子）</h4><p>但是在Android 手机中就没有这么容易了，测试发现，安卓手机中如果不做任何处理，弹出的键盘会遮盖输入框，但是键盘弹出后手动滚动页面，收回键盘，在聚焦弹出键盘就会定位到上次滚动的地方。其实这样也还好，但是测试要求想要自动展示到键盘上方。所以我需要做些兼容处理<br>经检测有几种解决办法：<br>一、修改输入登录模块的定位用fixed、会跟着键盘一起动，可以在聚焦失焦给样式做些处理，但是会麻烦一些<br><strong>二、scrollIntoView 与 scrollIntoViewIfNeeded API</strong><br>可以在页面挂载完成mounted的时候做处理，统一对所有的input和textarea做处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ((&#x2F;Android&#x2F;gi).test(navigator.userAgent)) &#123;</span><br><span class="line">    window.addEventListener(&#39;resize&#39;, function () &#123;</span><br><span class="line">        if (document.activeElement.tagName &#x3D;&#x3D; &#39;INPUT&#39; || document.activeElement.tagName &#x3D;&#x3D; &#39;TEXTAREA&#39;) &#123;</span><br><span class="line">            window.setTimeout(function () &#123;</span><br><span class="line">                document.activeElement.scrollIntoViewIfNeeded();</span><br><span class="line">            &#125;, 0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者在input聚焦focus的时候做处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;input</span><br><span class="line">    v-model&#x3D;&quot;codeValue&quot;</span><br><span class="line">    type&#x3D;&quot;text&quot;</span><br><span class="line">    placeholder&#x3D;&quot;请输入收到的验证码&quot;</span><br><span class="line">    class&#x3D;&quot;verify-input&quot;</span><br><span class="line">    maxlength&#x3D;&quot;6&quot;</span><br><span class="line">    @focus&#x3D;&quot;changefocus&quot;</span><br><span class="line">    @blur.prevent&#x3D;&quot;blur&quot;</span><br><span class="line">&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    methods: &#123;</span><br><span class="line">        blur()&#123;</span><br><span class="line">            if (judgeClient() &#x3D;&#x3D;&#x3D; &#39;IOS&#39;) &#123;</span><br><span class="line">                setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                const scrollHeight &#x3D; document.documentElement.scrollTop || document.body.scrollTop || 0;</span><br><span class="line">                    window.scrollTo(0, Math.max(scrollHeight - 1, 0));</span><br><span class="line">                &#125;, 0);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        changefocus() &#123;</span><br><span class="line">            if (this.getPlat() &#x3D;&#x3D;&#x3D; &#39;Android&#39;) &#123;</span><br><span class="line">                    setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                        el.target.scrollIntoViewIfNeeded(true);</span><br><span class="line">                        el.target.scrollIntoView(true);</span><br><span class="line">                    &#125;, 200);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        getPlat() &#123;</span><br><span class="line">            let u &#x3D; navigator.userAgent;</span><br><span class="line">            let isAndroid &#x3D; u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Adr&#39;) &gt; -1;   &#x2F;&#x2F;判断是否是 android终端</span><br><span class="line">            let isIOS &#x3D; !!u.match(&#x2F;\(i[^;]+;( U;)? CPU.+Mac OS X&#x2F;);     &#x2F;&#x2F;判断是否是 iOS终端</span><br><span class="line">            if (isAndroid) &#123;</span><br><span class="line">                return &#39;Android&#39;;</span><br><span class="line">            &#125; else if (isIOS) &#123;</span><br><span class="line">                return &#39;IOS&#39;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return &#39;PC&#39;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>安卓手机有延迟，有时生效，有时会失效，可能setTimeout设置的延迟事件不够，我设置100的时候还会经常没生效，但是设置200貌似就好很多</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" itemprop="url">JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-09T17:24:47+08:00">
+                2020-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" class="leancloud_visitors" data-flag-title="JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近做了一个需求的，其中有一个效果是点击按钮将表单滚动到可视区域，这本来是很常见的效果。我们有很多种方案去实现。<br><strong>一、 scrollTo、scroll or scrollBy</strong><br><img src="http://upload-images.jianshu.io/upload_images/2790249-202b5bc8de7957ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>这显示不支持safari on ios ，但是我的手机版本是13.3.1的safari可以运行没有问题，但是安卓手机完全无效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    left: 100,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>vue中可以根据ref来操作dom</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$refs.xxx.$el.scrollTo(&#123;</span><br><span class="line">       top: 1000,</span><br><span class="line">       behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.scroll(&#123;</span><br><span class="line">  top: 100,</span><br><span class="line">  left: 100,</span><br><span class="line">  behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollBy(0, 1000);</span><br></pre></td></tr></table></figure>
+<p><strong>二、scrollTop 获取当前页面的滚动条纵坐标位置去改变其值</strong></p>
+<blockquote>
+<ul>
+<li>对于没有doctype声明的页面里可以使用 document.body.scrollTop 来获取 scrollTop高度 ；</li>
+<li>对于有doctype声明的页面则可以使用 document.documentElement.scrollTop； Safari</li>
+<li>safari 比较特别，有自己获取scrollTop的函数 ： window.pageYOffset ； Firefox</li>
+<li>火狐等等相对标准些的浏览器就省心多了，直接用 document.documentElement.scrollTop ；</li>
+</ul>
+</blockquote>
+<p>浏览器和ios都可以生效，但是安卓手机手机完全无效果，测试了一下，安卓手机设置完scrollTop再去console出scrollTop的值，发现并没有赋值成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.body.scrollTop &#x3D; document.documentElement.scrollTop &#x3D; window.pageYOffset &#x3D; 1000;</span><br></pre></td></tr></table></figure>
+<p><strong>三、scrollIntoView 与 scrollIntoViewIfNeeded API</strong> （安卓、ios手机支持，浏览器测试结果看来也没问题）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法让当前的元素滚动到浏览器窗口的可视区域内。<code>这是一个实验中的功能</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-59550f82ab6e38df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">element.scrollIntoView(true);</span><br><span class="line">或者</span><br><span class="line">element.scrollIntoView(&#123;behavior: &quot;instant&quot;, block: &quot;start&quot;, inline: &quot;nearest&quot;&#125;);</span><br><span class="line">vue中</span><br><span class="line">this.$refs.xxxx.$el.scrollIntoView();</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoViewIfNeeded" target="_blank" rel="noopener">Element. scrollIntoViewIfNeeded()</a><br> 如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动。 此方法是标准的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法的专有变体。<code>非标准
+该特性是非标准的，请尽量不要在生产环境中使用它！</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-2da34c6761ebc8d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element. scrollIntoViewIfNeeded(true);</span><br></pre></td></tr></table></figure>
+<p>vue中根据ref来操作dom</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$refs.xxxx.$el. scrollIntoViewIfNeeded();</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/pageYOffset" target="_blank" rel="noopener">Window.pageYOffset</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2790249-781c331bdbd5cb9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>监听，取消监听滚动事件</strong><br><code>注意scroll监听的匿名事件是不可以取消监听事件的，我想要的是页面中所有需要曝光的地方曝光结束后，取消监听事件</code><br>可以参照<a href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/">埋点之眼球曝光</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">window.removeEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">const handleScroll &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(111111)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AFCharles%E6%8A%93%E5%8F%96https%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AFCharles%E6%8A%93%E5%8F%96https%E5%8C%85/" itemprop="url">移动端Charles抓取https包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T22:37:10+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Charles/" itemprop="url" rel="index">
+                    <span itemprop="name">Charles</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AFCharles%E6%8A%93%E5%8F%96https%E5%8C%85/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AFCharles%E6%8A%93%E5%8F%96https%E5%8C%85/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/03/03/%E7%A7%BB%E5%8A%A8%E7%AB%AFCharles%E6%8A%93%E5%8F%96https%E5%8C%85/" class="leancloud_visitors" data-flag-title="移动端Charles抓取https包">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>一、安装charles抓包工具</strong><br><strong>二、配置Charles，允许抓取https包</strong><br>Proxy-&gt;SSL Proxying Settings…，勾选Enable SSL Proxying，Add一个locations，通过通配符* 抓取所有域名的https。（如果想只抓取某个域名的，设置具体域名的即可）<br><img src="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-bfdf31a2f707ff5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><strong>三、PC端Charles安装https证书</strong><br>Help-&gt;SSL Proxying -&gt;Install Charles Root Certificate，然后在钥匙串中信任证书即可</p>
+<p>如果想要抓取pc端的接口请求勾选上macOS proxy就可以了<br><img src="http://upload-images.jianshu.io/upload_images/2790249-e7168a064945388d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>四、手机端手机端配置PC的代理并下载Charles的证书</strong><br>首先需要手机连接到与当前电脑同一个wifi局域网，对该wifi网络进行高级设置-代理：<br>代理服务器主机名：使用PC的本机IP地址<br>代理服务器端口：使用Charles设置的Port值，默认是8888，可以在下图proxy Settings查看端口号<br><img src="http://upload-images.jianshu.io/upload_images/2790249-77356ca93f4d9056.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0cf97ba85f8f16b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>然后确定保存，第一次配置完代理，PC端会弹窗询问是否允许代理，点击allow<br><img src="http://upload-images.jianshu.io/upload_images/2790249-47ff85d660781b49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这时我们的手机就已经挂上代理了。你也可以这么通过add添加<br><img src="http://upload-images.jianshu.io/upload_images/2790249-a370ec70bedc4070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-f0d2bfa892652d8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>挂上代理了之后手机端需要在浏览器中访问chls.pro/ssl 下载证书<br><a href="http://www.charlesproxy.com/getssl/" target="_blank" rel="noopener">www.charlesproxy.com/getssl/</a><br><img src="http://upload-images.jianshu.io/upload_images/2790249-72e630fafbfe1717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-38ae3f2317742b34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>ios10以上系统不会自动信任证书，需要在设置-&gt;通用-&gt;关于本机，信任安装的证书</p>
+<p>现在客户端环境下，我们已经可以随时调试本地的H5代码了。<br>Charles结合nginx和ihost开发，在nginx代理的时候在开启charles用手机访问开发文件可能访问不到，可能是自制证书不信任的问题，需要对nginx和chrome做特殊处理<br><a href="https://www.jianshu.com/p/71095e5ca9b3" target="_blank" rel="noopener">设置本地 nginx 的 HTTPS（证书设置信任）</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"
+                alt="Amy Chen" />
+            
+              <p class="site-author-name" itemprop="name">Amy Chen</p>
+              <p class="site-description motion-element" itemprop="description">All problems in computer science can be solved by another level of indirection. -by David John Wheeler</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sailormillet" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="sailormillet@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:sailor_mi_1|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b6624224c411" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz',
+        appKey: 'QPnljEINGsMuEYIg2DKqi8ne',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz", "QPnljEINGsMuEYIg2DKqi8ne");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
