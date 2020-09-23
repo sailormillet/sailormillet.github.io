@@ -90,23 +90,23 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="一、安装charles抓包工具二、配置Charles，允许抓取https包Proxy-&gt;SSL Proxying Settings…，勾选Enable SSL Proxying，Add一个locations，通过通配符* 抓取所有域名的https。（如果想只抓取某个域名的，设置具体域名的即可）三、PC端Charles安装https证书Help-&gt;SSL Proxying -&gt;In">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-bfdf31a2f707ff5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-e7168a064945388d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-77356ca93f4d9056.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-0cf97ba85f8f16b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-47ff85d660781b49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-a370ec70bedc4070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-f0d2bfa892652d8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-72e630fafbfe1717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-38ae3f2317742b34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-bfdf31a2f707ff5b.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-e7168a064945388d.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-77356ca93f4d9056.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-0cf97ba85f8f16b4.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-47ff85d660781b49.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-a370ec70bedc4070.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-f0d2bfa892652d8e.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-72e630fafbfe1717.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-38ae3f2317742b34.png">
 <meta property="article:published_time" content="2020-03-03T14:37:10.000Z">
-<meta property="article:modified_time" content="2020-09-15T09:00:21.230Z">
+<meta property="article:modified_time" content="2020-09-23T12:48:11.040Z">
 <meta property="article:author" content="Amy Chen">
 <meta property="article:tag" content="nginx">
 <meta property="article:tag" content="Charles">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png">
 
 
 
@@ -423,11 +423,11 @@
       
 
       
-        <p><strong>一、安装charles抓包工具</strong><br><strong>二、配置Charles，允许抓取https包</strong><br>Proxy-&gt;SSL Proxying Settings…，勾选Enable SSL Proxying，Add一个locations，通过通配符* 抓取所有域名的https。（如果想只抓取某个域名的，设置具体域名的即可）<br><img src="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-bfdf31a2f707ff5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><strong>三、PC端Charles安装https证书</strong><br>Help-&gt;SSL Proxying -&gt;Install Charles Root Certificate，然后在钥匙串中信任证书即可</p>
-<p>如果想要抓取pc端的接口请求勾选上macOS proxy就可以了<br><img src="http://upload-images.jianshu.io/upload_images/2790249-e7168a064945388d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>四、手机端手机端配置PC的代理并下载Charles的证书</strong><br>首先需要手机连接到与当前电脑同一个wifi局域网，对该wifi网络进行高级设置-代理：<br>代理服务器主机名：使用PC的本机IP地址<br>代理服务器端口：使用Charles设置的Port值，默认是8888，可以在下图proxy Settings查看端口号<br><img src="http://upload-images.jianshu.io/upload_images/2790249-77356ca93f4d9056.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0cf97ba85f8f16b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>然后确定保存，第一次配置完代理，PC端会弹窗询问是否允许代理，点击allow<br><img src="http://upload-images.jianshu.io/upload_images/2790249-47ff85d660781b49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>这时我们的手机就已经挂上代理了。你也可以这么通过add添加<br><img src="http://upload-images.jianshu.io/upload_images/2790249-a370ec70bedc4070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-f0d2bfa892652d8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>挂上代理了之后手机端需要在浏览器中访问chls.pro/ssl 下载证书<br><a href="http://www.charlesproxy.com/getssl/" target="_blank" rel="noopener">www.charlesproxy.com/getssl/</a><br><img src="http://upload-images.jianshu.io/upload_images/2790249-72e630fafbfe1717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-38ae3f2317742b34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>ios10以上系统不会自动信任证书，需要在设置-&gt;通用-&gt;关于本机，信任安装的证书</p>
+        <p><strong>一、安装charles抓包工具</strong><br><strong>二、配置Charles，允许抓取https包</strong><br>Proxy-&gt;SSL Proxying Settings…，勾选Enable SSL Proxying，Add一个locations，通过通配符* 抓取所有域名的https。（如果想只抓取某个域名的，设置具体域名的即可）<br><img src="http://upload-images.jianshu.io/upload_images/2790249-1d043b6fa5666473.png" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-bfdf31a2f707ff5b.png" alt="image.png"><br><strong>三、PC端Charles安装https证书</strong><br>Help-&gt;SSL Proxying -&gt;Install Charles Root Certificate，然后在钥匙串中信任证书即可</p>
+<p>如果想要抓取pc端的接口请求勾选上macOS proxy就可以了<br><img src="http://upload-images.jianshu.io/upload_images/2790249-e7168a064945388d.png" alt="image.png"></p>
+<p><strong>四、手机端手机端配置PC的代理并下载Charles的证书</strong><br>首先需要手机连接到与当前电脑同一个wifi局域网，对该wifi网络进行高级设置-代理：<br>代理服务器主机名：使用PC的本机IP地址<br>代理服务器端口：使用Charles设置的Port值，默认是8888，可以在下图proxy Settings查看端口号<br><img src="http://upload-images.jianshu.io/upload_images/2790249-77356ca93f4d9056.png" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0cf97ba85f8f16b4.png" alt="image.png"><br>然后确定保存，第一次配置完代理，PC端会弹窗询问是否允许代理，点击allow<br><img src="http://upload-images.jianshu.io/upload_images/2790249-47ff85d660781b49.png" alt="image.png"></p>
+<p>这时我们的手机就已经挂上代理了。你也可以这么通过add添加<br><img src="http://upload-images.jianshu.io/upload_images/2790249-a370ec70bedc4070.png" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-f0d2bfa892652d8e.png" alt="image.png"></p>
+<p>挂上代理了之后手机端需要在浏览器中访问chls.pro/ssl 下载证书<br><a href="http://www.charlesproxy.com/getssl/" target="_blank" rel="noopener">www.charlesproxy.com/getssl/</a><br><img src="http://upload-images.jianshu.io/upload_images/2790249-72e630fafbfe1717.png" alt="image.png"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-38ae3f2317742b34.png" alt="image.png"><br>ios10以上系统不会自动信任证书，需要在设置-&gt;通用-&gt;关于本机，信任安装的证书</p>
 <p>现在客户端环境下，我们已经可以随时调试本地的H5代码了。<br>Charles结合nginx和ihost开发，在nginx代理的时候在开启charles用手机访问开发文件可能访问不到，可能是自制证书不信任的问题，需要对nginx和chrome做特殊处理<br><a href="https://www.jianshu.com/p/71095e5ca9b3" target="_blank" rel="noopener">设置本地 nginx 的 HTTPS（证书设置信任）</a></p>
 
       
@@ -548,7 +548,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -559,7 +559,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -570,7 +570,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

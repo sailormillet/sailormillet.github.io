@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="git、tool," />
+  <meta name="keywords" content="JavaScript、移动开发、移动键盘弹出问题、react," />
 
 
 
@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="1、https可以随意克隆github上的项目，而不管是谁的；SSH你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。 2、https url 在push的时候是需要验证用户名和密码的；而 SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。 20、查看当前分支是从哪个分支拉取的">
+<meta name="description" content="最近接了一个需求，需要做上传，框架用多了，本来以为这些东西拿过来直接用就行，但是在开发过程中发现了一些问题：  一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能1、按照以下方式写安卓手机没有拍照选项，只能传图片 1&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;pic&quot; id&#x3D;&quot;pic&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git clone https 和 SSH 的区别">
-<meta property="og:url" content="https://sailormillet.github.io/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="移动端(ios、android)上传图片遇到的兼容问题">
+<meta property="og:url" content="https://sailormillet.github.io/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Amy&#39;s Blog">
-<meta property="og:description" content="1、https可以随意克隆github上的项目，而不管是谁的；SSH你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。 2、https url 在push的时候是需要验证用户名和密码的；而 SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。 20、查看当前分支是从哪个分支拉取的">
+<meta property="og:description" content="最近接了一个需求，需要做上传，框架用多了，本来以为这些东西拿过来直接用就行，但是在开发过程中发现了一些问题：  一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能1、按照以下方式写安卓手机没有拍照选项，只能传图片 1&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;pic&quot; id&#x3D;&quot;pic&quot;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-26T04:20:01.000Z">
-<meta property="article:modified_time" content="2020-09-15T09:00:21.225Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2790249-123b3dd7e8e898ac.png">
+<meta property="article:published_time" content="2020-06-26T04:01:28.000Z">
+<meta property="article:modified_time" content="2020-09-23T12:58:17.498Z">
 <meta property="article:author" content="Amy Chen">
-<meta property="article:tag" content="git、tool">
+<meta property="article:tag" content="JavaScript、移动开发、移动键盘弹出问题、react">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2790249-123b3dd7e8e898ac.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://sailormillet.github.io/2020/06/26/git clone https 和 SSH 的区别/"/>
+  <link rel="canonical" href="https://sailormillet.github.io/2020/06/26/移动端(ios、android)上传图片遇到的兼容问题/"/>
 
 
 
 
 
-  <title>git clone https 和 SSH 的区别 | Amy's Blog</title>
+  <title>移动端(ios、android)上传图片遇到的兼容问题 | Amy's Blog</title>
   
 
 
@@ -301,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy Chen">
@@ -318,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git clone https 和 SSH 的区别</h1>
+          <h1 class="post-title" itemprop="name headline">移动端(ios、android)上传图片遇到的兼容问题</h1>
         
 
         <div class="post-meta">
@@ -330,7 +332,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:20:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:01:28+08:00">
                 2020-06-26
               </time>
             
@@ -353,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git%E3%80%81tool/" itemprop="url" rel="index">
-                    <span itemprop="name">git、tool</span>
+                  <a href="/categories/JavaScript%E3%80%81%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%81%E7%A7%BB%E5%8A%A8%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98%E3%80%81react/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript、移动开发、移动键盘弹出问题、react</span>
                   </a>
                 </span>
 
@@ -371,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="commentCount">0</span> comments
+                <a href="/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -380,7 +382,7 @@
 
           
           
-             <span id="/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/" class="leancloud_visitors" data-flag-title="git clone https 和 SSH 的区别">
+             <span id="/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="移动端(ios、android)上传图片遇到的兼容问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,25 +413,28 @@
       
 
       
-        <hr>
-<p>1、https可以随意克隆github上的项目，而不管是谁的；SSH你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。</p>
-<p>2、https url 在push的时候是需要验证用户名和密码的；而 SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</p>
-<p>20、查看当前分支是从哪个分支拉取的 git log –oneline –graph –decorate</p>
-<p>git 配置ssh</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~<span class="regexp">/.ssh (or  cd $HOME/</span>.ssh) </span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
-
-<p>检查 id_rsa.pub等是否存在存在就通过</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub(如果报错clip: command not found的话可以用pbcopy &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub)</span><br><span class="line">或者</span><br><span class="line">cat ~<span class="regexp">/.ssh/i</span>d_rsa.pub| pbcopy</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>拷贝id_rsa.pub</p>
-</li>
-<li><p>否则创建ssh key</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C<span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-<p>输入文件以及密码可以为空</p>
-</li>
-</ul>
-<p>你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了</p>
+        <blockquote>
+<p>最近接了一个需求，需要做上传，框架用多了，本来以为这些东西拿过来直接用就行，但是在开发过程中发现了一些问题：</p>
+</blockquote>
+<h3 id="一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能"><a href="#一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能" class="headerlink" title="一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能"></a>一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能</h3><p>1、按照以下方式写安卓手机没有拍照选项，只能传图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;pic&quot; id&#x3D;&quot;pic&quot; accept&#x3D;&quot;image&#x2F;gif, image&#x2F;jpeg&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>2、按照以下方式写ios手机正常，有选择图片和拍照上传功能，安卓手机大部分没有问题，但是安卓10版本没有拍照上传功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;choose&quot; accept&#x3D;&quot;image&#x2F;*&quot;  multiple&gt;</span><br></pre></td></tr></table></figure>
+<p>3、按照以下方式写ios手机直接唤起拍照功能，没有选择图片上传功能，（安卓10版本预计可以拍照上传）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;choose&quot; accept&#x3D;&quot;image&#x2F;*&quot; capture&#x3D;&quot;camera&quot; multiple&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>accept表示打开的系统文件目录<br>capture表示的是系统所捕获的默认设备，<br>camera：照相机；camcorder：摄像机；microphone：录音；<br>其中还有一个属性multiple，支持多选，当支持多选时，multiple优先级高于capture，所以只用写成： </p>
+</blockquote>
+<h3 id="二、优化上传图片增加图片上传压缩功能"><a href="#二、优化上传图片增加图片上传压缩功能" class="headerlink" title="二、优化上传图片增加图片上传压缩功能"></a>二、优化上传图片增加图片上传压缩功能</h3><p>用canvas压缩图片的原理就是读取图片的文件，然后把图片画在画布上，再用canvas自带的一个接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canvas.toDataURL(type,encoderOptions);</span><br></pre></td></tr></table></figure>
+<p>第二个参数encoderOptions决定了图片压缩的程度，可以在0-1中选择一个值，当然推荐不要低于0.5，因为这样保存后的图片质量不太好。<br>这个方法执行完后会返回一个值，就是图片的base64格式的字符串，这个字符串就可以上传到服务端。</p>
+<h3 id="三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug"><a href="#三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug" class="headerlink" title="三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug"></a>三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug</h3><p>网上大部分是说exfe.js来读取图片信息，我们上传的图片里面是有很多信息的<br>这里我们需要拿到Orientation的值有1，3，6，8之类的，分别代表0°，180°，顺时针90°，逆时针90°<br><img src="https://upload-images.jianshu.io/upload_images/2790249-123b3dd7e8e898ac.png" alt="Orientation"><br><a href="https://rzrobert.github.io/2017/04/19/ios%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%97%8B%E8%BD%AC%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">图片原文</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取照片方向角属性，用户旋转控制</span><br><span class="line"></span><br><span class="line">EXIF.getData(file, function() &#123;</span><br><span class="line"></span><br><span class="line">    EXIF.getAllTags(this);</span><br><span class="line"></span><br><span class="line">    Orientation &#x3D; EXIF.getTag(this, &#39;Orientation&#39;);</span><br><span class="line"></span><br><span class="line">    console.log(Orientation);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>但是，这里正常是我拿到角度之后绘制图片按照角度回正，大部分机器是没有问题的，安卓手机测试了下，什么角度拍照Orientation都为1，IOS的Orientation都是按照角度返回的，<code>但是在IOS13.4版本以后，带有角度上传的图片也不会旋转,所以需要版本号判断IOS13.4以后不做回正处理</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let iosVersion &#x3D; UserAgent.str.match(&#x2F;CPU iPhone OS (.*?) like Mac OS&#x2F;);</span><br><span class="line">  if(UserAgent.env.ios &amp;&amp;  iosVersion &amp;&amp; compareVersion([13,4],iosVersion[1].split(&#39;_&#39;))&lt;0)&#123;</span><br><span class="line">    callback(-5);</span><br><span class="line">    return</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">const canvas &#x3D; document.createElement(&#39;canvas&#39;);</span><br><span class="line">    canvas.width &#x3D; width &#x3D; drawWidth;</span><br><span class="line">    canvas.height &#x3D; height &#x3D; drawHeight;</span><br><span class="line">    const context &#x3D; canvas.getContext(&#39;2d&#39;);</span><br><span class="line">    &#x2F;&#x2F;判断图片方向，重置canvas大小，确定旋转角度，iphone默认的是home键在右方的横屏拍摄方式</span><br><span class="line">    switch (dir) &#123;</span><br><span class="line">      &#x2F;&#x2F;iphone横屏拍摄，此时home键在左侧 </span><br><span class="line">      case 3:</span><br><span class="line">        degree &#x3D; 180;</span><br><span class="line">        startX &#x3D; - width;</span><br><span class="line">        startY &#x3D; - height;</span><br><span class="line">        drawWidth &#x3D; width;</span><br><span class="line">        drawHeight &#x3D; height;</span><br><span class="line">        break;</span><br><span class="line">      &#x2F;&#x2F;iphone竖屏拍摄，此时home键在下方(正常拿手机的方向) </span><br><span class="line">      case 6:</span><br><span class="line">        canvas.width &#x3D; height;</span><br><span class="line">        canvas.height &#x3D; width;</span><br><span class="line">        degree &#x3D; 90;</span><br><span class="line">        startY &#x3D; - height;</span><br><span class="line">        drawWidth &#x3D; width;</span><br><span class="line">        drawHeight &#x3D; height;</span><br><span class="line">        break;</span><br><span class="line">      &#x2F;&#x2F;iphone竖屏拍摄，此时home键在上方 </span><br><span class="line">      case 8:</span><br><span class="line">        canvas.width &#x3D; height;</span><br><span class="line">        canvas.height &#x3D; width;</span><br><span class="line">        degree &#x3D; 270;</span><br><span class="line">        startX &#x3D; - height;</span><br><span class="line">        drawWidth &#x3D; width;</span><br><span class="line">        drawHeight &#x3D; height;</span><br><span class="line">        break;</span><br><span class="line">      default:</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;使用canvas旋转校正</span><br><span class="line">    context.rotate(degree * Math.PI &#x2F; 180);</span><br><span class="line">&#x2F;&#x2F;canvas rotate旋转角度是根据原点（0，0）开始旋转的，所以绘制的起始坐标需要改变，并不是一直从0，0绘制</span><br><span class="line">    context.drawImage(this, startX, startY, drawWidth, drawHeight);</span><br></pre></td></tr></table></figure>
+<h3 id="四、前端上传图片利用canvas水印合成"><a href="#四、前端上传图片利用canvas水印合成" class="headerlink" title="四、前端上传图片利用canvas水印合成"></a>四、前端上传图片利用canvas水印合成</h3><h3 id="大体步骤："><a href="#大体步骤：" class="headerlink" title="大体步骤："></a>大体步骤：</h3><p>用户使用input file上传图片的时候，利用 FileReader ,读取 blob对象 ,或者是 file对象 ，将图片转化为 data uri （base64格式）的形式。<br>使用 canvas ,在页面上新建一个画布,利用 canvas 提供的API,将图片画入这个画布当中。<br>利用 canvas.toDataURL() ，进行图片的压缩，得到图片的 data uri 的值，用来上传。<br>获取到压缩后的base64格式图片数据，转成二进制塞入formdata，再通过XmlHttpRequest提交formdata。</p>
+<p><a href="https://juejin.im/post/5d54d27df265da03ce39d1a3" target="_blank" rel="noopener">参照文章</a><br><a href="https://www.jianshu.com/p/bc3f6076b36e" target="_blank" rel="noopener">参照文章</a><br><a href="https://www.zhangxinxu.com/wordpress/2017/05/canvas-picture-watermark-synthesis/" target="_blank" rel="noopener">参照文章水印合成</a></p>
 
       
     </div>
@@ -447,7 +452,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git%E3%80%81tool/" rel="tag"># git、tool</a>
+            <a href="/tags/JavaScript%E3%80%81%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%81%E7%A7%BB%E5%8A%A8%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98%E3%80%81react/" rel="tag"># JavaScript、移动开发、移动键盘弹出问题、react</a>
           
         </div>
       
@@ -460,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/26/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" rel="next" title="git常见命令">
-                <i class="fa fa-chevron-left"></i> git常见命令
+              <a href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" rel="next" title="移动开发h5表单键盘弹出问题">
+                <i class="fa fa-chevron-left"></i> 移动开发h5表单键盘弹出问题
               </a>
             
           </div>
@@ -470,8 +475,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/" rel="prev" title="git遇到的错误">
-                git遇到的错误 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" rel="prev" title="H5唤起App">
+                H5唤起App <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -527,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -627,6 +641,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能"><span class="nav-number">1.</span> <span class="nav-text">一、安卓手机上传图片没有拍照选项、ios没有拍照选择相册功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、优化上传图片增加图片上传压缩功能"><span class="nav-number">2.</span> <span class="nav-text">二、优化上传图片增加图片上传压缩功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug"><span class="nav-number">3.</span> <span class="nav-text">三、移动端IOS系统手机拍照图片Canvas压缩上传后图片旋转的bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、前端上传图片利用canvas水印合成"><span class="nav-number">4.</span> <span class="nav-text">四、前端上传图片利用canvas水印合成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大体步骤："><span class="nav-number">5.</span> <span class="nav-text">大体步骤：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

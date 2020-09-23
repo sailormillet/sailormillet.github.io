@@ -90,14 +90,14 @@
 <meta property="og:site_name" content="Amy&#39;s Blog">
 <meta property="og:description" content="最近在做移动端开发，每过一段时间，发现又出现新的兼容问题，这次也不例外。  ios手机之前ios手机是没有问题的，昨天测试的时候发现键盘弹出不会有遮挡input表单的问题，但是输入完成，键盘收回后发现，页面会有一个空白位置没有收回 可以在失去input焦点blur的时候用scrollTo做个处理还原页面的位置 123456789101112131415161718function getPlat">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg">
 <meta property="article:published_time" content="2020-04-09T11:12:28.000Z">
-<meta property="article:modified_time" content="2020-09-15T09:00:21.229Z">
+<meta property="article:modified_time" content="2020-09-23T12:48:11.297Z">
 <meta property="article:author" content="Amy Chen">
 <meta property="article:tag" content="JavaScript、移动开发、移动键盘弹出问题、vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg">
 
 
 
@@ -417,8 +417,8 @@
         <blockquote>
 <p>最近在做移动端开发，每过一段时间，发现又出现新的兼容问题，这次也不例外。</p>
 </blockquote>
-<h4 id="ios手机"><a href="#ios手机" class="headerlink" title="ios手机"></a>ios手机</h4><p>之前ios手机是没有问题的，昨天测试的时候发现键盘弹出不会有遮挡input表单的问题，但是输入完成，键盘收回后发现，页面会有一个空白位置没有收回<br><img src="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="键盘收回.jpeg"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="键盘弹出.jpeg"><br>可以在失去input焦点blur的时候用scrollTo做个处理还原页面的位置</p>
+<h4 id="ios手机"><a href="#ios手机" class="headerlink" title="ios手机"></a>ios手机</h4><p>之前ios手机是没有问题的，昨天测试的时候发现键盘弹出不会有遮挡input表单的问题，但是输入完成，键盘收回后发现，页面会有一个空白位置没有收回<br><img src="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg" alt="键盘收回.jpeg"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg" alt="键盘弹出.jpeg"><br>可以在失去input焦点blur的时候用scrollTo做个处理还原页面的位置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function getPlat() &#123;</span><br><span class="line">    let u &#x3D; navigator.userAgent;</span><br><span class="line">    let isAndroid &#x3D; u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Adr&#39;) &gt; -1;   &#x2F;&#x2F;判断是否是 android终端</span><br><span class="line">    let isIOS &#x3D; !!u.match(&#x2F;\(i[^;]+;( U;)? CPU.+Mac OS X&#x2F;);     &#x2F;&#x2F;判断是否是 iOS终端</span><br><span class="line">    if (isAndroid) &#123;</span><br><span class="line">      return &#39;Android&#39;;</span><br><span class="line">    &#125; else if (isIOS) &#123;</span><br><span class="line">      return &#39;IOS&#39;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return &#39;PC&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (getPlat() &#x3D;&#x3D;&#x3D; &#39;IOS&#39;) &#123;</span><br><span class="line">                    setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    const scrollHeight &#x3D; document.documentElement.scrollTop || document.body.scrollTop || 0;</span><br><span class="line">                        window.scrollTo(0, Math.max(scrollHeight - 1, 0));</span><br><span class="line">                    &#125;, 0);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Android手机（测试机有oppo、华为、三星、锤子）"><a href="#Android手机（测试机有oppo、华为、三星、锤子）" class="headerlink" title="Android手机（测试机有oppo、华为、三星、锤子）"></a>Android手机（测试机有oppo、华为、三星、锤子）</h4><p>但是在Android 手机中就没有这么容易了，测试发现，安卓手机中如果不做任何处理，弹出的键盘会遮盖输入框，但是键盘弹出后手动滚动页面，收回键盘，在聚焦弹出键盘就会定位到上次滚动的地方。其实这样也还好，但是测试要求想要自动展示到键盘上方。所以我需要做些兼容处理<br>经检测有几种解决办法：<br>一、修改输入登录模块的定位用fixed、会跟着键盘一起动，可以在聚焦失焦给样式做些处理，但是会麻烦一些<br><strong>二、scrollIntoView 与 scrollIntoViewIfNeeded API</strong><br>可以在页面挂载完成mounted的时候做处理，统一对所有的input和textarea做处理</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ((&#x2F;Android&#x2F;gi).test(navigator.userAgent)) &#123;</span><br><span class="line">    window.addEventListener(&#39;resize&#39;, function () &#123;</span><br><span class="line">        if (document.activeElement.tagName &#x3D;&#x3D; &#39;INPUT&#39; || document.activeElement.tagName &#x3D;&#x3D; &#39;TEXTAREA&#39;) &#123;</span><br><span class="line">            window.setTimeout(function () &#123;</span><br><span class="line">                document.activeElement.scrollIntoViewIfNeeded();</span><br><span class="line">            &#125;, 0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -465,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" rel="prev" title="H5唤起App">
-                H5唤起App <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" rel="prev" title="移动端(ios、android)上传图片遇到的兼容问题">
+                移动端(ios、android)上传图片遇到的兼容问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -551,7 +551,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -562,7 +562,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -573,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
