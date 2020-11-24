@@ -739,7 +739,7 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>Hdocker上手安装mongo、node、yapi部署以及dockerfile定制镜像</title>
+    <title>docker上手安装mongo、node、yapi部署以及dockerfile定制镜像</title>
     <url>/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/</url>
     <content><![CDATA[<p>安装mongo</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
@@ -764,6 +764,88 @@ IOS9  可以使用 universal Link</code></p>
         <tag>Docker</tag>
         <tag>mongo</tag>
         <tag>yapi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker简介安装</title>
+    <url>/2020/11/24/Docker%E7%AE%80%E4%BB%8B%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker?"></a>什么是Docker?</h1><blockquote>
+<p>Docker 是⼀个开源，轻量级的应⽤容器引擎,以前我们想在window折腾linux系统，在上⾯部署应⽤来测试什么的，我们通常会安装⼀个虚拟机，在虚拟机上安装操作系统啊，应⽤什么的，搞垮了可以重新来什么的，不影响主机的系统，不过虚拟机⽐较重，启动慢，现在我们⽤docker，相⽐于虚拟机装操作系统，Docker是使⽤容器承载应⽤程序，轻量，⾼效，⽅便快捷的部署</p>
+</blockquote>
+<ul>
+<li>装应用的容器</li>
+<li>开发、测试、运维都偏爱的容器化技术</li>
+<li>轻量级</li>
+<li>扩展性</li>
+<li>一次构建、多次分享、随处运行</li>
+</ul>
+<h1 id="Docker的基本概念"><a href="#Docker的基本概念" class="headerlink" title="Docker的基本概念"></a>Docker的基本概念</h1><p>镜像(Image)、容器(Container)与仓库(Repository)，这三个是docker中最基本也是最核心的概念，对这三个概念的掌握与理解，是学习docker的关键。</p>
+<p><strong>镜像(Image)</strong><br>Docker本质上是一个运行在Linux操作系统上的应用，而Linux操作系统分为内核和用户空间，无论是Centos还是Ubuntu，都是在启动内核之后，通过挂载Root文件系统来提供用户空间的,而Docker镜像就是一个Root文件系统。镜像Image就是相当于安装操作的系统盘，U盘等等，⾥⾯可以包含node、gitlab等等，当然也可以包含完整的centos系统，甚⾄是centos + jenkins的或者centos + verdaccio(npm 私有库)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 列出所有镜像</span><br><span class="line">docker image ls</span><br><span class="line"># 列表所有镜像</span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>从仓库拉取镜像<br>前面我们已经演示过使用docker pull命令拉取了hello-world镜像了，当然使用docker image pull命令也是一样的。<br>一般默认是从Docker Hub上拉取镜像的，Docker Hub是Docker官方提供的镜像仓库服务(Docker Registry)，有大量官方或第三方镜像供我们使用，比如我们可以在命令行中输入下面的命令直接拉取一个Centos镜像：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure>
+<p>复制代码docker pull命令的完整写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]&#x2F;]仓库名[:标签]</span><br></pre></td></tr></table></figure>
+<p>复制代码拉取一个镜像，需要指定Docker Registry的地址和端口号，默认是Docker Hub，还需要指定仓库名和标签，仓库名和标签唯一确定一个镜像，而标签是可能省略，如果省略，则默认使用latest作为标签名，另外，仓库名则由作者名和软件名组成。<br>那么，我们上面使用centos，那是因为省略作者名，则作者名library,表示Docker官方的镜像，所以上面的命令等同于：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull library&#x2F;centos:latest</span><br></pre></td></tr></table></figure>
+<p>复制代码因此，如果拉取非官方的第三方镜像，则需要指定完整仓库名，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mysql&#x2F;mysql-server:latest</span><br></pre></td></tr></table></figure>
+<p>复制代码运行镜像<br>使用docker run命令，可以通过镜像创建一个容器，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it centos &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<p>查看主机下存在的镜像</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>复制代码删除镜像<br>当本地有些镜像我们不需要时，那我们也可以删除该镜像，以节省存储空间，不过要注意，如果有使用该镜像创建的容器未删除，则不允许删除镜像。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># image_name表示镜像名，image_id表示镜像id</span><br><span class="line">dockere image rm image_name&#x2F;image_id</span><br></pre></td></tr></table></figure>
+<p>复制代码删除镜像的快捷命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi image_name&#x2F;image_id</span><br></pre></td></tr></table></figure>
+<p>复制代码好了，关于Docker镜像的相关知识，我们就简单地介绍到这里，有机会的话，我们单独写一篇文章来谈谈，特别构建Docker镜像部分的相关知识，有必要深入再学习一下。</p>
+<p>** 容器(Container)**<br>容器(Container)就是实际上跑应⽤的地⽅啦，可以理解为⼀个个互相隔离的⼩虚拟机，你的镜像就是安装在这⾥<br>启动容器有两种方式，一种是我们前面已经介绍过的，使用docker run命令通过镜像创建一个全新的容器，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<p>复制代码另外一种启动容器的方式就是启动一个已经停止运行的容器：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># container_id表示容器的id</span><br><span class="line">docker start container_id</span><br></pre></td></tr></table></figure>
+<p>复制代码要停止正在运行的容器可以使用docker container stop或docker stop命令，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># container_id表示容器的id</span><br><span class="line">docker stop container_id</span><br></pre></td></tr></table></figure>
+<p>容器名或ID：重启容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker restart</span><br></pre></td></tr></table></figure>
+<p>如果要查看本地所有的容器，可以使用docker container ls命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 查看所有容器</span><br><span class="line">docker container ls</span><br></pre></td></tr></table></figure>
+<p>复制代码查看所有容器也有简洁的写法，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 查看所有容器</span><br><span class="line">docker ps</span><br><span class="line">docker ps -a ：查看当前容器的运行状态（-a 是查看当前所有的容器，包括未运行的）</span><br></pre></td></tr></table></figure>
+<p>删除容器<br>我们也可以使用docker container rm命令，或简洁的写法docker rm命令来删除容器，不过不允许删除正在运行的容器，因此如果要删除的话，就必须先停止容器，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># container_id表示容器id,通过docker ps可以看到容器id</span><br><span class="line">docker container rm image_name ：删除镜像（先停止容器）</span><br><span class="line"></span><br><span class="line">$ docker rm container_id</span><br><span class="line">$ docker rm -f container_id(第一个字符即可) container_id第一个单词  强制删除</span><br></pre></td></tr></table></figure>
+<p>复制代码当我们需要批量删除所有容器，可以用下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 删除所有容器</span><br><span class="line">docker rm $(docker ps -q)</span><br></pre></td></tr></table></figure>
+<p>复制代码# 删除所有退出的容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
+<p>复制代码进入容器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 进入容器,container_id表示容器的id,command表示linux命令,如&#x2F;bin&#x2F;bash</span><br><span class="line">docker exec -it container_id command</span><br></pre></td></tr></table></figure>
+<p>端口映射<br>端口映射有三种方式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd -p 9090:9090 alpine_test(container_name) sh</span><br></pre></td></tr></table></figure>
+<p>映射指定地址的主机端口到容器端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker -p ip:hostPort:containerPort</span><br><span class="line"></span><br><span class="line">比如：docker run  -p 127.0.0.1:3306:3306 映射本机3306端口到容器的3306端口</span><br></pre></td></tr></table></figure>
+<p>映射指定地址的任意可用端口到容器端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker -p ip::containerPort</span><br><span class="line"></span><br><span class="line">比如：docker run  -p 127.0.0.1::3306 映射本机的随机可用端口到容器3306端口</span><br></pre></td></tr></table></figure>
+<p>映射本机的指定端口到容器的指定端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docer -p hostPort:containerPort</span><br><span class="line"></span><br><span class="line">比如：docker run -p 3306:3306 # 映射本机的3306端口到容器的3306端口</span><br></pre></td></tr></table></figure>
+<p><strong>仓库(Repository)</strong><br>仓库(Repository) ⽤于存放镜像，有点类似的git仓库，docker hub是个公共的仓库，不过在我们这边⽹速慢，⼀般把源设置为淘宝源等</p>
+<p>后⾯我们会⽤⼏个docker容器分别安装jenkins、verdaccio、yapi等组成⼀个单机的⼩⼩微服务，现在多多少少知道为什么要⽤docker了吧</p>
+<h3 id="window安装docker"><a href="#window安装docker" class="headerlink" title="window安装docker"></a>window安装docker</h3><h4 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;hub.docker.com&#x2F;editions&#x2F;community&#x2F;docker-ce-desktop-windows&#x2F;</span><br></pre></td></tr></table></figure>
+<p>按照安装向导next即可</p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>不会自动启动<br>在开始菜单搜索Docker, 打开即可<br><img src="https://upload-images.jianshu.io/upload_images/2790249-ae7ce650dd3ba0e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>细节配置, 可参考这个链接（<a href="https://docs.docker.com/docker-for-windows/#docker-settings-dialog）" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/#docker-settings-dialog）</a></p>
+<h4 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h4><p>在CMD中运行如下命令, 有显示版本号或者显示”Hello from Docker!”, 则代表安装成功</p>
+<ul>
+<li>查看版本号<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+列出容器<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps [OPTIONS]</span><br><span class="line"></span><br><span class="line">OPTIONS说明：</span><br><span class="line"></span><br><span class="line">-a :显示所有的容器，包括未运行的。</span><br><span class="line"></span><br><span class="line">-f :根据条件过滤显示的内容。</span><br><span class="line"></span><br><span class="line">--format :指定返回值的模板文件。</span><br><span class="line"></span><br><span class="line">-l :显示最近创建的容器。</span><br><span class="line"></span><br><span class="line">-n :列出最近创建的n个容器。</span><br><span class="line"></span><br><span class="line">--no-trunc :不截断输出。</span><br><span class="line"></span><br><span class="line">-q :静默模式，只显示容器编号。</span><br><span class="line"></span><br><span class="line">-s :显示总的文件大小。</span><br></pre></td></tr></table></figure></li>
+<li>安装nginx<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run nginx</span><br><span class="line">docker run -p 8080:80 nginx</span><br></pre></td></tr></table></figure>
+<a href="https://zhuanlan.zhihu.com/p/82269806" target="_blank" rel="noopener">史上最全Docker环境安装指南</a><br><a href="https://juejin.im/post/6844903918372143112" target="_blank" rel="noopener">10分钟快速掌握Docker必备基础知识</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
 </search>

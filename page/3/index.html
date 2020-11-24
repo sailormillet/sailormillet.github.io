@@ -300,6 +300,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2019/12/31/moker-api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/31/moker-api/" itemprop="url">moker-api</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-31T15:02:25+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">frontend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/31/moker-api/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2019/12/31/moker-api/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/31/moker-api/" class="leancloud_visitors" data-flag-title="moker-api">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>mocker-api这里主要讲我在反向代理遇见的问题，其他的请看官方文档。<br>在我主要用来进行开发的公司的电脑上这样匹配接口就可以代理上，但是按照文档上的直接反向代理的写法却代理不成功</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/*'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
+<p>但是在我自己的电脑上接口竟然没匹配到!<br>开始我以为是新版本的webpack-dev-server的问题导致我本地服务起的有问题，虽然爆出了这个警告，但是我可以访问我的页面，只是mock反向代理不成功而已，直接mock假数据就可以成功<br><img src="http://upload-images.jianshu.io/upload_images/2790249-3542a5fc3e348ecd.png" alt="WeChat3ccbcd8e228a5aa0ae7d7538fb46be26.png"><br>最后发现按照文档上以正则匹配的形式去写才可以匹配上!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = &#123;</span><br><span class="line">  <span class="comment">// Priority processing.</span></span><br><span class="line">  <span class="comment">// apiMocker(app, path, option)</span></span><br><span class="line">  <span class="comment">// This is the option parameter setting for apiMocker</span></span><br><span class="line">  _proxy: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/repos/(.*)'</span>: <span class="string">'https://api.github.com/'</span>,</span><br><span class="line">      <span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    changeHost: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// modify the http-proxy options</span></span><br><span class="line">    httpProxy: &#123;</span><br><span class="line">      options: &#123;</span><br><span class="line">        ignorePath: <span class="literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      listeners: &#123;</span><br><span class="line">        proxyReq: <span class="function"><span class="keyword">function</span> (<span class="params">proxyReq, req, res, options</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'proxyReq'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,    </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = proxy;</span><br></pre></td></tr></table></figure>
+<p>当我的node版本变为v10.6.0，发现我的代理需要/repos/(.<em>)变回为/repos/</em><br>mocker-api 的version为1.9.0我需要这样去匹配路由/repos/(.*)<br>mocker-api 的version不同版本是否为不同的匹配规则有待验证</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -712,7 +882,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
