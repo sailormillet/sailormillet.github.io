@@ -449,12 +449,12 @@ IOS9  可以使用 universal Link</code></p>
 <p><strong>第二点</strong>：滚轮滑动造成的，主要是html2canvas是根据body进行截图，若内容高度高于body时，就会出现这样的问题(大概意思就是有滚动条时造成的)<br>解决方案：body内加一层div设置高度是100vh超出滚动，这样就不会高于body了</p>
 ]]></content>
       <categories>
-        <category>frontend、canvas、react</category>
+        <category>frontend、canvas、react、浏览器同源</category>
       </categories>
       <tags>
         <tag>frontend</tag>
         <tag>canvas</tag>
-        <tag>screenshot</tag>
+        <tag>screenshot、浏览器同源</tag>
       </tags>
   </entry>
   <entry>
@@ -736,6 +736,34 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>JavaScript、移动开发、移动键盘弹出问题、react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hdocker上手安装mongo、node、yapi部署以及dockerfile定制镜像</title>
+    <url>/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/</url>
+    <content><![CDATA[<p>安装mongo</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker search mongo</span><br></pre></td></tr></table></figure>
+
+<p>本地docker上启动mongo</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd --name mongo -p 27017:27017 mongo --auth</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose-安装yapi"><a href="#docker-compose-安装yapi" class="headerlink" title="docker-compose 安装yapi"></a>docker-compose 安装yapi</h3><p>docker-compose.yml <a href="mailto:admin@163.com">admin@163.com</a>登录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  yapi-web:</span><br><span class="line">    image: jayfong&#x2F;yapi:latest</span><br><span class="line">    container_name: yapi-web</span><br><span class="line">    ports:</span><br><span class="line">      - 40001:3000</span><br><span class="line">    environment:</span><br><span class="line">      - YAPI_ADMIN_ACCOUNT&#x3D;admin@163.com</span><br><span class="line">      - YAPI_ADMIN_PASSWORD&#x3D;admin</span><br><span class="line">      - YAPI_CLOSE_REGISTER&#x3D;true</span><br><span class="line">      - YAPI_DB_SERVERNAME&#x3D;yapi-mongo</span><br><span class="line">      - YAPI_DB_PORT&#x3D;27017</span><br><span class="line">      - YAPI_DB_DATABASE&#x3D;yapi</span><br><span class="line">      - YAPI_MAIL_ENABLE&#x3D;false</span><br><span class="line">      - YAPI_LDAP_LOGIN_ENABLE&#x3D;false</span><br><span class="line">      - YAPI_PLUGINS&#x3D;[]</span><br><span class="line">    depends_on:</span><br><span class="line">      - yapi-mongo</span><br><span class="line">    links:</span><br><span class="line">      - yapi-mongo</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">  yapi-mongo:</span><br><span class="line">    image: mongo:latest</span><br><span class="line">    container_name: yapi-mongo</span><br><span class="line">    volumes:</span><br><span class="line">      - .&#x2F;data&#x2F;db:&#x2F;data&#x2F;db</span><br><span class="line">      - .&#x2F;data&#x2F;log:&#x2F;var&#x2F;log&#x2F;mongodb</span><br><span class="line">    expose:</span><br><span class="line">      - 27017</span><br><span class="line">    restart: unless-stopped</span><br></pre></td></tr></table></figure>
+
+<p>或者Dockerfile安装yapi</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">######## 构建 ########</span><br><span class="line">FROM --platform&#x3D;$&#123;BUILDPLATFORM:-amd64&#125; node:12.16.3-alpine3.11 as builder</span><br><span class="line"></span><br><span class="line"># 安装构建工具</span><br><span class="line">RUN apk add --update --no-cache ca-certificates curl wget cmake build-base git bash python make gcc g++ zlib-dev autoconf automake file nasm \</span><br><span class="line">  &amp;&amp; update-ca-certificates</span><br><span class="line"></span><br><span class="line"># YApi 版本</span><br><span class="line">ENV YAPI_VERSION&#x3D;1.9.2</span><br><span class="line"></span><br><span class="line"># 编译脚本</span><br><span class="line">WORKDIR &#x2F;yapi&#x2F;scripts</span><br><span class="line">COPY . .</span><br><span class="line">RUN yarn &amp;&amp; yarn build</span><br><span class="line"></span><br><span class="line">WORKDIR &#x2F;yapi&#x2F;vendors</span><br><span class="line"></span><br><span class="line"># 拉取 YApi 源码</span><br><span class="line">RUN git clone \</span><br><span class="line">  --branch &quot;v$&#123;YAPI_VERSION&#125;&quot; \</span><br><span class="line">  --single-branch \</span><br><span class="line">  --depth 1 \</span><br><span class="line">  https:&#x2F;&#x2F;github.com&#x2F;YMFE&#x2F;yapi.git .</span><br><span class="line"></span><br><span class="line"># 拷贝启动脚本</span><br><span class="line">RUN cp &#x2F;yapi&#x2F;scripts&#x2F;start.js .&#x2F;start.js</span><br><span class="line"></span><br><span class="line"># 执行一些准备工作</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;prepare.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 安装依赖</span><br><span class="line">RUN yarn</span><br><span class="line"></span><br><span class="line"># 清理文件</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;clean.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 构建应用</span><br><span class="line">RUN yarn build-client</span><br><span class="line"></span><br><span class="line"># 再次清理以删除构建缓存文件</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;clean.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 删除脚本</span><br><span class="line">RUN rm -rf &#x2F;yapi&#x2F;scripts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">######## 镜像 ########</span><br><span class="line">FROM node:12.16.3-alpine3.11</span><br><span class="line"></span><br><span class="line">WORKDIR &#x2F;yapi</span><br><span class="line"></span><br><span class="line">COPY --from&#x3D;builder &#x2F;yapi .</span><br><span class="line"></span><br><span class="line">EXPOSE 3000</span><br><span class="line"></span><br><span class="line">CMD [&quot;node&quot;, &quot;&#x2F;yapi&#x2F;vendors&#x2F;start.js&quot;]</span><br></pre></td></tr></table></figure>
+<p>Dockerfile.web</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FROM jayfong&#x2F;yapi:latest</span><br><span class="line"></span><br><span class="line">ENV YAPI_ADMIN_ACCOUNT&#x3D;admin@163.com</span><br><span class="line">ENV YAPI_ADMIN_PASSWORD&#x3D;admin</span><br><span class="line">ENV YAPI_CLOSE_REGISTER&#x3D;false</span><br><span class="line">ENV YAPI_DB_SERVERNAME&#x3D;127.0.0.1</span><br><span class="line">ENV YAPI_DB_PORT&#x3D;27017</span><br><span class="line">ENV YAPI_DB_DATABASE&#x3D;yapi</span><br><span class="line">ENV YAPI_MAIL_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_LDAP_LOGIN_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_PLUGINS&#x3D;[]</span><br><span class="line"></span><br><span class="line">RUN echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;main&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;community&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  apk add --update --no-cache mongodb &amp;&amp; \</span><br><span class="line">  mkdir -p &#x2F;data&#x2F;db</span><br><span class="line"></span><br><span class="line">EXPOSE $PORT</span><br><span class="line"></span><br><span class="line">CMD mongod --fork --logpath&#x3D;mongodb.log &amp;&amp; node &#x2F;yapi&#x2F;vendors&#x2F;start.js</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Docker</category>
+        <category>mongo</category>
+        <category>yapi</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>mongo</tag>
+        <tag>yapi</tag>
       </tags>
   </entry>
 </search>

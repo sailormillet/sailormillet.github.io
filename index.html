@@ -300,6 +300,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/" itemprop="url">Hdocker上手安装mongo、node、yapi部署以及dockerfile定制镜像</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-24T17:25:48+08:00">
+                2020-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/mongo/" itemprop="url" rel="index">
+                    <span itemprop="name">mongo</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/mongo/yapi/" itemprop="url" rel="index">
+                    <span itemprop="name">yapi</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/" class="leancloud_visitors" data-flag-title="Hdocker上手安装mongo、node、yapi部署以及dockerfile定制镜像">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>安装mongo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mongo</span><br></pre></td></tr></table></figure>
+
+<p>本地docker上启动mongo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name mongo -p 27017:27017 mongo --auth</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose-安装yapi"><a href="#docker-compose-安装yapi" class="headerlink" title="docker-compose 安装yapi"></a>docker-compose 安装yapi</h3><p>docker-compose.yml <a href="mailto:admin@163.com">admin@163.com</a>登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">  yapi-web:</span><br><span class="line">    image: jayfong&#x2F;yapi:latest</span><br><span class="line">    container_name: yapi-web</span><br><span class="line">    ports:</span><br><span class="line">      - 40001:3000</span><br><span class="line">    environment:</span><br><span class="line">      - YAPI_ADMIN_ACCOUNT&#x3D;admin@163.com</span><br><span class="line">      - YAPI_ADMIN_PASSWORD&#x3D;admin</span><br><span class="line">      - YAPI_CLOSE_REGISTER&#x3D;true</span><br><span class="line">      - YAPI_DB_SERVERNAME&#x3D;yapi-mongo</span><br><span class="line">      - YAPI_DB_PORT&#x3D;27017</span><br><span class="line">      - YAPI_DB_DATABASE&#x3D;yapi</span><br><span class="line">      - YAPI_MAIL_ENABLE&#x3D;false</span><br><span class="line">      - YAPI_LDAP_LOGIN_ENABLE&#x3D;false</span><br><span class="line">      - YAPI_PLUGINS&#x3D;[]</span><br><span class="line">    depends_on:</span><br><span class="line">      - yapi-mongo</span><br><span class="line">    links:</span><br><span class="line">      - yapi-mongo</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">  yapi-mongo:</span><br><span class="line">    image: mongo:latest</span><br><span class="line">    container_name: yapi-mongo</span><br><span class="line">    volumes:</span><br><span class="line">      - .&#x2F;data&#x2F;db:&#x2F;data&#x2F;db</span><br><span class="line">      - .&#x2F;data&#x2F;log:&#x2F;var&#x2F;log&#x2F;mongodb</span><br><span class="line">    expose:</span><br><span class="line">      - 27017</span><br><span class="line">    restart: unless-stopped</span><br></pre></td></tr></table></figure>
+
+<p>或者Dockerfile安装yapi</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">######## 构建 ########</span><br><span class="line">FROM --platform&#x3D;$&#123;BUILDPLATFORM:-amd64&#125; node:12.16.3-alpine3.11 as builder</span><br><span class="line"></span><br><span class="line"># 安装构建工具</span><br><span class="line">RUN apk add --update --no-cache ca-certificates curl wget cmake build-base git bash python make gcc g++ zlib-dev autoconf automake file nasm \</span><br><span class="line">  &amp;&amp; update-ca-certificates</span><br><span class="line"></span><br><span class="line"># YApi 版本</span><br><span class="line">ENV YAPI_VERSION&#x3D;1.9.2</span><br><span class="line"></span><br><span class="line"># 编译脚本</span><br><span class="line">WORKDIR &#x2F;yapi&#x2F;scripts</span><br><span class="line">COPY . .</span><br><span class="line">RUN yarn &amp;&amp; yarn build</span><br><span class="line"></span><br><span class="line">WORKDIR &#x2F;yapi&#x2F;vendors</span><br><span class="line"></span><br><span class="line"># 拉取 YApi 源码</span><br><span class="line">RUN git clone \</span><br><span class="line">  --branch &quot;v$&#123;YAPI_VERSION&#125;&quot; \</span><br><span class="line">  --single-branch \</span><br><span class="line">  --depth 1 \</span><br><span class="line">  https:&#x2F;&#x2F;github.com&#x2F;YMFE&#x2F;yapi.git .</span><br><span class="line"></span><br><span class="line"># 拷贝启动脚本</span><br><span class="line">RUN cp &#x2F;yapi&#x2F;scripts&#x2F;start.js .&#x2F;start.js</span><br><span class="line"></span><br><span class="line"># 执行一些准备工作</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;prepare.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 安装依赖</span><br><span class="line">RUN yarn</span><br><span class="line"></span><br><span class="line"># 清理文件</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;clean.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 构建应用</span><br><span class="line">RUN yarn build-client</span><br><span class="line"></span><br><span class="line"># 再次清理以删除构建缓存文件</span><br><span class="line">RUN node &#x2F;yapi&#x2F;scripts&#x2F;clean.js $(pwd)</span><br><span class="line"></span><br><span class="line"># 删除脚本</span><br><span class="line">RUN rm -rf &#x2F;yapi&#x2F;scripts</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">######## 镜像 ########</span><br><span class="line">FROM node:12.16.3-alpine3.11</span><br><span class="line"></span><br><span class="line">WORKDIR &#x2F;yapi</span><br><span class="line"></span><br><span class="line">COPY --from&#x3D;builder &#x2F;yapi .</span><br><span class="line"></span><br><span class="line">EXPOSE 3000</span><br><span class="line"></span><br><span class="line">CMD [&quot;node&quot;, &quot;&#x2F;yapi&#x2F;vendors&#x2F;start.js&quot;]</span><br></pre></td></tr></table></figure>
+<p>Dockerfile.web</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">FROM jayfong&#x2F;yapi:latest</span><br><span class="line"></span><br><span class="line">ENV YAPI_ADMIN_ACCOUNT&#x3D;admin@163.com</span><br><span class="line">ENV YAPI_ADMIN_PASSWORD&#x3D;admin</span><br><span class="line">ENV YAPI_CLOSE_REGISTER&#x3D;false</span><br><span class="line">ENV YAPI_DB_SERVERNAME&#x3D;127.0.0.1</span><br><span class="line">ENV YAPI_DB_PORT&#x3D;27017</span><br><span class="line">ENV YAPI_DB_DATABASE&#x3D;yapi</span><br><span class="line">ENV YAPI_MAIL_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_LDAP_LOGIN_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_PLUGINS&#x3D;[]</span><br><span class="line"></span><br><span class="line">RUN echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;main&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;community&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  apk add --update --no-cache mongodb &amp;&amp; \</span><br><span class="line">  mkdir -p &#x2F;data&#x2F;db</span><br><span class="line"></span><br><span class="line">EXPOSE $PORT</span><br><span class="line"></span><br><span class="line">CMD mongod --fork --logpath&#x3D;mongodb.log &amp;&amp; node &#x2F;yapi&#x2F;vendors&#x2F;start.js</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2012,179 +2209,6 @@ IOS9  可以使用 universal Link</code></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" itemprop="url">移动开发h5表单键盘弹出问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-09T19:12:28+08:00">
-                2020-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">开发机、虚拟机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2020/04/09/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91h5%E8%A1%A8%E5%8D%95%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98/" class="leancloud_visitors" data-flag-title="移动开发h5表单键盘弹出问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>最近在做移动端开发，每过一段时间，发现又出现新的兼容问题，这次也不例外。</p>
-</blockquote>
-<h4 id="ios手机"><a href="#ios手机" class="headerlink" title="ios手机"></a>ios手机</h4><p>之前ios手机是没有问题的，昨天测试的时候发现键盘弹出不会有遮挡input表单的问题，但是输入完成，键盘收回后发现，页面会有一个空白位置没有收回<br><img src="http://upload-images.jianshu.io/upload_images/2790249-c5d95b4cd0956021.jpeg" alt="键盘收回.jpeg"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2790249-a17cbf6d4d5b50b1.jpeg" alt="键盘弹出.jpeg"><br>可以在失去input焦点blur的时候用scrollTo做个处理还原页面的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function getPlat() &#123;</span><br><span class="line">    let u &#x3D; navigator.userAgent;</span><br><span class="line">    let isAndroid &#x3D; u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Adr&#39;) &gt; -1;   &#x2F;&#x2F;判断是否是 android终端</span><br><span class="line">    let isIOS &#x3D; !!u.match(&#x2F;\(i[^;]+;( U;)? CPU.+Mac OS X&#x2F;);     &#x2F;&#x2F;判断是否是 iOS终端</span><br><span class="line">    if (isAndroid) &#123;</span><br><span class="line">      return &#39;Android&#39;;</span><br><span class="line">    &#125; else if (isIOS) &#123;</span><br><span class="line">      return &#39;IOS&#39;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return &#39;PC&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">if (getPlat() &#x3D;&#x3D;&#x3D; &#39;IOS&#39;) &#123;</span><br><span class="line">                    setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    const scrollHeight &#x3D; document.documentElement.scrollTop || document.body.scrollTop || 0;</span><br><span class="line">                        window.scrollTo(0, Math.max(scrollHeight - 1, 0));</span><br><span class="line">                    &#125;, 0);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Android手机（测试机有oppo、华为、三星、锤子）"><a href="#Android手机（测试机有oppo、华为、三星、锤子）" class="headerlink" title="Android手机（测试机有oppo、华为、三星、锤子）"></a>Android手机（测试机有oppo、华为、三星、锤子）</h4><p>但是在Android 手机中就没有这么容易了，测试发现，安卓手机中如果不做任何处理，弹出的键盘会遮盖输入框，但是键盘弹出后手动滚动页面，收回键盘，在聚焦弹出键盘就会定位到上次滚动的地方。其实这样也还好，但是测试要求想要自动展示到键盘上方。所以我需要做些兼容处理<br>经检测有几种解决办法：<br>一、修改输入登录模块的定位用fixed、会跟着键盘一起动，可以在聚焦失焦给样式做些处理，但是会麻烦一些<br><strong>二、scrollIntoView 与 scrollIntoViewIfNeeded API</strong><br>可以在页面挂载完成mounted的时候做处理，统一对所有的input和textarea做处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ((&#x2F;Android&#x2F;gi).test(navigator.userAgent)) &#123;</span><br><span class="line">    window.addEventListener(&#39;resize&#39;, function () &#123;</span><br><span class="line">        if (document.activeElement.tagName &#x3D;&#x3D; &#39;INPUT&#39; || document.activeElement.tagName &#x3D;&#x3D; &#39;TEXTAREA&#39;) &#123;</span><br><span class="line">            window.setTimeout(function () &#123;</span><br><span class="line">                document.activeElement.scrollIntoViewIfNeeded();</span><br><span class="line">            &#125;, 0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者在input聚焦focus的时候做处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;input</span><br><span class="line">    v-model&#x3D;&quot;codeValue&quot;</span><br><span class="line">    type&#x3D;&quot;text&quot;</span><br><span class="line">    placeholder&#x3D;&quot;请输入收到的验证码&quot;</span><br><span class="line">    class&#x3D;&quot;verify-input&quot;</span><br><span class="line">    maxlength&#x3D;&quot;6&quot;</span><br><span class="line">    @focus&#x3D;&quot;changefocus&quot;</span><br><span class="line">    @blur.prevent&#x3D;&quot;blur&quot;</span><br><span class="line">&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    methods: &#123;</span><br><span class="line">        blur()&#123;</span><br><span class="line">            if (judgeClient() &#x3D;&#x3D;&#x3D; &#39;IOS&#39;) &#123;</span><br><span class="line">                setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                const scrollHeight &#x3D; document.documentElement.scrollTop || document.body.scrollTop || 0;</span><br><span class="line">                    window.scrollTo(0, Math.max(scrollHeight - 1, 0));</span><br><span class="line">                &#125;, 0);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        changefocus() &#123;</span><br><span class="line">            if (this.getPlat() &#x3D;&#x3D;&#x3D; &#39;Android&#39;) &#123;</span><br><span class="line">                    setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                        el.target.scrollIntoViewIfNeeded(true);</span><br><span class="line">                        el.target.scrollIntoView(true);</span><br><span class="line">                    &#125;, 200);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        getPlat() &#123;</span><br><span class="line">            let u &#x3D; navigator.userAgent;</span><br><span class="line">            let isAndroid &#x3D; u.indexOf(&#39;Android&#39;) &gt; -1 || u.indexOf(&#39;Adr&#39;) &gt; -1;   &#x2F;&#x2F;判断是否是 android终端</span><br><span class="line">            let isIOS &#x3D; !!u.match(&#x2F;\(i[^;]+;( U;)? CPU.+Mac OS X&#x2F;);     &#x2F;&#x2F;判断是否是 iOS终端</span><br><span class="line">            if (isAndroid) &#123;</span><br><span class="line">                return &#39;Android&#39;;</span><br><span class="line">            &#125; else if (isIOS) &#123;</span><br><span class="line">                return &#39;IOS&#39;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return &#39;PC&#39;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>安卓手机有延迟，有时生效，有时会失效，可能setTimeout设置的延迟事件不够，我设置100的时候还会经常没生效，但是设置200貌似就好很多</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2239,7 +2263,7 @@ IOS9  可以使用 universal Link</code></p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2250,7 +2274,7 @@ IOS9  可以使用 universal Link</code></p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2261,7 +2285,7 @@ IOS9  可以使用 universal Link</code></p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

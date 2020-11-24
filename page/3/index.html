@@ -300,6 +300,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/" itemprop="url">埋点之眼球曝光</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-31T15:01:40+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">frontend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/" class="leancloud_visitors" data-flag-title="埋点之眼球曝光">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>埋点曝光需求要求在页面在用户的视野中就发送一个曝光日志，一个页面的一个模块最多发送一次，也就是首次曝光才发送，之后在进入视野中就不用在发曝光日志了</p>
+</blockquote>
+<p>一、当看到这个需求的时候我们第一点肯定想到要监听滚动事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'监听滚动'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>二、然后优化下滚动事件，加上throttle。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,newScroll(exposure,<span class="number">500</span>));</span><br><span class="line"><span class="keyword">const</span> newScroll = <span class="function"><span class="keyword">function</span>(<span class="params">realFunc,time</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">              clearTimeout(timeout);</span><br><span class="line">                   timeout = setTimeout(realFunc,time)</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exposure</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'监听滚动增加throttle'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>三、然后优化下滚动事件，加上throttle。<br><code>注意scroll监听的匿名事件是不可以取消监听事件的，我想要的是页面中所有需要曝光的地方曝光结束后，取消监听事件</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//需要曝光的点</span></span><br><span class="line"><span class="keyword">const</span> exposureList = [</span><br><span class="line">                &#123;</span><br><span class="line">                    selector: <span class="string">'aaaa'</span>,</span><br><span class="line">                    aid: <span class="string">'6790'</span></span><br><span class="line">                &#125;,</span><br><span class="line">            ];</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>,newScroll);</span><br><span class="line"><span class="keyword">const</span> newScroll = <span class="function"><span class="keyword">function</span>(<span class="params">realFunc,time</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">              clearTimeout(timeout);</span><br><span class="line">                   timeout = setTimeout(realFunc,time)</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;(exposure,<span class="number">500</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exposure</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(exposureList.length == <span class="number">0</span>)&#123;</span><br><span class="line">         <span class="built_in">window</span>.removeEventListener(<span class="string">"scroll"</span>, newScroll);</span><br><span class="line">  &#125;</span><br><span class="line"> exposureList.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value,index</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">const</span> currentDom = <span class="built_in">document</span>.getElementById(value.selector);</span><br><span class="line">                    <span class="keyword">if</span>(currentDom)&#123;</span><br><span class="line">                        <span class="keyword">const</span> currentClientRect = currentDom.getBoundingClientRect();</span><br><span class="line">                        <span class="keyword">const</span> bottomToTopView = currentClientRect.top &gt;<span class="number">0</span> &amp;&amp; <span class="built_in">window</span>.innerHeight/<span class="number">3</span>*<span class="number">2</span>&gt;currentClientRect.top;</span><br><span class="line">                        <span class="keyword">const</span> topToBottomView  = currentClientRect.top &lt;<span class="number">0</span> &amp;&amp; currentClientRect.top &gt; - currentDom.offsetHeight/<span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">if</span>(bottomToTopView ||topToBottomView)&#123;</span><br><span class="line">                            <span class="comment">//发送曝光事件</span></span><br><span class="line">                            exposureList.splice(index,<span class="number">1</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>tips: 这里用到了<a href="http://juejin.im/entry/59c1fd23f265da06594316a9" target="_blank" rel="noopener">getBoundingClientRect文章出处</a></em></p>
+<p>getBoundingClientRect用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置。getBoundingClientRect是DOM元素到浏览器可视范围的距离（不包含文档卷起的部分）。</p>
+<p>该函数返回一个Object对象，该对象有6个属性：top,lef,right,bottom,width,height；</p>
+<p>1.兼容性<br>getBoundingClientRect()最先是IE的私有属性，现在已经是一个W3C标准。所以你不用当心浏览器兼容问题，不过还是有区别的：IE只返回top,lef,right,bottom四个值，不过可以通过以下方法来获取width,height的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(value.selector).offsetHeight();</span><br><span class="line"><span class="built_in">document</span>.getElementById(value.selector). clientHeight();</span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ro = object.getBoundingClientRect();</span><br><span class="line"><span class="keyword">var</span> Width = ro.right - ro.left;</span><br><span class="line"><span class="keyword">var</span> Height = ro.bottom - ro.top;</span><br><span class="line"></span><br><span class="line"><span class="comment">//兼容所有浏览器写法：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ro = object.getBoundingClientRect();</span><br><span class="line"><span class="keyword">var</span> Top = ro.top;</span><br><span class="line"><span class="keyword">var</span> Bottom = ro.bottom;</span><br><span class="line"><span class="keyword">var</span> Left = ro.left;</span><br><span class="line"><span class="keyword">var</span> Right = ro.right;</span><br><span class="line"><span class="keyword">var</span> Width = ro.width||Right - Left;</span><br><span class="line"><span class="keyword">var</span> Height = ro.height||Bottom - Top;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2019/12/19/Search-Engine-Optimization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -535,7 +712,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -546,7 +723,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -557,7 +734,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
