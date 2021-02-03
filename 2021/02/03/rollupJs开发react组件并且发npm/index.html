@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RollupJS," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Amy's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="最近写了一个九宫格抽奖的一个react的组件，想着写都写完了，顺便在回顾下rollup打包一个组件，并且来发布出来。主要就用到了react 和rollup。rollup 适合打包 js 库，不适合打包 css，如果想制作 基于 react 和antd 的组件首选 webpack  一、初始化项目123mkdir lottery-reactcd lottery-reactnpm init 我的pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rollup.js | 解决打包react项目报错">
+<meta property="og:url" content="https://sailormillet.github.io/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="最近写了一个九宫格抽奖的一个react的组件，想着写都写完了，顺便在回顾下rollup打包一个组件，并且来发布出来。主要就用到了react 和rollup。rollup 适合打包 js 库，不适合打包 css，如果想制作 基于 react 和antd 的组件首选 webpack  一、初始化项目123mkdir lottery-reactcd lottery-reactnpm init 我的pa">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-03T13:08:43.000Z">
+<meta property="article:modified_time" content="2021-02-03T13:58:23.623Z">
+<meta property="article:author" content="Amy Chen">
+<meta property="article:tag" content="RollupJS">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sailormillet.github.io/2021/02/03/rollupJs开发react组件并且发npm/"/>
+
+
+
+
+
+  <title>Rollup.js | 解决打包react项目报错 | Amy's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Rollup.js | 解决打包react项目报错</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T21:08:43+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/RollupJS/" itemprop="url" rel="index">
+                    <span itemprop="name">RollupJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/" class="leancloud_visitors" data-flag-title="Rollup.js | 解决打包react项目报错">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>最近写了一个九宫格抽奖的一个react的组件，想着写都写完了，顺便在回顾下rollup打包一个组件，并且来发布出来。主要就用到了react 和rollup。rollup 适合打包 js 库，不适合打包 css，如果想制作 基于 react 和antd 的组件首选 webpack</p>
+</blockquote>
+<h2 id="一、初始化项目"><a href="#一、初始化项目" class="headerlink" title="一、初始化项目"></a>一、初始化项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir lottery-react</span><br><span class="line">cd lottery-react</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>我的package.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;lottery-react&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.2&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;lottery-react&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;lib&#x2F;index.js&quot;,</span><br><span class="line">  &quot;module&quot;: &quot;es&#x2F;index.js&quot;,</span><br><span class="line">  &quot;unpkg&quot;: &quot;dist&#x2F;lottery.min.js&quot;,</span><br><span class="line">  &quot;files&quot;: [</span><br><span class="line">    &quot;dist&quot;,</span><br><span class="line">    &quot;lib&quot;,</span><br><span class="line">    &quot;es&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;sideEffects&quot;: [</span><br><span class="line">    &quot;dist&#x2F;*&quot;,</span><br><span class="line">    &quot;es&#x2F;**&#x2F;style&#x2F;*&quot;,</span><br><span class="line">    &quot;lib&#x2F;**&#x2F;style&#x2F;*&quot;,</span><br><span class="line">    &quot;*.scss&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;clean&quot;: &quot;rimraf lib es dist&quot;,</span><br><span class="line">    &quot;build:cjs&quot;: &quot;babel src --out-dir lib&quot;,</span><br><span class="line">    &quot;build:es&quot;: &quot;cross-env BABEL_ENV&#x3D;jsnext babel src --out-dir es&quot;,</span><br><span class="line">    &quot;build:umd&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o dist&#x2F;lottery.js&quot;,</span><br><span class="line">    &quot;build:umd:min&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;production rollup -c -f umd -o dist&#x2F;lottery.min.js&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;npm run clean &amp;&amp; npm run build:cjs &amp;&amp; npm run build:es &amp;&amp; npm run build:umd &amp;&amp; npm run build:umd:min&quot;,</span><br><span class="line">    &quot;build:cjs2&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o lib&#x2F;index.js&quot;,</span><br><span class="line">    &quot;build:es2&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o es&#x2F;index.js&quot;,</span><br><span class="line">    &quot;build:all&quot;: &quot;npm run clean &amp;&amp; npm run build:cjs2 &amp;&amp; npm run build:es2 &amp;&amp; npm run build:umd &amp;&amp; npm run build:umd:min&quot;,</span><br><span class="line">    &quot;examples&quot;: &quot;npm-run-all --parallel examples:watch examples:start&quot;,</span><br><span class="line">    &quot;examples:clean&quot;: &quot;rimraf example&#x2F;dist&quot;,</span><br><span class="line">    &quot;examples:start&quot;: &quot;serve example&#x2F;dist&quot;,</span><br><span class="line">    &quot;examples:watch&quot;: &quot;rollup -c example&#x2F;rollup.config.js -w&quot;,</span><br><span class="line">    &quot;examples:build&quot;: &quot;rollup -c example&#x2F;rollup.config.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;repository&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;git&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git+https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [</span><br><span class="line">    &quot;Lottery&quot;,</span><br><span class="line">    &quot;lucky draw&quot;,</span><br><span class="line">    &quot;lotto&quot;,</span><br><span class="line">    &quot;sweepstake&quot;,</span><br><span class="line">    &quot;react&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;author&quot;: &quot;Amy&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;bugs&quot;: &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react&#x2F;issues&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;homepage&quot;: &quot;https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react#readme&quot;,</span><br><span class="line">  &quot;peerDependencies&quot;: &#123;</span><br><span class="line">    &quot;react&quot;: &quot;^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;@babel&#x2F;cli&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@babel&#x2F;core&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@babel&#x2F;plugin-proposal-class-properties&quot;: &quot;^7.12.1&quot;,</span><br><span class="line">    &quot;@babel&#x2F;preset-env&quot;: &quot;^7.12.11&quot;,</span><br><span class="line">    &quot;@babel&#x2F;preset-react&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-alias&quot;: &quot;^3.1.1&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-babel&quot;: &quot;^5.2.2&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-commonjs&quot;: &quot;^17.0.0&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-node-resolve&quot;: &quot;^11.1.0&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-replace&quot;: &quot;^2.3.4&quot;,</span><br><span class="line">    &quot;cross-env&quot;: &quot;^7.0.3&quot;,</span><br><span class="line">    &quot;fs&quot;: &quot;^0.0.1-security&quot;,</span><br><span class="line">    &quot;npm-run-all&quot;: &quot;^4.1.5&quot;,</span><br><span class="line">    &quot;path&quot;: &quot;^0.12.7&quot;,</span><br><span class="line">    &quot;postcss&quot;: &quot;^8.2.4&quot;,</span><br><span class="line">    &quot;postcss-cssnext&quot;: &quot;^3.1.0&quot;,</span><br><span class="line">    &quot;postcss-nested&quot;: &quot;^5.0.3&quot;,</span><br><span class="line">    &quot;postcss-preset-env&quot;: &quot;^6.7.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^17.0.1&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^17.0.1&quot;,</span><br><span class="line">    &quot;rollup&quot;: &quot;^2.36.1&quot;,</span><br><span class="line">    &quot;rollup-plugin-generate-html-template&quot;: &quot;^1.7.0&quot;,</span><br><span class="line">    &quot;rollup-plugin-includepaths&quot;: &quot;^0.2.4&quot;,</span><br><span class="line">    &quot;rollup-plugin-postcss&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;rollup-plugin-scss&quot;: &quot;^2.6.1&quot;,</span><br><span class="line">    &quot;rollup-plugin-uglify&quot;: &quot;^6.0.4&quot;,</span><br><span class="line">    &quot;serve&quot;: &quot;^11.3.2&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="目录结构描述"><a href="#目录结构描述" class="headerlink" title="目录结构描述"></a>目录结构描述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">├── dist                      </span><br><span class="line">├── es                      </span><br><span class="line">├── lib                      </span><br><span class="line">├── example     </span><br><span class="line">│   ├── dist              </span><br><span class="line">│   ├── src              </span><br><span class="line">│   │   ├── components          </span><br><span class="line">│   │   ├── index.html             </span><br><span class="line">│   │   └── index.js     </span><br><span class="line">│   ├── rollup.config.js                                    </span><br><span class="line">├── src                         </span><br><span class="line">│   ├── styles              </span><br><span class="line">│   │   └── index.scss          </span><br><span class="line">│   └── index.js                                </span><br><span class="line">├── README.md                   &#x2F;&#x2F; 开发文档</span><br><span class="line">├── .gitignore                  </span><br><span class="line">├── .babelrc                    &#x2F;&#x2F; babel配置                 </span><br><span class="line">├── .eslintrc                   &#x2F;&#x2F; ESLint 配置文件                    </span><br><span class="line">├── .editorconfig               &#x2F;&#x2F; IDE定义配置</span><br><span class="line">├── package.json                &#x2F;&#x2F; 模块描述文件</span><br><span class="line">├── rollup.config.js            &#x2F;&#x2F; 模块描述文件</span><br><span class="line">└── yarn.lock                   &#x2F;&#x2F; 依赖文件</span><br></pre></td></tr></table></figure>
+
+<p>外层rollup.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import resolve from &#39;@rollup&#x2F;plugin-node-resolve&#39;;</span><br><span class="line">import babel from &#39;@rollup&#x2F;plugin-babel&#39;;</span><br><span class="line">import commonjs from &#39;@rollup&#x2F;plugin-commonjs&#39;;</span><br><span class="line">import &#123; uglify &#125; from &#39;rollup-plugin-uglify&#39;;</span><br><span class="line">import replace from &#39;@rollup&#x2F;plugin-replace&#39;;</span><br><span class="line">import postcss from &#39;rollup-plugin-postcss&#39;;</span><br><span class="line">const env &#x3D; process.env.NODE_ENV;</span><br><span class="line"></span><br><span class="line">const config &#x3D; &#123;</span><br><span class="line">    input: &#39;src&#x2F;index.js&#39;,</span><br><span class="line">    &#x2F;&#x2F;告诉rollup不要将此lodash打包，而作为外部依赖</span><br><span class="line">    external: [&quot;react&quot;],</span><br><span class="line">    &#x2F;&#x2F; 是否开启代码分割</span><br><span class="line">    experimentalCodeSplitting: true,</span><br><span class="line">    output: &#123;</span><br><span class="line">        &#x2F;&#x2F; dir: &quot;lib&quot;,</span><br><span class="line">        name: &#39;LuckDraw&#39;,</span><br><span class="line">        format: &#39;umd&#39;,</span><br><span class="line">        sourcemap: true,</span><br><span class="line">        globals: &#123;</span><br><span class="line">            react: &#39;React&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        exports: &#39;named&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        resolve(),</span><br><span class="line">        babel(&#123;</span><br><span class="line">            babelHelpers: &#39;bundled&#39;,</span><br><span class="line">            exclude: &#39;**&#x2F;node_modules&#x2F;**&#39;,</span><br><span class="line">        &#125;),</span><br><span class="line">        commonjs(),</span><br><span class="line">        postcss(&#123;</span><br><span class="line">            minimize: env &#x3D;&#x3D;&#x3D; &#39;production&#39;,</span><br><span class="line">            extract: true,</span><br><span class="line">            extensions: [&quot;scss&quot;, &quot;less&quot;, &quot;css&quot;],</span><br><span class="line">            &#x2F;&#x2F; plugins: [nested(), cssnext(&#123; warnForDuplicates: false &#125;), cssnano()],</span><br><span class="line">            &#x2F;&#x2F; extract: false &#x2F;&#x2F; 无论是 dev 还是其他环境这个配置项都不做 样式的抽离</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (env &#x3D;&#x3D;&#x3D; &#39;production&#39;) &#123;</span><br><span class="line">    config.plugins.push(</span><br><span class="line">        uglify(&#123;</span><br><span class="line">            compress: &#123;</span><br><span class="line">                pure_getters: true,</span><br><span class="line">                unsafe: true,</span><br><span class="line">                unsafe_comps: true,</span><br><span class="line">            &#125;,</span><br><span class="line">            warnings: false</span><br><span class="line">        &#125;)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    config.plugins.push(</span><br><span class="line">        replace(&#123;</span><br><span class="line">            &#39;process.env.NODE_ENV&#39;: JSON.stringify(&#39;production&#39;)</span><br><span class="line">        &#125;)</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default config;</span><br></pre></td></tr></table></figure>
+<p>src/index.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;</span><br><span class="line">import &#39;.&#x2F;styles&#x2F;index.scss&#39;</span><br><span class="line">class LuckDraw extends React.PureComponent &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props)</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            active_index: null,   &#x2F;&#x2F; 奖品是否被选中，选中时，值为奖品index, 例如0,1,2,3...</span><br><span class="line">            times: &#39;times&#39; in props ? props.times * 1 : 1, &#x2F;&#x2F; 抽奖次数</span><br><span class="line">            is_rolling: false,  &#x2F;&#x2F; 正在抽奖时，禁止重复点击</span><br><span class="line">            roll_map_list: [0, 1, 2, 7, 8, 3, 6, 5, 4],  &#x2F;&#x2F; 运动顺序，数据映射</span><br><span class="line">        &#125;;</span><br><span class="line">        this.lotteryTimer &#x3D; null;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        clearTimeout(this.lotteryTimer);</span><br><span class="line">        clearTimeout(this.callbacktimer)</span><br><span class="line">    &#125;</span><br><span class="line">    data_format(data) &#123;</span><br><span class="line">        if (data) &#123;</span><br><span class="line">            &#x2F;&#x2F; let gift_list &#x3D; data.slice(0, 8);</span><br><span class="line">            let gift_list &#x3D; data.slice(0);</span><br><span class="line">            gift_list.splice(gift_list.length &#x2F; 2, 0, &#123;</span><br><span class="line">                name: &quot;立即抽奖&quot;,</span><br><span class="line">                image: &quot;&quot;,</span><br><span class="line">                id: &quot;&quot;,</span><br><span class="line">                startBtn: true</span><br><span class="line">            &#125;)</span><br><span class="line">            return gift_list</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.error(&#39;未获取到奖品信息！&#39;);</span><br><span class="line">            return []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    start &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        const &#123; roll_map_list, times &#125; &#x3D; this.state;</span><br><span class="line">        const &#123; gift, giftList, speed &#x3D; 120, cycle_times &#x3D; 3 &#125; &#x3D; this.props</span><br><span class="line">        const gift_list &#x3D; this.data_format(giftList)</span><br><span class="line">        this.setState(</span><br><span class="line">            &#123;</span><br><span class="line">                active_index: this.current_index,</span><br><span class="line">            &#125;,</span><br><span class="line">            () &#x3D;&gt; &#123;</span><br><span class="line">                let act_item &#x3D; gift_list[roll_map_list.indexOf(this.current_index)] || &#123;&#125;</span><br><span class="line">                if (this.speed &gt; speed &amp;&amp; (act_item.id * 1 &#x3D;&#x3D;&#x3D; gift.id * 1)) &#123;</span><br><span class="line">                    clearTimeout(this.lotteryTimer);</span><br><span class="line">                    this.lotteryTimer &#x3D; null;</span><br><span class="line">                    this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">                    this.speed &#x3D; 50;</span><br><span class="line">                    this.callbacktimer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                        this.setState(&#123; is_rolling: false, times: times - 1 &#125;)</span><br><span class="line">                        this.props.callback &amp;&amp; this.props.callback(&#123; ...act_item, ...gift &#125;, this)</span><br><span class="line">                    &#125;, 500);</span><br><span class="line">                    return</span><br><span class="line">                &#125;</span><br><span class="line">                this.current_index &#x3D; ++this.current_index % gift_list.length;</span><br><span class="line">                this.current_index &#x3D;&#x3D;&#x3D; 0 &amp;&amp; this.CYCLE_TIMES++;</span><br><span class="line">                this.lotteryTimer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    this.start();</span><br><span class="line">                &#125;, this.speed);</span><br><span class="line">                if (this.CYCLE_TIMES &gt; cycle_times) this.speed +&#x3D; 10;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">    reset &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            active_index: null,</span><br><span class="line">        &#125;)</span><br><span class="line">        this.lotteryTimer &#x3D; null;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">    &#125;</span><br><span class="line">    handlePlay &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        if (!this.state.times) return this.props.finishCallback &amp;&amp; this.props.finishCallback(this);</span><br><span class="line">        if (this.state.is_rolling) return;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">        if (this.props.beforeStart) &#123;</span><br><span class="line">            this.props.beforeStart().then(() &#x3D;&gt; &#123;</span><br><span class="line">                this.setState(&#123;</span><br><span class="line">                    is_rolling: true,</span><br><span class="line">                &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">                    this.start();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">                is_rolling: true,</span><br><span class="line">            &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">                this.start();</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    render() &#123;</span><br><span class="line">        const &#123; active_index, roll_map_list &#125; &#x3D; this.state;</span><br><span class="line">        const gift_list &#x3D; this.data_format(this.props.giftList)</span><br><span class="line">        if (gift_list.length &lt; 8) return null;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div className&#x3D;&#123;&#96;lottery pos-r&#96;&#125;&gt;</span><br><span class="line">                &lt;div className&#x3D;&#123;&#96;lottery_content&#96;&#125;&gt;</span><br><span class="line">                    &#123;gift_list.map((item, index) &#x3D;&gt; &#123;</span><br><span class="line">                        let content &#x3D; (</span><br><span class="line">                            &lt;div key&#x3D;&#123;index&#125; className&#x3D;&#123;&#96;lottery_item $&#123;active_index &#x3D;&#x3D;&#x3D; roll_map_list[index] ? &#39;lottery_item-active&#39; : &#39;&#39;&#125;&#96;&#125; &gt;</span><br><span class="line">                                &#123;item.ele ? item.ele : &lt;div className&#x3D;&#123;&#96;lottery_item_main&#96;&#125;&gt;&#123;item.name&#125;&lt;&#x2F;div&gt;&#125;</span><br><span class="line">                            &lt;&#x2F;div&gt;</span><br><span class="line">                        );</span><br><span class="line">                        if (item.startBtn) &#123;</span><br><span class="line">                            content &#x3D; (</span><br><span class="line">                                &lt;div key&#x3D;&#123;index&#125; className&#x3D;&#123;&#96;lottery_item&#96;&#125; onClick&#x3D;&#123;this.handlePlay&#125; &gt;</span><br><span class="line">                                    &#123;typeof this.props.playBtn &#x3D;&#x3D;&#x3D; &#39;object&#39; ? this.props.playBtn : &lt;div className&#x3D;&#123;&#96;lottery_item_main&#96;&#125; &gt;&#123;this.props.playBtn || item.name&#125;&lt;&#x2F;div&gt;&#125;</span><br><span class="line">                                &lt;&#x2F;div&gt;</span><br><span class="line">                            );</span><br><span class="line">                        &#125;</span><br><span class="line">                        return content;</span><br><span class="line">                    &#125;)&#125;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default LuckDraw</span><br></pre></td></tr></table></figure>
+<p>1、rollup-plugin-commonjs这个包一定要引入好，并且注意使用<br>//告诉rollup不要将此lodash打包，而作为外部依赖，否则会报 <div >不识别或者  React 的Component 各种错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">external: [&quot;react&quot;],&#x2F;&#x2F;告诉rollup不要将此react打包，而作为外部依赖</span><br><span class="line">commonjs(),</span><br></pre></td></tr></table></figure>
+<p>2、npm 和 git 使用共同的 version和 tags<br>3、npm 发布用下面的，添加包用上面的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">npm set registry http:&#x2F;&#x2F;registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<h1 id="发布到-npm"><a href="#发布到-npm" class="headerlink" title="发布到 npm"></a>发布到 npm</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm login</span><br><span class="line">npm version new-version</span><br><span class="line">npm publish</span><br><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+<h3 id="配置-npmignore"><a href="#配置-npmignore" class="headerlink" title="配置.npmignore"></a>配置.npmignore</h3><p>如果项目中没有编写 .npmignore 文件，则需要在 package.json 中新增 files 字段，用于申明将要发布到 NPM 的文件。如果省略掉这一项，所有文件包括源代码会被一起上传到 NPM。<br>本文采用写 .npmignore 文件的方式，实现仅发布打包后的组件代码。 .npmignore 文件的具体内容如下：</p>
+<h1 id="指定发布-npm-的时候需要忽略的文件和文件夹"><a href="#指定发布-npm-的时候需要忽略的文件和文件夹" class="headerlink" title="指定发布 npm 的时候需要忽略的文件和文件夹"></a>指定发布 npm 的时候需要忽略的文件和文件夹</h1><h1 id="npm-默认不会把-node-modules-发上去"><a href="#npm-默认不会把-node-modules-发上去" class="headerlink" title="npm 默认不会把 node_modules 发上去"></a>npm 默认不会把 node_modules 发上去</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config # webpack配置</span><br><span class="line">example # 开发时预览代码</span><br><span class="line">src # 组件源代码目录</span><br><span class="line">.babelrc # babel 配置</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RollupJS/" rel="tag"># RollupJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/03/vscode%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9/" rel="next" title="vscode命令行打开文件夹">
+                <i class="fa fa-chevron-left"></i> vscode命令行打开文件夹
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/03/RollupJs%20%E8%A7%A3%E5%86%B3%E6%89%93%E5%8C%85react%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99/" rel="prev" title="Rollup.js | 解决打包react项目报错">
+                Rollup.js | 解决打包react项目报错 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"
+                alt="Amy Chen" />
+            
+              <p class="site-author-name" itemprop="name">Amy Chen</p>
+              <p class="site-description motion-element" itemprop="description">All problems in computer science can be solved by another level of indirection. -by David John Wheeler</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sailormillet" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="sailormillet@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:sailor_mi_1|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b6624224c411" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、初始化项目"><span class="nav-number">1.</span> <span class="nav-text">一、初始化项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构描述"><span class="nav-number">1.1.</span> <span class="nav-text">目录结构描述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布到-npm"><span class="nav-number"></span> <span class="nav-text">发布到 npm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-npmignore"><span class="nav-number">0.1.</span> <span class="nav-text">配置.npmignore</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指定发布-npm-的时候需要忽略的文件和文件夹"><span class="nav-number"></span> <span class="nav-text">指定发布 npm 的时候需要忽略的文件和文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-默认不会把-node-modules-发上去"><span class="nav-number"></span> <span class="nav-text">npm 默认不会把 node_modules 发上去</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz',
+        appKey: 'QPnljEINGsMuEYIg2DKqi8ne',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz", "QPnljEINGsMuEYIg2DKqi8ne");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

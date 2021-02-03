@@ -200,7 +200,7 @@ IOS9  可以使用 universal Link</code></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  context: path.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  <span class="comment">//entry: &#123;app: './src/main.js'&#125;</span></span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: [<span class="string">'babel-polyfill'</span>,<span class="string">'./src/main.js'</span>]<span class="comment">//babel-polyfill会仿效一个完整的 ES2015+ 环境，并意图运行于一个应用中而不是一个库/工具。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Frontend前端</category>
-        <category>预渲染</category>
+        <category>PreRender预渲染</category>
       </categories>
       <tags>
         <tag>Search Engine</tag>
@@ -888,7 +888,7 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>prettier</title>
+    <title>代码格式化工具prettier</title>
     <url>/2021/02/03/prettier/</url>
     <content><![CDATA[<blockquote>
 <p>prettier是一款强势武断的代码格式化工具，它几乎移除了编辑器本身所有的对代码的操作格式，然后重新显示。就是为了让所有用这套规则的人有完全相同的代码。在团队协作开发的时候更是体现出它的优势。与eslint，tslint等各种格式化工具不同的是，prettier只关心代码格式化，而不关心语法问题。</p>
@@ -910,6 +910,9 @@ IOS9  可以使用 universal Link</code></p>
         <category>Frontend前端</category>
         <category>Prettier</category>
       </categories>
+      <tags>
+        <tag>Prettier</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</title>
@@ -948,6 +951,505 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>JavaScript、vue、android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rollup.js | 解决打包react项目报错</title>
+    <url>/2021/02/03/RollupJs%20%E8%A7%A3%E5%86%B3%E6%89%93%E5%8C%85react%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<p>报错信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">react.development.js:12 Uncaught ReferenceError: process is not defined</span><br><span class="line">    at react.development.js:12</span><br><span class="line">    at createCommonjsModule (bundle.js:6)</span><br><span class="line">    at react.production.min.js:23</span><br><span class="line">    at index.js:10</span><br></pre></td></tr></table></figure>
+<p>process对象是nodejs的环境变量，浏览器端是没有的。<br>解决办法，在打包后的bundle.js里var一个process对象，例如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是每次重新构建bundle.js后，又要重新添加，所以可以在rollup.config.js里配置，</p>
+<p>例如： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import resolve from &#39;rollup-plugin-node-resolve&#39;</span><br><span class="line">import commonjs from &#39;rollup-plugin-commonjs&#39;</span><br><span class="line"> </span><br><span class="line">const Global &#x3D; &#96;var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#96;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">  output: &#123;</span><br><span class="line">     name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    banner: Global&#x2F;&#x2F;output.banner属性的作用是在打包后的文件顶部添加值。</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [resolve(), commonjs()]</span><br></pre></td></tr></table></figure>
+<p>或者rollup.config.js配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import replace from &quot;@rollup&#x2F;plugin-replace&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">    output: &#123;</span><br><span class="line">        name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        resolve(), &#x2F;&#x2F; tells Rollup how to find date-fns in node_modules</span><br><span class="line"></span><br><span class="line">        babel(&#123;</span><br><span class="line">            babelHelpers: &quot;bundled&quot;,</span><br><span class="line">            exclude: &quot;**&#x2F;node_modules&#x2F;**&quot;,</span><br><span class="line">        &#125;),</span><br><span class="line">        commonjs(), &#x2F;&#x2F; converts date-fns to ES modules</span><br><span class="line">         replace(&#123;</span><br><span class="line">             &quot;process.env.NODE_ENV&quot;: JSON.stringify(&quot;development&quot;),</span><br><span class="line">         &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>RollupJS</category>
+      </categories>
+      <tags>
+        <tag>RollupJS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rollup.js | 解决打包react项目报错</title>
+    <url>/2021/02/03/rollupJs%E5%BC%80%E5%8F%91react%E7%BB%84%E4%BB%B6%E5%B9%B6%E4%B8%94%E5%8F%91npm/</url>
+    <content><![CDATA[<blockquote>
+<p>最近写了一个九宫格抽奖的一个react的组件，想着写都写完了，顺便在回顾下rollup打包一个组件，并且来发布出来。主要就用到了react 和rollup。rollup 适合打包 js 库，不适合打包 css，如果想制作 基于 react 和antd 的组件首选 webpack</p>
+</blockquote>
+<h2 id="一、初始化项目"><a href="#一、初始化项目" class="headerlink" title="一、初始化项目"></a>一、初始化项目</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir lottery-react</span><br><span class="line">cd lottery-react</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>我的package.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;lottery-react&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.2&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;lottery-react&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;lib&#x2F;index.js&quot;,</span><br><span class="line">  &quot;module&quot;: &quot;es&#x2F;index.js&quot;,</span><br><span class="line">  &quot;unpkg&quot;: &quot;dist&#x2F;lottery.min.js&quot;,</span><br><span class="line">  &quot;files&quot;: [</span><br><span class="line">    &quot;dist&quot;,</span><br><span class="line">    &quot;lib&quot;,</span><br><span class="line">    &quot;es&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;sideEffects&quot;: [</span><br><span class="line">    &quot;dist&#x2F;*&quot;,</span><br><span class="line">    &quot;es&#x2F;**&#x2F;style&#x2F;*&quot;,</span><br><span class="line">    &quot;lib&#x2F;**&#x2F;style&#x2F;*&quot;,</span><br><span class="line">    &quot;*.scss&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;clean&quot;: &quot;rimraf lib es dist&quot;,</span><br><span class="line">    &quot;build:cjs&quot;: &quot;babel src --out-dir lib&quot;,</span><br><span class="line">    &quot;build:es&quot;: &quot;cross-env BABEL_ENV&#x3D;jsnext babel src --out-dir es&quot;,</span><br><span class="line">    &quot;build:umd&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o dist&#x2F;lottery.js&quot;,</span><br><span class="line">    &quot;build:umd:min&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;production rollup -c -f umd -o dist&#x2F;lottery.min.js&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;npm run clean &amp;&amp; npm run build:cjs &amp;&amp; npm run build:es &amp;&amp; npm run build:umd &amp;&amp; npm run build:umd:min&quot;,</span><br><span class="line">    &quot;build:cjs2&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o lib&#x2F;index.js&quot;,</span><br><span class="line">    &quot;build:es2&quot;: &quot;cross-env BABEL_ENV&#x3D;rollup NODE_ENV&#x3D;development rollup -c -f umd -o es&#x2F;index.js&quot;,</span><br><span class="line">    &quot;build:all&quot;: &quot;npm run clean &amp;&amp; npm run build:cjs2 &amp;&amp; npm run build:es2 &amp;&amp; npm run build:umd &amp;&amp; npm run build:umd:min&quot;,</span><br><span class="line">    &quot;examples&quot;: &quot;npm-run-all --parallel examples:watch examples:start&quot;,</span><br><span class="line">    &quot;examples:clean&quot;: &quot;rimraf example&#x2F;dist&quot;,</span><br><span class="line">    &quot;examples:start&quot;: &quot;serve example&#x2F;dist&quot;,</span><br><span class="line">    &quot;examples:watch&quot;: &quot;rollup -c example&#x2F;rollup.config.js -w&quot;,</span><br><span class="line">    &quot;examples:build&quot;: &quot;rollup -c example&#x2F;rollup.config.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;repository&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;git&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git+https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [</span><br><span class="line">    &quot;Lottery&quot;,</span><br><span class="line">    &quot;lucky draw&quot;,</span><br><span class="line">    &quot;lotto&quot;,</span><br><span class="line">    &quot;sweepstake&quot;,</span><br><span class="line">    &quot;react&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;author&quot;: &quot;Amy&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;bugs&quot;: &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react&#x2F;issues&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;homepage&quot;: &quot;https:&#x2F;&#x2F;github.com&#x2F;sailormillet&#x2F;lottery-react#readme&quot;,</span><br><span class="line">  &quot;peerDependencies&quot;: &#123;</span><br><span class="line">    &quot;react&quot;: &quot;^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;@babel&#x2F;cli&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@babel&#x2F;core&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@babel&#x2F;plugin-proposal-class-properties&quot;: &quot;^7.12.1&quot;,</span><br><span class="line">    &quot;@babel&#x2F;preset-env&quot;: &quot;^7.12.11&quot;,</span><br><span class="line">    &quot;@babel&#x2F;preset-react&quot;: &quot;^7.12.10&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-alias&quot;: &quot;^3.1.1&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-babel&quot;: &quot;^5.2.2&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-commonjs&quot;: &quot;^17.0.0&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-node-resolve&quot;: &quot;^11.1.0&quot;,</span><br><span class="line">    &quot;@rollup&#x2F;plugin-replace&quot;: &quot;^2.3.4&quot;,</span><br><span class="line">    &quot;cross-env&quot;: &quot;^7.0.3&quot;,</span><br><span class="line">    &quot;fs&quot;: &quot;^0.0.1-security&quot;,</span><br><span class="line">    &quot;npm-run-all&quot;: &quot;^4.1.5&quot;,</span><br><span class="line">    &quot;path&quot;: &quot;^0.12.7&quot;,</span><br><span class="line">    &quot;postcss&quot;: &quot;^8.2.4&quot;,</span><br><span class="line">    &quot;postcss-cssnext&quot;: &quot;^3.1.0&quot;,</span><br><span class="line">    &quot;postcss-nested&quot;: &quot;^5.0.3&quot;,</span><br><span class="line">    &quot;postcss-preset-env&quot;: &quot;^6.7.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^17.0.1&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^17.0.1&quot;,</span><br><span class="line">    &quot;rollup&quot;: &quot;^2.36.1&quot;,</span><br><span class="line">    &quot;rollup-plugin-generate-html-template&quot;: &quot;^1.7.0&quot;,</span><br><span class="line">    &quot;rollup-plugin-includepaths&quot;: &quot;^0.2.4&quot;,</span><br><span class="line">    &quot;rollup-plugin-postcss&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;rollup-plugin-scss&quot;: &quot;^2.6.1&quot;,</span><br><span class="line">    &quot;rollup-plugin-uglify&quot;: &quot;^6.0.4&quot;,</span><br><span class="line">    &quot;serve&quot;: &quot;^11.3.2&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="目录结构描述"><a href="#目录结构描述" class="headerlink" title="目录结构描述"></a>目录结构描述</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">├── dist                      </span><br><span class="line">├── es                      </span><br><span class="line">├── lib                      </span><br><span class="line">├── example     </span><br><span class="line">│   ├── dist              </span><br><span class="line">│   ├── src              </span><br><span class="line">│   │   ├── components          </span><br><span class="line">│   │   ├── index.html             </span><br><span class="line">│   │   └── index.js     </span><br><span class="line">│   ├── rollup.config.js                                    </span><br><span class="line">├── src                         </span><br><span class="line">│   ├── styles              </span><br><span class="line">│   │   └── index.scss          </span><br><span class="line">│   └── index.js                                </span><br><span class="line">├── README.md                   &#x2F;&#x2F; 开发文档</span><br><span class="line">├── .gitignore                  </span><br><span class="line">├── .babelrc                    &#x2F;&#x2F; babel配置                 </span><br><span class="line">├── .eslintrc                   &#x2F;&#x2F; ESLint 配置文件                    </span><br><span class="line">├── .editorconfig               &#x2F;&#x2F; IDE定义配置</span><br><span class="line">├── package.json                &#x2F;&#x2F; 模块描述文件</span><br><span class="line">├── rollup.config.js            &#x2F;&#x2F; 模块描述文件</span><br><span class="line">└── yarn.lock                   &#x2F;&#x2F; 依赖文件</span><br></pre></td></tr></table></figure>
+
+<p>外层rollup.config.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import resolve from &#39;@rollup&#x2F;plugin-node-resolve&#39;;</span><br><span class="line">import babel from &#39;@rollup&#x2F;plugin-babel&#39;;</span><br><span class="line">import commonjs from &#39;@rollup&#x2F;plugin-commonjs&#39;;</span><br><span class="line">import &#123; uglify &#125; from &#39;rollup-plugin-uglify&#39;;</span><br><span class="line">import replace from &#39;@rollup&#x2F;plugin-replace&#39;;</span><br><span class="line">import postcss from &#39;rollup-plugin-postcss&#39;;</span><br><span class="line">const env &#x3D; process.env.NODE_ENV;</span><br><span class="line"></span><br><span class="line">const config &#x3D; &#123;</span><br><span class="line">    input: &#39;src&#x2F;index.js&#39;,</span><br><span class="line">    &#x2F;&#x2F;告诉rollup不要将此lodash打包，而作为外部依赖</span><br><span class="line">    external: [&quot;react&quot;],</span><br><span class="line">    &#x2F;&#x2F; 是否开启代码分割</span><br><span class="line">    experimentalCodeSplitting: true,</span><br><span class="line">    output: &#123;</span><br><span class="line">        &#x2F;&#x2F; dir: &quot;lib&quot;,</span><br><span class="line">        name: &#39;LuckDraw&#39;,</span><br><span class="line">        format: &#39;umd&#39;,</span><br><span class="line">        sourcemap: true,</span><br><span class="line">        globals: &#123;</span><br><span class="line">            react: &#39;React&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        exports: &#39;named&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        resolve(),</span><br><span class="line">        babel(&#123;</span><br><span class="line">            babelHelpers: &#39;bundled&#39;,</span><br><span class="line">            exclude: &#39;**&#x2F;node_modules&#x2F;**&#39;,</span><br><span class="line">        &#125;),</span><br><span class="line">        commonjs(),</span><br><span class="line">        postcss(&#123;</span><br><span class="line">            minimize: env &#x3D;&#x3D;&#x3D; &#39;production&#39;,</span><br><span class="line">            extract: true,</span><br><span class="line">            extensions: [&quot;scss&quot;, &quot;less&quot;, &quot;css&quot;],</span><br><span class="line">            &#x2F;&#x2F; plugins: [nested(), cssnext(&#123; warnForDuplicates: false &#125;), cssnano()],</span><br><span class="line">            &#x2F;&#x2F; extract: false &#x2F;&#x2F; 无论是 dev 还是其他环境这个配置项都不做 样式的抽离</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if (env &#x3D;&#x3D;&#x3D; &#39;production&#39;) &#123;</span><br><span class="line">    config.plugins.push(</span><br><span class="line">        uglify(&#123;</span><br><span class="line">            compress: &#123;</span><br><span class="line">                pure_getters: true,</span><br><span class="line">                unsafe: true,</span><br><span class="line">                unsafe_comps: true,</span><br><span class="line">            &#125;,</span><br><span class="line">            warnings: false</span><br><span class="line">        &#125;)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    config.plugins.push(</span><br><span class="line">        replace(&#123;</span><br><span class="line">            &#39;process.env.NODE_ENV&#39;: JSON.stringify(&#39;production&#39;)</span><br><span class="line">        &#125;)</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default config;</span><br></pre></td></tr></table></figure>
+<p>src/index.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React from &#39;react&#39;</span><br><span class="line">import &#39;.&#x2F;styles&#x2F;index.scss&#39;</span><br><span class="line">class LuckDraw extends React.PureComponent &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props)</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            active_index: null,   &#x2F;&#x2F; 奖品是否被选中，选中时，值为奖品index, 例如0,1,2,3...</span><br><span class="line">            times: &#39;times&#39; in props ? props.times * 1 : 1, &#x2F;&#x2F; 抽奖次数</span><br><span class="line">            is_rolling: false,  &#x2F;&#x2F; 正在抽奖时，禁止重复点击</span><br><span class="line">            roll_map_list: [0, 1, 2, 7, 8, 3, 6, 5, 4],  &#x2F;&#x2F; 运动顺序，数据映射</span><br><span class="line">        &#125;;</span><br><span class="line">        this.lotteryTimer &#x3D; null;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        clearTimeout(this.lotteryTimer);</span><br><span class="line">        clearTimeout(this.callbacktimer)</span><br><span class="line">    &#125;</span><br><span class="line">    data_format(data) &#123;</span><br><span class="line">        if (data) &#123;</span><br><span class="line">            &#x2F;&#x2F; let gift_list &#x3D; data.slice(0, 8);</span><br><span class="line">            let gift_list &#x3D; data.slice(0);</span><br><span class="line">            gift_list.splice(gift_list.length &#x2F; 2, 0, &#123;</span><br><span class="line">                name: &quot;立即抽奖&quot;,</span><br><span class="line">                image: &quot;&quot;,</span><br><span class="line">                id: &quot;&quot;,</span><br><span class="line">                startBtn: true</span><br><span class="line">            &#125;)</span><br><span class="line">            return gift_list</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.error(&#39;未获取到奖品信息！&#39;);</span><br><span class="line">            return []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    start &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        const &#123; roll_map_list, times &#125; &#x3D; this.state;</span><br><span class="line">        const &#123; gift, giftList, speed &#x3D; 120, cycle_times &#x3D; 3 &#125; &#x3D; this.props</span><br><span class="line">        const gift_list &#x3D; this.data_format(giftList)</span><br><span class="line">        this.setState(</span><br><span class="line">            &#123;</span><br><span class="line">                active_index: this.current_index,</span><br><span class="line">            &#125;,</span><br><span class="line">            () &#x3D;&gt; &#123;</span><br><span class="line">                let act_item &#x3D; gift_list[roll_map_list.indexOf(this.current_index)] || &#123;&#125;</span><br><span class="line">                if (this.speed &gt; speed &amp;&amp; (act_item.id * 1 &#x3D;&#x3D;&#x3D; gift.id * 1)) &#123;</span><br><span class="line">                    clearTimeout(this.lotteryTimer);</span><br><span class="line">                    this.lotteryTimer &#x3D; null;</span><br><span class="line">                    this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">                    this.speed &#x3D; 50;</span><br><span class="line">                    this.callbacktimer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                        this.setState(&#123; is_rolling: false, times: times - 1 &#125;)</span><br><span class="line">                        this.props.callback &amp;&amp; this.props.callback(&#123; ...act_item, ...gift &#125;, this)</span><br><span class="line">                    &#125;, 500);</span><br><span class="line">                    return</span><br><span class="line">                &#125;</span><br><span class="line">                this.current_index &#x3D; ++this.current_index % gift_list.length;</span><br><span class="line">                this.current_index &#x3D;&#x3D;&#x3D; 0 &amp;&amp; this.CYCLE_TIMES++;</span><br><span class="line">                this.lotteryTimer &#x3D; setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    this.start();</span><br><span class="line">                &#125;, this.speed);</span><br><span class="line">                if (this.CYCLE_TIMES &gt; cycle_times) this.speed +&#x3D; 10;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">    reset &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            active_index: null,</span><br><span class="line">        &#125;)</span><br><span class="line">        this.lotteryTimer &#x3D; null;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">    &#125;</span><br><span class="line">    handlePlay &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        if (!this.state.times) return this.props.finishCallback &amp;&amp; this.props.finishCallback(this);</span><br><span class="line">        if (this.state.is_rolling) return;</span><br><span class="line">        this.current_index &#x3D; 0;</span><br><span class="line">        this.CYCLE_TIMES &#x3D; 0;</span><br><span class="line">        this.speed &#x3D; 50;</span><br><span class="line">        if (this.props.beforeStart) &#123;</span><br><span class="line">            this.props.beforeStart().then(() &#x3D;&gt; &#123;</span><br><span class="line">                this.setState(&#123;</span><br><span class="line">                    is_rolling: true,</span><br><span class="line">                &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">                    this.start();</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">                is_rolling: true,</span><br><span class="line">            &#125;, () &#x3D;&gt; &#123;</span><br><span class="line">                this.start();</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    render() &#123;</span><br><span class="line">        const &#123; active_index, roll_map_list &#125; &#x3D; this.state;</span><br><span class="line">        const gift_list &#x3D; this.data_format(this.props.giftList)</span><br><span class="line">        if (gift_list.length &lt; 8) return null;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div className&#x3D;&#123;&#96;lottery pos-r&#96;&#125;&gt;</span><br><span class="line">                &lt;div className&#x3D;&#123;&#96;lottery_content&#96;&#125;&gt;</span><br><span class="line">                    &#123;gift_list.map((item, index) &#x3D;&gt; &#123;</span><br><span class="line">                        let content &#x3D; (</span><br><span class="line">                            &lt;div key&#x3D;&#123;index&#125; className&#x3D;&#123;&#96;lottery_item $&#123;active_index &#x3D;&#x3D;&#x3D; roll_map_list[index] ? &#39;lottery_item-active&#39; : &#39;&#39;&#125;&#96;&#125; &gt;</span><br><span class="line">                                &#123;item.ele ? item.ele : &lt;div className&#x3D;&#123;&#96;lottery_item_main&#96;&#125;&gt;&#123;item.name&#125;&lt;&#x2F;div&gt;&#125;</span><br><span class="line">                            &lt;&#x2F;div&gt;</span><br><span class="line">                        );</span><br><span class="line">                        if (item.startBtn) &#123;</span><br><span class="line">                            content &#x3D; (</span><br><span class="line">                                &lt;div key&#x3D;&#123;index&#125; className&#x3D;&#123;&#96;lottery_item&#96;&#125; onClick&#x3D;&#123;this.handlePlay&#125; &gt;</span><br><span class="line">                                    &#123;typeof this.props.playBtn &#x3D;&#x3D;&#x3D; &#39;object&#39; ? this.props.playBtn : &lt;div className&#x3D;&#123;&#96;lottery_item_main&#96;&#125; &gt;&#123;this.props.playBtn || item.name&#125;&lt;&#x2F;div&gt;&#125;</span><br><span class="line">                                &lt;&#x2F;div&gt;</span><br><span class="line">                            );</span><br><span class="line">                        &#125;</span><br><span class="line">                        return content;</span><br><span class="line">                    &#125;)&#125;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default LuckDraw</span><br></pre></td></tr></table></figure>
+<p>1、rollup-plugin-commonjs这个包一定要引入好，并且注意使用<br>//告诉rollup不要将此lodash打包，而作为外部依赖，否则会报 <div >不识别或者  React 的Component 各种错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">external: [&quot;react&quot;],&#x2F;&#x2F;告诉rollup不要将此react打包，而作为外部依赖</span><br><span class="line">commonjs(),</span><br></pre></td></tr></table></figure>
+<p>2、npm 和 git 使用共同的 version和 tags<br>3、npm 发布用下面的，添加包用上面的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">npm set registry http:&#x2F;&#x2F;registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<h1 id="发布到-npm"><a href="#发布到-npm" class="headerlink" title="发布到 npm"></a>发布到 npm</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm login</span><br><span class="line">npm version new-version</span><br><span class="line">npm publish</span><br><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+<h3 id="配置-npmignore"><a href="#配置-npmignore" class="headerlink" title="配置.npmignore"></a>配置.npmignore</h3><p>如果项目中没有编写 .npmignore 文件，则需要在 package.json 中新增 files 字段，用于申明将要发布到 NPM 的文件。如果省略掉这一项，所有文件包括源代码会被一起上传到 NPM。<br>本文采用写 .npmignore 文件的方式，实现仅发布打包后的组件代码。 .npmignore 文件的具体内容如下：</p>
+<h1 id="指定发布-npm-的时候需要忽略的文件和文件夹"><a href="#指定发布-npm-的时候需要忽略的文件和文件夹" class="headerlink" title="指定发布 npm 的时候需要忽略的文件和文件夹"></a>指定发布 npm 的时候需要忽略的文件和文件夹</h1><h1 id="npm-默认不会把-node-modules-发上去"><a href="#npm-默认不会把-node-modules-发上去" class="headerlink" title="npm 默认不会把 node_modules 发上去"></a>npm 默认不会把 node_modules 发上去</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">config # webpack配置</span><br><span class="line">example # 开发时预览代码</span><br><span class="line">src # 组件源代码目录</span><br><span class="line">.babelrc # babel 配置</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>RollupJS</category>
+      </categories>
+      <tags>
+        <tag>RollupJS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vscode命令行打开文件夹</title>
+    <url>/2021/02/03/vscode%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<p>两种方式：</p>
+<p>1、在VSCode 中 打开 Command+Shift + P 输入Shell安装shell command: install code command in PATH</p>
+<p>2、在VSCode 中 按F1 输入code 找到shell command: install code command in PATH</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;目录&gt; </span><br><span class="line">code .</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>IDE</category>
+        <category>vscode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>seo优化</title>
+    <url>/2021/02/03/seo%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><a href="[https://zh.wikipedia.org/wiki/Robots.txt](https://zh.wikipedia.org/wiki/Robots.txt)">robots.txt</a></p>
+<p><a href="https://baike.baidu.com/item/Nofollow/2410595?fr=aladdin" target="_blank" rel="noopener">a标签一个有利于SEO的属性rel=”nofollow”</a></p>
+<p><strong>nofollow是什么?</strong><br>nofollow 是HTML页面中a标签的属性值。这个标签的意义是告诉搜索引擎”不要追踪此网页上的链接或不要追踪此特定链接”。<br><strong>nofollow的作用?</strong><br>**　　　   ①：防止不可信的内容，最常见的是博客上的垃圾留言与评论中为了获取外链的垃圾链接，为了防止页面指向一些拉圾页面和站点。<br>　　　　②：为了防止付费链接影响Google的搜索结果排名。<br>　　　　③：引导爬虫抓取有效的页面，避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。**</p>
+<p><strong>nofollow2个基本用法</strong><br>**　　　  ①：用于<meta>标签，告诉搜索引擎（爬虫）该页面上所有链接都无需追踪<strong>（这种方法一般用的较少）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;pre style=<span class="string">"margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;"</span>&gt;　　<span class="xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"nofollow"</span> /&gt;</span></span>&lt;<span class="regexp">/pre&gt;</span></span><br></pre></td></tr></table></figure>
+<p>②：用于<a>标签，告诉搜索引擎（爬虫）加上此属性的链接无需追踪<strong>（一般推荐用这种方法）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;pre style=<span class="string">"margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;"</span>&gt;　　<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"login.aspx"</span> <span class="attr">rel</span>=<span class="string">"nofollow"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>,&lt;<span class="regexp">/pre&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>seo</category>
+      </categories>
+      <tags>
+        <tag>Search Engine</tag>
+        <tag>frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>stylelint-css代码格式化</title>
+    <url>/2021/02/03/stylelint-css%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://stylelint.docschina.org/user-guide/rules/" target="_blank" rel="noopener">stylelint</a>：** stylelint 是一个强大和现代的 CSS 审查工具，有助于开发者推行统一的代码规范，避免样式错误<code>stylelint拥有超过150条的规则，包括捕捉错误、最佳实践、控制可以使用的语言特性和强制代码风格规范。</code>。stylelint 由 PostCSS 提供技术支持，所以它也可以理解 PostCSS 解析的语法，比如 SCSS。</p>
+</blockquote>
+<p>命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;</span><br></pre></td></tr></table></figure>
+
+<p>插件：</p>
+<ul>
+<li><a href="https://github.com/prettier/stylelint-config-prettier" target="_blank" rel="noopener"><code>stylelint-config-prettier</code></a>：禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
+<li><a href="https://github.com/AndyOGo/stylelint-declaration-strict-value" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>：官网提供的 css 标准</li>
+<li><a href="https://github.com/sh-waqar/stylelint-declaration-use-variable" target="_blank" rel="noopener"><code>stylelint-prettier</code></a>：基于 prettier 代码风格的 stylelint 规则</li>
+<li><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</li>
+</ul>
+<h3 id="stylelint配置（官方）"><a href="#stylelint配置（官方）" class="headerlink" title="stylelint配置（官方）"></a>stylelint配置（官方）</h3><ul>
+<li><p>extends：可指定继承指定的配置规则；您可以继承现有配置的数组，数组中的每个项都优先于前一项<br>例如：继承 <a href="https://github.com/stylelint/stylelint-config-standard" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>，<code>myExtendableConfig</code> 覆盖<code>stylelint-config-standard</code>，然后自定义覆盖缩进规则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;.&#x2F;myExtendableConfig&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;indentation&quot;: &quot;tab&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>plugins 数组，一旦声明了插件，在您的 “rules” 对象中，您需要为插件的规则添加选项，就像任何标准规则一样。“插件”可以提供单个规则或规则集。如果您使用的插件提供规则集，只需在 “plugins” 配置中调用该模块，并在”rules”中使用它提供的规则。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    &quot;..&#x2F;some-rule-set.js&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;some-rule-set&#x2F;first-rule&quot;: &quot;everything&quot;,</span><br><span class="line">    &quot;some-rule-set&#x2F;second-rule&quot;: &quot;nothing&quot;,</span><br><span class="line">    &quot;some-rule-set&#x2F;third-rule&quot;: &quot;everything&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>ignoreFiles</p>
+</li>
+<li><p>defaultSeverity：未在辅助选项中指定严重性的所有规则的默认严重性级别。severity 的可用值是”warning””error”</p>
+</li>
+<li><p>.stylelintignore</p>
+</li>
+<li><p>rules</p>
+</li>
+<li><p><a href="https://github.com/stylelint/stylelint-config-standard" target="_blank" rel="noopener">stylelint-config-standard：</a> 官网提供的 css 标准</p>
+</li>
+<li><p><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</p>
+</li>
+<li><p><a href="https://www.npmjs.com/package/stylelint-prettier" target="_blank" rel="noopener">stylelint-prettier：</a> 基于 <code>prettier</code> 代码风格的 <code>stylelint</code> 规则</p>
+</li>
+<li><p><a href="https://www.npmjs.com/package/stylelint-config-prettier" target="_blank" rel="noopener">stylelint-config-prettier：</a> 禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 <code>extends</code> 队列最后，这样它将覆盖其他配置。</p>
+</li>
+</ul>
+<h3 id="项目增加stylelint"><a href="#项目增加stylelint" class="headerlink" title="项目增加stylelint"></a>项目增加stylelint</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add stylelint stylelint-config-standard stylelint-config-rational-order stylelint-prettier stylelint-config-prettier -D</span><br></pre></td></tr></table></figure>
+<p>.stylelintrc </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-recommended&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;stylelint-prettier&#x2F;recommended&quot;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;:  &#123;</span><br><span class="line">    &quot;selector-pseudo-class-no-unknown&quot;: [true, &#123;</span><br><span class="line">      ignorePseudoClasses: [&quot;global&quot;] &#x2F;&#x2F;.module.scss</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;length-zero-no-unit&quot;: null,&#x2F;&#x2F;单位可以有0</span><br><span class="line">    &quot;indentation&quot;: 2,</span><br><span class="line">    &quot;max-empty-lines&quot;: 1,</span><br><span class="line">    &quot;block-no-empty&quot;: true,</span><br><span class="line">    &quot;block-opening-brace-newline-after&quot;: &quot;always-multi-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-after&quot;: &quot;always-single-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-before&quot;: &quot;always&quot;,</span><br><span class="line">    &quot;block-closing-brace-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-block-no-duplicate-properties&quot;: true,</span><br><span class="line">    &quot;declaration-block-no-redundant-longhand-properties&quot;: true,</span><br><span class="line">    &quot;shorthand-property-no-redundant-values&quot;: true,</span><br><span class="line">    &quot;no-empty-source&quot;: true,</span><br><span class="line">    &quot;no-eol-whitespace&quot;: true,</span><br><span class="line">    &quot;no-extra-semicolons&quot;: true,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: true,</span><br><span class="line">    &quot;no-missing-end-of-source-newline&quot;: true,</span><br><span class="line">    &quot;at-rule-no-unknown&quot;: null,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="stylelint-prettier-Recommended-Configuration"><a href="#stylelint-prettier-Recommended-Configuration" class="headerlink" title="stylelint-prettier Recommended Configuration"></a><a href="https://github.com/prettier/stylelint-prettier" target="_blank" rel="noopener">stylelint-prettier</a> Recommended Configuration</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev stylelint-config-prettier stylelint-prettier prettier</span><br></pre></td></tr></table></figure>
+<p>.stylelintrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;extends&quot;: [&quot;stylelint-prettier&#x2F;recommended&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>his does three things:<br>1、Enables the stylelint-plugin-prettier plugin.<br>2、Enables the prettier/prettier rule.<br>3、Extends the stylelint-config-prettier configuration.</p>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>stylelint</category>
+      </categories>
+      <tags>
+        <tag>stylelint</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vscode插件推荐</title>
+    <url>/2021/02/03/vscode%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="Quokka-js"><a href="#Quokka-js" class="headerlink" title="Quokka.js"></a>Quokka.js</h2><p><a href="https://link.zhihu.com/?target=https%3A//quokkajs.com/">Quokka.js</a> 会在您键入代码编辑器中显示各种执行结果时立即运行您的代码。支持 JavaScript 和 TypeScript。</p>
+<p><img src="https://pic4.zhimg.com/v2-c2ac27d4da86597bb54f56c2dbc7f457_b.webp" alt="image"></p>
+<p><strong>类似的 Extension:</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dformulahendry.code-runner">Code Runner</a>  — 支持多种语言例如： C，C++，Java，JavaSript，PHP，Python，Perl，Perl6 等</li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dmattn.Runner">Runner</a></li>
+</ul>
+<h2 id="Bracket-Pair-Colorizer-和-Indent-Rainbow"><a href="#Bracket-Pair-Colorizer-和-Indent-Rainbow" class="headerlink" title="Bracket Pair Colorizer 和 Indent Rainbow"></a>Bracket Pair Colorizer 和 Indent Rainbow</h2><p>大部分的语言都需要使用括号，但是括号之间的嵌套会让代码看得很难受。 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3DCoenraadS.bracket-pair-colorizer">Bracket Pair Colorizer</a> 和 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Doderwat.indent-rainbow">Indent Rainbow</a>，这两个插件可以让不同缩减的括号显示不同的颜色。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-8520b7c72cfa4b9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<figcaption style="margin-top: 0.66667em; padding: 0px 1em; font-size: 0.9em; line-height: 1.5; text-align: center; color: rgb(153, 153, 153);">使用插件前</figcaption>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-00d2e790413abde8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<figcaption style="margin-top: 0.66667em; padding: 0px 1em; font-size: 0.9em; line-height: 1.5; text-align: center; color: rgb(153, 153, 153);">使用插件后</figcaption>
+
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><p>Snippets 是一些常用的代码片段，比如说 <code>import React from &#39;react&#39;;</code> 这些常用的代码，我们只需要打 <code>imr</code> 然后按下 tab 键就能自动帮我们补全。同样的 <code>clg</code> 会变成 <code>console.log</code>。</p>
+<p><strong>一些不错的 extension 有</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dxabikos.JavaScriptSnippets">JavaScript (ES6) code snippets</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3DEQuimper.react-native-react-redux">React-Native/React/Redux snippets for es6/es7</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3DTimonVS.ReactSnippetsStandard">React Standard Style code snippets - Visual Studio Marketplace</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3DTimonVS.ReactSnippetsStandard">React Standard Style code snippets - Visual Studio Marketplace</a></li>
+</ul>
+<h2 id="TODO-高亮"><a href="#TODO-高亮" class="headerlink" title="TODO 高亮"></a>TODO 高亮</h2><p>通常我们编写代码的时候，会觉得当前实现不优雅，有更好的实现方式。我们会习惯性的加上<code>// TODO: Needs Refactoring</code> 或者其他内容。不过时间久了我们就习得一个技能自动忽略 TODO。 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dwayou.vscode-todo-highlight">Todo Highlighter</a> 这个插件可以督促你赶紧把这个问题处理了。他会在还有 TODOs / FIXMEs 的地方出现高亮提示。（插件都已经帮到这份上了，之后修行就靠个人了）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-2da5b3945a3924ed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><strong>类似的 Extension：</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dfabiospampinato.vscode-todo-plus">Todo+</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dminhthai.vscode-todo-parser">Todo Parser</a></li>
+</ul>
+<h2 id="成本提示"><a href="#成本提示" class="headerlink" title="成本提示"></a>成本提示</h2><p><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dwix.vscode-import-cost">Import Cost</a> 这个扩展简直惊艳到我了，之前写代码的时候很少有关注导入包的大小。只有在后期优化的时候才考虑这些问题。但是这个插件可以在你导入包的时候就提示这个包有多大。</p>
+<p><img src="https://pic2.zhimg.com/v2-3a0a3376796f9facfe7a50a949fbe4b6_b.webp" alt="image"></p>
+<h2 id="REST-客户端"><a href="#REST-客户端" class="headerlink" title="REST 客户端"></a>REST 客户端</h2><p>作为一个 Web 开发，我们经常需要使用 REST API。为了检测 URL 并检测响应，我们一般会使用 Postman 这类工具来测试。但是如果使用了 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dhumao.rest-client">REST Client</a> 这个插件我们就可以直接在 VSCode 中来测试我们的 API 了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-9a7e2e8fa79f5ff8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="自动补全标签和联动重名标签"><a href="#自动补全标签和联动重名标签" class="headerlink" title="自动补全标签和联动重名标签"></a>自动补全标签和联动重名标签</h2><p>在 VSCode 中输入一半的标签会自动帮忙补全另一半，但是如果我后期想修改的话需要就需要两边都要改了。 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dformulahendry.auto-close-tag">Auto Close Tag</a> 和 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dformulahendry.auto-rename-tag">Auto Rename Tag</a> 插件可以很好的解决这个问题。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-49d37e1b86355028.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<figcaption style="margin-top: 0.66667em; padding: 0px 1em; font-size: 0.9em; line-height: 1.5; text-align: center; color: rgb(153, 153, 153);">Auto Rename Tag</figcaption>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-9da191196d4df61a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<figcaption style="margin-top: 0.66667em; padding: 0px 1em; font-size: 0.9em; line-height: 1.5; text-align: center; color: rgb(153, 153, 153);">Auto Close Tag</figcaption>
+
+<p><strong>类似的插件：</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dformulahendry.auto-complete-tag">Auto Complete Tag</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3DCompulim.compulim-vscode-closetag">Close HTML/XML tag - Visual Studio Marketplace</a></li>
+</ul>
+<h2 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h2><p>GitLens 可以增强 VSCode 内置 Git 的功能。例如 commits 搜索，历史记录和显示的代码作者身份具体功能可以查看 <a href="https://link.zhihu.com/?target=https%3A//github.com/eamodio/vscode-gitlens">Feature List</a>。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-d0a35fe17e9fd49a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><strong>类似的 Extension</strong>：</p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Ddonjayamanne.githistory">Git History</a>  - 显示提交历史记录的美丽图表等等。<strong>推荐</strong>。</li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dwaderyan.gitblame">Git Blame</a>  - 它允许您在当前选定行的状态栏中看到 Git Blame 信息。GitLens 也提供了类似的功能。</li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dlamartire.git-indicators">Git Indicators </a> - 它允许您查看受影响的文件以及状态栏中添加或删除的行数。</li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dziyasal.vscode-open-in-github">Open in GitHub / Bitbucket / Gitlab / VisualStudio.com !</a> - 它允许您使用浏览器中打开具体的 repo。</li>
+</ul>
+<h2 id="Git-Project-Manager"><a href="#Git-Project-Manager" class="headerlink" title="Git Project Manager"></a>Git Project Manager</h2><p>Git Project Manager 允许你直接从 VSCode 窗口打开一个新的窗口。这样我们就可以在 VSCode 中切换仓库了。</p>
+<p>在安装这个 <a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dfelipecaputo.git-project-manager">插件</a> 后，需要设置 <code>gitProjectManager.baseProjectsFolders</code> 包含我们需要的仓库。</p>
+<p>例如 ：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;gitProjectManager.baseProjectsFolders&quot;: [</span><br><span class="line">        &quot;&#x2F;home&#x2F;user&#x2F;nodeProjects&quot;,</span><br><span class="line">        &quot;&#x2F;home&#x2F;user&#x2F;personal&#x2F;pocs&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-a588f65eb90307bb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><strong>类似的 **Extension</strong>：**</p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dalefragnani.project-manager">Project Manager</a></li>
+</ul>
+<h2 id="Indenticator"><a href="#Indenticator" class="headerlink" title="Indenticator"></a>Indenticator</h2><p>indenticator 可以直观的突出当前的缩进深度。可以容易区分不同层次的缩进。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-1421e032e85a75d8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><strong>类似的 Extension：</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dspywhere.guides">Guides</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Dspywhere.guides">Guides - Visual Studio Marketplace</a></li>
+</ul>
+<h2 id="VSCode-图标"><a href="#VSCode-图标" class="headerlink" title="VSCode 图标"></a>VSCode 图标</h2><p>可以美化编辑器。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-5a6a1d10cd3b3a30.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><strong>类似的 Extension：</strong></p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Demmanuelbeziat.vscode-great-icons">VSCode Great Icons</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Djtlowe.vscode-icon-theme">Studio Icons</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Djtlowe.vscode-icon-theme">Studio Icons - Visual Studio Marketplace</a></li>
+</ul>
+<h2 id="Dracula（主题）"><a href="#Dracula（主题）" class="headerlink" title="Dracula（主题）"></a>Dracula（主题）</h2><p>我喜欢的一个<a href="https://link.zhihu.com/?target=https%3A//marketplace.visualstudio.com/items%3FitemName%3Ddracula-theme.theme-dracula">主题</a>。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-9f48feb8160f3bc4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="annotator"><a href="#annotator" class="headerlink" title="annotator"></a>annotator</h3><p><img src="https://upload-images.jianshu.io/upload_images/2790249-6a8eeed0e5d3af66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WeChatWorkScreenshot_0d5b0dfb-52f3-4bf0-8385-99a7d38aface.png"></p>
+<h3 id="filesize：文件大小插件"><a href="#filesize：文件大小插件" class="headerlink" title="filesize：文件大小插件"></a>filesize：文件大小插件</h3><h3 id="EditorConfig：生成-editorconfig-配置文件，规定当前编辑器的一些设定。"><a href="#EditorConfig：生成-editorconfig-配置文件，规定当前编辑器的一些设定。" class="headerlink" title="EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。"></a>EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。</h3><h3 id="ESLint：代码质量检查。"><a href="#ESLint：代码质量检查。" class="headerlink" title="ESLint：代码质量检查。"></a>ESLint：代码质量检查。</h3><h3 id="styleLint：css代码质量检查。"><a href="#styleLint：css代码质量检查。" class="headerlink" title="styleLint：css代码质量检查。"></a>styleLint：css代码质量检查。</h3><h3 id="Prettier：格式化代码"><a href="#Prettier：格式化代码" class="headerlink" title="Prettier：格式化代码"></a>Prettier：格式化代码</h3><h3 id="Code-Spell-Checker：单词拼写检查。"><a href="#Code-Spell-Checker：单词拼写检查。" class="headerlink" title="Code Spell Checker：单词拼写检查。"></a>Code Spell Checker：单词拼写检查。</h3>]]></content>
+      <categories>
+        <category>IDE</category>
+        <category>vscode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vscode格式化不符合预期</title>
+    <url>/2021/02/03/vscode%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8D%E7%AC%A6%E5%90%88%E9%A2%84%E6%9C%9F/</url>
+    <content><![CDATA[<p>vscode 的 setting.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;workbench.colorTheme&quot;: &quot;Dracula Soft&quot;,</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,&#x2F;&#x2F;保存时使用VSCode 自身格式化程序格式化</span><br><span class="line">  &quot;javascript.format.enable&quot;: false,&#x2F;&#x2F;关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次，解决editor.formatOnSave的兼容问题</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For ESLint</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For TSLint</span><br><span class="line">    &quot;source.fixAll.tslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For Stylelint</span><br><span class="line">    &quot;source.fixAll.stylelint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslint.probe&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;typescript&quot;,</span><br><span class="line">    &quot;typescriptreact&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.editorconfig</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">indent_size &#x3D; 2 # 用两个空格代替制表符；</span><br><span class="line">end_of_line &#x3D; lf # win用cr lf，linux&#x2F;unix用lf，mac用cr。统一window和mac</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">trim_trailing_whitespace &#x3D; true# 在保存时删除尾部的空白字符；</span><br><span class="line">insert_final_newline &#x3D; true# 在文件结尾添加一个空白行；</span><br><span class="line">max_line_length &#x3D; 160# 每行代码最大宽度 160</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace &#x3D; false</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>IDE</category>
+        <category>vscode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始了解babel配置</title>
+    <url>/2021/02/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BA%86%E8%A7%A3babel%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="什么是Babel"><a href="#什么是Babel" class="headerlink" title="什么是Babel"></a>什么是Babel</h2><blockquote>
+<p>The compiler for writing next generation JavaScript.<br>官网是这么说的，翻译一下就是下一代JavaScript 语法的编译器。<code>Babel不仅仅是编译代码的工具，还能对代码进行压缩</code></p>
+</blockquote>
+<h2 id="babel-cli-打包babel6"><a href="#babel-cli-打包babel6" class="headerlink" title="babel-cli 打包babel6"></a><a href="https://github.com/sailormillet/babel-pro" target="_blank" rel="noopener">babel-cli 打包babel6</a></h2><p><strong>babel7是@babel/cli</strong></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add @babel&#x2F;cli @babel&#x2F;core -D</span><br></pre></td></tr></table></figure>
+<h4 id="执行，打包后的es6语法没有转化"><a href="#执行，打包后的es6语法没有转化" class="headerlink" title="执行，打包后的es6语法没有转化"></a>执行，打包后的es6语法没有转化</h4><blockquote>
+<p>babel是一个编译器（输入源码 =&gt; 输出编译后的代码）。就像其他编译器一样，编译过程分为三个阶段：解析、转换和打印输出。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;build&quot;: &quot;babel src&#x2F;index.js --out-file dist&#x2F;index.js&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="插件才是编译代码的核心"><a href="#插件才是编译代码的核心" class="headerlink" title="插件才是编译代码的核心"></a>插件才是编译代码的核心</h4><blockquote>
+<p>babel如果没有插件没有办法编译出转化出支持各个浏览器的代码</p>
+</blockquote>
+<p><strong>babel开发者为配置文件提供了多种形式, babel7官方推荐用babel.config.js的形式。也可以用.babelrc, .babelrc.js 或者放到package.json中</strong></p>
+<h5 id="插件单个引入"><a href="#插件单个引入" class="headerlink" title="插件单个引入"></a>插件单个引入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@babel&#x2F;plugin-transform-arrow-functions 转化箭头函数</span><br><span class="line">&quot;plugins&quot;:[</span><br><span class="line">        &quot;@babel&#x2F;plugin-transform-arrow-functions&quot;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+
+<h4 id="预设preset（插件包）"><a href="#预设preset（插件包）" class="headerlink" title="预设preset（插件包）"></a>预设preset（插件包）</h4><blockquote>
+<p>babel会预先替我们做好了一系列的插件包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@babel&#x2F;preset-env 转化基本语法</span><br></pre></td></tr></table></figure>
+<h4 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="@babel/polyfill"></a>@babel/polyfill</h4><blockquote>
+<p>es6新增的方法在低版本的游览器无法使用, Babel 所做的只是帮你把ES6 模块化语法转化为CommonJS 模块化语法，其中的 require exports 等是 CommonJS 在具体实现中所提供的变量。</p>
+</blockquote>
+<blockquote>
+<p>任何实现 CommonJS 规范的环境（如 node 环境）可以直接运行这样的代码，而浏览器环境并没有实现对 CommonJS 规范的支持，所以我们需要使用打包工具（bundler）来进行打包，说的直观一点就是把所有的模块组装起来，为我们的代码做一些包裹，让它能在浏览器端使用。形成一个常规的 js 文件。打包工具有 比如 Browserify, Webpack 等</p>
+</blockquote>
+<p>src/index</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#39;@babel&#x2F;polyfill&#39;; &#x2F;&#x2F; 这就是@babel&#x2F;polyfill的用法</span><br><span class="line"></span><br><span class="line">let arrow &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#39;arrow&#39;)</span><br><span class="line">&#125;</span><br><span class="line">let arr &#x3D; [1, 2, 3]</span><br><span class="line">arr.includes(3)</span><br></pre></td></tr></table></figure>
+<p>打包到dist下，require浏览器运行不起来，只能node使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">require(&quot;@babel&#x2F;polyfill&quot;);</span><br><span class="line">var func &#x3D; function func() &#123;&#125;;</span><br><span class="line">var arr &#x3D; [1, 2, 4];</span><br><span class="line">arr.includes(3);</span><br></pre></td></tr></table></figure>
+<h4 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h4><ul>
+<li>Plugin 会运行在 Preset 之前。</li>
+<li>Plugin 会从前到后顺序执行。</li>
+<li>Preset 的顺序则 刚好相反(从后向前)</li>
+</ul>
+<h4 id="安装webpack，打包的文件可以在浏览器运行"><a href="#安装webpack，打包的文件可以在浏览器运行" class="headerlink" title="安装webpack，打包的文件可以在浏览器运行"></a>安装webpack，打包的文件可以在浏览器运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add webpack webpack-cli babel-loader -D</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>webpack 有 loader 的概念，因此就出现了 babel-loader 和 babel-cli 一样也会读取 .babelrc 或者 package.json 中的 babel 段作为自己的配置，之后的内核处理也是相同。唯一比 babel-cli 复杂的是，它需要和 webpack 交互，因此需要在 webpack 这边进行配置。比较常见的如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: &#x2F;\.js$&#x2F;,</span><br><span class="line">      exclude: &#x2F;(node_modules)&#x2F;,</span><br><span class="line">      loader: &#39;babel-loader&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果想在这里传入 babel 的配置项，也可以把改成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; loader: &#39;babel-loader&#39; 改成如下：</span><br><span class="line">use: &#123;</span><br><span class="line">  loader: &#39;babel-loader&#39;,</span><br><span class="line">  options: &#123;</span><br><span class="line">    &#x2F;&#x2F; 配置项在这里</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>webpack打包后发现</p>
+<ul>
+<li>不压缩代码要261 KiB </li>
+<li>压缩代码也只是87.49 KiB</li>
+<li>而原始的直接babel编译只要178 bytes</li>
+</ul>
+<h3 id="优化-按需加载"><a href="#优化-按需加载" class="headerlink" title="优化 (按需加载)"></a>优化 (按需加载)</h3><blockquote>
+<p>设置 .babelrc 增加useBuiltIns,useBuiltIns为usage时候必须设置corejs,@babel/polyfill默认会安装 “corejs”: 2</p>
+</blockquote>
+<blockquote>
+<p>core-js@2 中不支持新的特性了例如Array.prototype.flat()</p>
+</blockquote>
+<blockquote>
+<p>core-js@3支持很多新特性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add core-js@3 -D</span><br><span class="line">yarn remove @babel&#x2F;polyfill</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [</span><br><span class="line">            &quot;@babel&#x2F;preset-env&quot;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;targets&quot;: &#123;</span><br><span class="line">                    &quot;browsers&quot;: [</span><br><span class="line">                        &quot;&gt; 1%&quot;,</span><br><span class="line">                        &quot;last 2 versions&quot;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;,</span><br><span class="line">                &quot;useBuiltIns&quot;: &quot;usage&quot;,</span><br><span class="line">                &quot;corejs&quot;: 3&#x2F;&#x2F;默认是2</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#### 避免编译后的代码中出现重复的帮助程序，有效减少包体积 ,@babel&#x2F;plugin-transform-runtime 是一个可以重复使用 Babel 注入的帮助程序，以节省代码大小的插件。@babel&#x2F;plugin-transform-runtime 需要和 @babel&#x2F;runtime 配合使用</span><br></pre></td></tr></table></figure>
+<p>yarn add @babel/plugin-transform-runtime  @babel/runtime -D</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line">src&#x2F;index.js</span><br></pre></td></tr></table></figure>
+<p>import bbb from ‘./other’<br>let arrow = () =&gt; {<br>    console.log(‘arrow’)<br>}<br>let arr = [1, 2, 3]<br>arr.includes(3)<br>bbb()<br>class App {</p>
+<p>}</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">src&#x2F;other.js</span><br></pre></td></tr></table></figure>
+<p>class other{</p>
+<p>}</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">编译后的代码，_classCallCheck 这个方法定义了两次。一个 js 文件就定义一次。那项目中有很多文件，岂不是定义很多次。</span><br><span class="line"></span><br><span class="line"># Babel7 和 Babel6区别</span><br><span class="line">#### preset 的变更</span><br><span class="line">&gt; 淘汰 es201x，删除 stage-x，强推 env (重点).凡是使用 es201x 的开发者，都应当使用 env 进行替换</span><br><span class="line"></span><br><span class="line">为了减少开发者替换配置文件的机械工作，babel 开发了一款 babel-upgrade 的工具，它会检测 babel 配置中的 stage-x 并且替换成对应的 plugins。除此之外它还有其他功能，我们一会儿再详细看。(总之目的就是让你更加平滑地迁移到 babel 7)</span><br><span class="line"></span><br><span class="line">#### npm package 名称的变化</span><br><span class="line"></span><br><span class="line">这是 babel 7 的一个重大变化，把所有 babel-* 重命名为 @babel&#x2F;*，例如：</span><br><span class="line"></span><br><span class="line">babel-cli 变成了 @babel&#x2F;cli。</span><br><span class="line">babel-preset-env 变成了 @babel&#x2F;preset-env。进一步，还可以省略 preset 而简写为 @babel&#x2F;env。</span><br><span class="line">babel-plugin-transform-arrow-functions 变成了 @babel&#x2F;plugin-transform-arrow-functions。和 preset 一样，plugin 也可以省略，于是简写为 @babel&#x2F;transform-arrow-functions。</span><br><span class="line">这个变化不单单应用于 package.json 的依赖中，包括 .babelrc 的配置 (plugins, presets) 也要这么写，为了保持一致。例如</span><br></pre></td></tr></table></figure>
+<p>{<br>  “presets”: [</p>
+<ul>
+<li>“env”</li>
+</ul>
+<ul>
+<li>“@babel/preset-env”<br>]<br>}<pre><code>顺带提一句，上面提过的 babel 解析语法的内核 babylon 现在重命名为 @babel/parser，看起来是被收编了。
+</code></pre></li>
+</ul>
+<p>上文提过的 stage-x 被删除了，它包含的插件虽然保留，但也被重命名了。babel 团队希望更明显地区分已经位于规范中的插件 (如 es2015 的 babel-plugin-transform-arrow-functions) 和仅仅位于草案中的插件 (如 stage-0 的 @babel/plugin-proposal-function-bind)。方式就是在名字中增加 proposal，所有包含在 stage-x 的转译插件都使用了这个前缀，语法插件不在其列。</p>
+<p>最后，如果插件名称中包含了规范名称 (-es2015-, -es3- 之类的)，一律删除。例如 babel-plugin-transform-es2015-classes 变成了 @babel/plugin-transform-classes。(这个插件我自己没有单独用过，惭愧)</p>
+<h4 id="不再支持低版本-node"><a href="#不再支持低版本-node" class="headerlink" title="不再支持低版本 node"></a>不再支持低版本 node</h4><p>babel 7.0 开始不再支持 nodejs 0.10, 0.12, 4, 5 这四个版本，相当于要求 nodejs &gt;= 6 (当前 nodejs LTS 是 8)。</p>
+<p>这里的不再支持，指的是在这些低版本 node 环境中不能使用 babel 转译代码，但 babel 转译后的代码依然能在这些环境上运行，这点不要混淆。</p>
+<h4 id="only-和-ignore-匹配规则的变化"><a href="#only-和-ignore-匹配规则的变化" class="headerlink" title="only 和 ignore 匹配规则的变化"></a>only 和 ignore 匹配规则的变化</h4><p>在 babel 6 时，ignore 选项如果包含 <em>.foo.js，实际上的含义 (转化为 glob) 是 ./**/</em>.foo.js，也就是当前目录 包括子目录 的所有 foo.js 结尾的文件。这可能和开发者常规的认识有悖。</p>
+<p>于是在 babel 7，相同的表达式 <em>.foo.js 只作用于当前目录，不作用于子目录。如果依然想作用于子目录的，就要按照 glob 的完整规范书写为 ./**/</em>.foo.js 才可以。only 也是相同。</p>
+<p>这个规则变化只作用于通配符，不作用于路径。所以 node_modules 依然包含所有它的子目录，而不单单只有一层。</p>
+<h4 id="babel-node-从-babel-cli-中独立了"><a href="#babel-node-从-babel-cli-中独立了" class="headerlink" title="@babel/node 从 @babel/cli 中独立了"></a>@babel/node 从 @babel/cli 中独立了</h4><p>和 babel 6 不同，如果要使用 @babel/node，就必须单独安装，并添加到依赖中。</p>
+<h4 id="babel-upgrade"><a href="#babel-upgrade" class="headerlink" title="babel-upgrade"></a>babel-upgrade</h4><p>在提到删除 stage-x 时候提过这个工具，它的目的是帮助用户自动化地从 babel 6 升级到 7。</p>
+<p>这款升级工具的功能包括：(这里并不列出完整列表，只列出比较重要和常用的内容)</p>
+<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>把依赖(和开发依赖)中所有的 babel-* 替换为 @babel/*<br>把这些 @babel/* 依赖的版本更新为最新版 (例如 ^7.0.0)<br>如果 scripts 中有使用 babel-node，自动添加 @babel/node 为开发依赖<br>如果有 babel 配置项，检查其中的 plugins 和 presets，把短名 (env) 替换为完整的名字 (@babel/preset-env)<br>.babelrc<br>检查其中的 plugins 和 presets，把短名 (env) 替换为完整的名字 (@babel/preset-env)<br>检查是否包含 preset-stage-x，如有替换为对应的插件并添加到 plugins<br>使用方式如下：</p>
+<h1 id="不安装到本地而是直接运行命令，npm-的新功能"><a href="#不安装到本地而是直接运行命令，npm-的新功能" class="headerlink" title="不安装到本地而是直接运行命令，npm 的新功能"></a>不安装到本地而是直接运行命令，npm 的新功能</h1><p>npx babel-upgrade –write</p>
+<h1 id="或者常规方式"><a href="#或者常规方式" class="headerlink" title="或者常规方式"></a>或者常规方式</h1><p>npm i babel-upgrade -g<br>babel-upgrade –write<br>babel-upgrade 工具本身也还在开发中，还列出了许多 TODO 没有完成，因此之后的功能可能会更加丰富，例如上面提过的 ignore 的通配符转化等等。</p>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>babel</category>
+      </categories>
+      <tags>
+        <tag>babel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模块化发展</title>
+    <url>/2021/02/03/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8F%91%E5%B1%95/</url>
+    <content><![CDATA[<h3 id="什么是模块"><a href="#什么是模块" class="headerlink" title="什么是模块?"></a>什么是模块?</h3><blockquote>
+<p>模块化是一种解决问题的方案，一个模块就是实现某种特定功能的文件，可以帮助开发者拆分和组织代码。</p>
+</blockquote>
+<ul>
+<li>将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起</li>
+<li>块的内部数据与实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信<h3 id="js模块化"><a href="#js模块化" class="headerlink" title="js模块化"></a>js模块化</h3></li>
+</ul>
+<hr>
+<blockquote>
+<p>JavaScript语言在设计之初只是为了完成简单的功能，因此没有模块化的设计。但是随着前端应用的越来越庞大，模块化成为了js语言必须解决的问题。</p>
+</blockquote>
+<h3 id="模块化发展"><a href="#模块化发展" class="headerlink" title="模块化发展"></a>模块化发展</h3><p><strong>js的模块化发展大致可以划分为五个阶段：</strong></p>
+<ul>
+<li><strong>1、文件划分</strong>全局function模式 : 将不同的功能封装成不同的全局函数<blockquote>
+<p>文件划分方式无法管理模块的依赖关系（不是强制定义模块依赖），而且模块内所有变量都挂载在全局对象上，<code>容易污染全局作用域，命名冲突</code>。</p>
+</blockquote>
+</li>
+</ul>
+<p>按照js文件划分模块，一个文件可以认为是一个模块，然后将文件通过script标签的方式引入。<br>编写模块：foo.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var foo &#x3D; &#39;foo&#39;</span><br><span class="line">function sayHello() &#123;</span><br><span class="line">    console.log(foo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;header&gt;&lt;&#x2F;header&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!--先引用--&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;.&#x2F;foo.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;&#x2F; 通过全局对象调用</span><br><span class="line">        window.sayHello()</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>2、命名空间</strong>namespace模式 : 简单对象封装</p>
+<blockquote>
+<p>使用命名空间的好处是可以尽量避免命名冲突，但是由于命名空间挂载在全局对象下，依然能够在外部修改模块的变量（没有实现模块私有化）。<br>将文件内所有的变量都添加到一个命名空间下。<br>编写模块：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var FooModule &#x3D; &#123;</span><br><span class="line">    foo: &#39;foo&#39;,</span><br><span class="line">    sayHello() &#123;</span><br><span class="line">        console.log(FooModule.foo)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 通过命名空间调用</span><br><span class="line">    FooModule.sayHello()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3、立即执行函数</strong>IIFE模式：匿名函数自调用(闭包)</p>
+<blockquote>
+<p>作用: 数据是私有的, 外部只能通过暴露的方法操作<br>编码: 将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口<br>问题: 如果当前这个模块依赖另一个模块怎么办?</p>
+</blockquote>
+</li>
+</ul>
+<p>编写模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(function(window) &#123;</span><br><span class="line">  let data &#x3D; &#39;www.baidu.com&#39;</span><br><span class="line">  &#x2F;&#x2F;操作数据的函数</span><br><span class="line">  function foo() &#123;</span><br><span class="line">    &#x2F;&#x2F;用于暴露有函数</span><br><span class="line">    console.log(&#96;foo() $&#123;data&#125;&#96;)</span><br><span class="line">  &#125;</span><br><span class="line">  function bar() &#123;</span><br><span class="line">    &#x2F;&#x2F;用于暴露有函数</span><br><span class="line">    console.log(&#96;bar() $&#123;data&#125;&#96;)</span><br><span class="line">    otherFun() &#x2F;&#x2F;内部调用</span><br><span class="line">  &#125;</span><br><span class="line">  function otherFun() &#123;</span><br><span class="line">    &#x2F;&#x2F;内部私有的函数</span><br><span class="line">    console.log(&#39;otherFun()&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F;暴露行为</span><br><span class="line">  window.myModule &#x3D; &#123; foo, bar &#125; &#x2F;&#x2F;ES6写法</span><br><span class="line">&#125;)(window)</span><br></pre></td></tr></table></figure>
+<p>使用模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 通过命名空间调用</span><br><span class="line">    window.foo()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>4、IIFE模式增强 : 引入依赖</strong></p>
+<blockquote>
+<p>这就是现代模块实现的基石</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; module.js文件</span><br><span class="line">(function(window, $) &#123;</span><br><span class="line">  let data &#x3D; &#39;www.baidu.com&#39;</span><br><span class="line">  &#x2F;&#x2F;操作数据的函数</span><br><span class="line">  function foo() &#123;</span><br><span class="line">    &#x2F;&#x2F;用于暴露有函数</span><br><span class="line">    console.log(&#96;foo() $&#123;data&#125;&#96;)</span><br><span class="line">    $(&#39;body&#39;).css(&#39;background&#39;, &#39;red&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">  function bar() &#123;</span><br><span class="line">    &#x2F;&#x2F;用于暴露有函数</span><br><span class="line">    console.log(&#96;bar() $&#123;data&#125;&#96;)</span><br><span class="line">    otherFun() &#x2F;&#x2F;内部调用</span><br><span class="line">  &#125;</span><br><span class="line">  function otherFun() &#123;</span><br><span class="line">    &#x2F;&#x2F;内部私有的函数</span><br><span class="line">    console.log(&#39;otherFun()&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F;暴露行为</span><br><span class="line">  window.myModule &#x3D; &#123; foo, bar &#125;</span><br><span class="line">&#125;)(window, jQuery)</span><br></pre></td></tr></table></figure>
+<p>// index.html文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- 引入的js必须有一定顺序 --&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;jquery-1.10.1.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;module.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">  myModule.foo()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="模块化的好处"><a href="#模块化的好处" class="headerlink" title="模块化的好处"></a>模块化的好处</h3></li>
+<li><p>避免命名冲突(减少命名空间污染)</p>
+</li>
+<li><p>更好的分离, 按需加载</p>
+</li>
+<li><p>更高复用性</p>
+</li>
+<li><p>高可维护性</p>
+</li>
+</ul>
+<h3 id="引入多个后出现出现问题"><a href="#引入多个后出现出现问题" class="headerlink" title="引入多个后出现出现问题"></a>引入多个<script>后出现出现问题</h3><ul>
+<li><p>请求过多</p>
+</li>
+<li><p>首先我们要依赖多个模块，那样就会发送多个请求，导致请求过多</p>
+</li>
+<li><p>依赖模糊</p>
+</li>
+<li><p>我们不知道他们的具体依赖关系是什么，也就是说很容易因为不了解他们之间的依赖关系导致加载先后顺序出错。</p>
+</li>
+<li><p>难以维护</p>
+</li>
+</ul>
+<p>以上两种原因就导致了很难维护，很可能出现牵一发而动全身的情况导致项目出现严重的问题。<br>模块化固然有多个好处，然而一个页面需要引入多个js文件，就会出现以上这些问题。而这些问题可以通过模块化规范来解决，下面介绍开发中最流行的commonjs, AMD, ES6, CMD规范。</p>
+<ul>
+<li><strong>5、模块化规范</strong><blockquote>
+<p>ES2015提出了标准模块化规范，即ES Modules。它包含一个模块化标准和一个模块加载器。</p>
+</blockquote>
+</li>
+</ul>
+<p>编写模块</p>
+<p>// moduleA.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export const foo &#x3D; &#39;foo&#39;</span><br></pre></td></tr></table></figure>
+<p>// moduleB.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 会自动从服务器下载moduleA.js文件</span><br><span class="line">import &#123; foo &#125; from &#39;.&#x2F;moduleA.js&#39;</span><br><span class="line">console.log(foo)</span><br></pre></td></tr></table></figure>
+<p>使用模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;header&gt;&lt;&#x2F;header&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!--引入moduleB.js--&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;module&quot; src&#x3D;&quot;.&#x2F;moduleB.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>注意事项：<br>引入模块js时，必须添加type=module<br>由于模块会自动下载依赖文件，因此html文件必须挂载到服务器下，直接文件浏览会报错。</p>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>模块化</category>
+      </categories>
+      <tags>
+        <tag>模块化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模块化规范</title>
+    <url>/2021/02/03/%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83/</url>
+    <content><![CDATA[<p><strong><a href="https://juejin.cn/post/6844903576309858318" target="_blank" rel="noopener">前端模块化：CommonJS,AMD,CMD,ES6</a></strong></p>
+<blockquote>
+<p>模块化就是将一个复杂的系统分解成多个独立的模块的代码组织方式。<br>在很长的一段时间里，前端只能通过一系列的script标签来维护我们的代码关系，但是一旦我们的项目复杂度提高的时候，这种简陋的代码组织方式便是如噩梦般使得我们的代码变得混乱不堪。所以，在开发大型Javascript应用程序的时候，就必须引入模块化机制。<br><code>由于早期官方并没有提供统一的模块化解决方案，所以在群雄争霸的年代，各种前端模块化方案层出不穷。前端模块化发展之路：IIFE（自执行函数）&gt;&gt;AMD(RequireJS实现)&gt;&gt;CMD(SeaJS实现)&gt;&gt;CommonJS(NodeJs)&gt;&gt;ES6 Modules(模块化直接成为了Javascript语言规范中的一部分)</code></p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-13313af5a364d7ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><blockquote>
+<p>是运行时加载，运行时才把模块挂载在exports之上（加载整个模块的所有），加载模块其实就是查找对象属性。</p>
+</blockquote>
+<p>Node.js是commonJS规范的主要实践者，它有四个重要的环境变量为模块化的实现提供支持：module、exports、require、global。实际使用时，用module.exports定义当前模块对外输出的接口（不推荐直接用exports），用require加载模块。<code>commonJS用同步的方式加载模块。在服务端，模块文件都存在本地磁盘，读取非常快，所以这样做不会有问题。但是在浏览器端，限于网络原因，更合理的方案是使用异步加载。</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义模块math.js</span><br><span class="line">var basicNum &#x3D; 0;</span><br><span class="line">function add(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123; &#x2F;&#x2F;在这里写上需要向外暴露的函数、变量</span><br><span class="line">  add: add,</span><br><span class="line">  basicNum: basicNum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引用自定义的模块时，参数包含路径，可省略.js</span><br><span class="line">var math &#x3D; require(&#39;.&#x2F;math&#39;);</span><br><span class="line">math.add(2, 5);</span><br></pre></td></tr></table></figure>
+
+<h3 id="AMD和require-js"><a href="#AMD和require-js" class="headerlink" title="AMD和require.js"></a>AMD和require.js</h3><p>AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。这里介绍用require.js实现AMD规范的模块化：用require.config()指定引用路径等，用define()定义模块，用require()加载模块。<br>首先我们需要引入require.js文件和一个入口文件main.js。main.js中配置require.config()并规定项目中用到的基础模块。<code>require.js在申明依赖的模块时会在第一之间加载并执行模块内的代码</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** 网页中引入require.js及main.js **&#x2F;</span><br><span class="line">&lt;script src&#x3D;&quot;js&#x2F;require.js&quot; data-main&#x3D;&quot;js&#x2F;main&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;** main.js 入口文件&#x2F;主模块 **&#x2F;</span><br><span class="line">&#x2F;&#x2F; 首先用config()指定各模块路径和引用名</span><br><span class="line">require.config(&#123;</span><br><span class="line">  baseUrl: &quot;js&#x2F;lib&quot;,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    &quot;jquery&quot;: &quot;jquery.min&quot;,  &#x2F;&#x2F;实际路径为js&#x2F;lib&#x2F;jquery.min.js</span><br><span class="line">    &quot;underscore&quot;: &quot;underscore.min&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 执行基本操作</span><br><span class="line">require([&quot;jquery&quot;,&quot;underscore&quot;],function($,_)&#123;</span><br><span class="line">  &#x2F;&#x2F; some code here</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><blockquote>
+<p>UMD 本质上是兼容 CommonJS 与 AMD 这两种规范的代码语法糖，通过判断执行上下文中是否包含 define 或 module 来包装模块代码，适用于需要跨前后端的模块。<br>UMD（Universal Module Definition）是AMD和CommonJS的糅合，跨平台的解决方案。</p>
+</blockquote>
+<p>AMD模块以浏览器第一的原则发展，异步加载模块。<br>CommonJS模块以服务器第一原则发展，选择同步加载，它的模块无需包装(unwrapped modules)。<br>UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
+<h3 id="CMD和sea-js"><a href="#CMD和sea-js" class="headerlink" title="CMD和sea.js"></a>CMD和sea.js</h3><p>CMD是另一种js模块化方案，它与AMD很类似，不同点在于：AMD 推崇依赖前置、提前执行，CMD推崇依赖就近、延迟执行。此规范其实是在sea.js推广过程中产生的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** CMD写法 **&#x2F;</span><br><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">    var a &#x3D; require(&#39;.&#x2F;a&#39;); &#x2F;&#x2F;在需要时申明</span><br><span class="line">    a.doSomething();</span><br><span class="line">    if (false) &#123;</span><br><span class="line">        var b &#x3D; require(&#39;.&#x2F;b&#39;);</span><br><span class="line">        b.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="ES6-Module"><a href="#ES6-Module" class="headerlink" title="ES6 Module"></a>ES6 Module</h3><blockquote>
+<p>此法为编译时加载，编译时遇到import就会生成一个只读引用。等到运行时就会根据此引用去被加载的模块取值。所以不会加载模块所有方法，仅取所需。</p>
+</blockquote>
+<p>ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，旨在成为浏览器和服务器通用的模块解决方案。其模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** 定义模块 math.js **&#x2F;</span><br><span class="line">var basicNum &#x3D; 0;</span><br><span class="line">var add &#x3D; function (a, b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;;</span><br><span class="line">export &#123; basicNum, add &#125;;</span><br></pre></td></tr></table></figure>
+<p>模块引用：通过 import 关键字引用其他模块。引用方式分为静态引用和动态引用。静态引用格式为import importClause from ModuleSpecifier，import 表达式需要写在文件最外层上下文中；动态引用的方式则是 import()，返回 promise 对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** 引用模块 **&#x2F;</span><br><span class="line">import &#123; basicNum, add &#125; from &#39;.&#x2F;math&#39;;</span><br><span class="line">function test(ele) &#123;</span><br><span class="line">    ele.textContent &#x3D; add(99 + basicNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上例所示，使用import命令的时候，用户需要知道所要加载的变量名或函数名。其实ES6还提供了export default命令，为模块指定默认输出，对应的import语句不需要使用大括号。这也更趋近于ADM的引用写法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** export default **&#x2F;</span><br><span class="line">&#x2F;&#x2F;定义输出</span><br><span class="line">export default &#123; basicNum, add &#125;;</span><br><span class="line">&#x2F;&#x2F;引入</span><br><span class="line">import math from &#39;.&#x2F;math&#39;;</span><br><span class="line">function test(ele) &#123;</span><br><span class="line">    ele.textContent &#x3D; math.add(99 + math.basicNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复制代码ES6的模块不是对象，import命令会被 JavaScript 引擎静态分析，在编译时就引入模块代码，而不是在代码运行时加载，所以无法实现条件加载。也正因为这个，使得静态分析成为可能。</p>
+<p>五、 ES6 模块与 CommonJS 模块的差异</p>
+<ol>
+<li>CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。<br>CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。<br>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的import有点像 Unix 系统的“符号连接”，原始值变了，import加载的值也会跟着变。因此，ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。</li>
+<li>CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。</li>
+</ol>
+<p>运行时加载: CommonJS 模块就是对象；即在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。</p>
+<p>编译时加载: ES6 模块不是对象，而是通过 export 命令显式指定输出的代码，import时采用静态命令的形式。即在import时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。</p>
+<p>CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>CommonJS与AMD/CMD:</p>
+<ul>
+<li>AMD/CMD是CommonJS在浏览器端的解决方案。</li>
+<li>CommonJS是同步加载（代码在本地，加载时间基本等于硬盘读取时间）。</li>
+<li>AMD/CMD是异步加载（浏览器必须这么做，代码在服务端）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>模块化</category>
+      </categories>
+      <tags>
+        <tag>模块化</tag>
       </tags>
   </entry>
 </search>
