@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Prettier,husky,stylelint,lint-staged," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Amy's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识Prettier ： 代码格式化例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号  prettier 就是把你的代码转化成一个抽象语法树 AST 然后根据 AST 将代码按照 prettier 的风格输出即可。可以用 prettier 官方提供的检测网站来看 prettier 的转化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践">
+<meta property="og:url" content="https://sailormillet.github.io/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Amy&#39;s Blog">
+<meta property="og:description" content="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识Prettier ： 代码格式化例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号  prettier 就是把你的代码转化成一个抽象语法树 AST 然后根据 AST 将代码按照 prettier 的风格输出即可。可以用 prettier 官方提供的检测网站来看 prettier 的转化">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2790249-591cb2019cd36e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2021-02-03T08:25:34.000Z">
+<meta property="article:modified_time" content="2021-02-03T10:01:05.555Z">
+<meta property="article:author" content="Amy Chen">
+<meta property="article:tag" content="Prettier">
+<meta property="article:tag" content="husky">
+<meta property="article:tag" content="stylelint">
+<meta property="article:tag" content="lint-staged">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sailormillet.github.io/2021/02/03/代码规范实践/"/>
+
+
+
+
+
+  <title>ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践 | Amy's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Amy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T16:25:34+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/team-norm-%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/" itemprop="url" rel="index">
+                    <span itemprop="name">team-norm 团队规范</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/team-norm-%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83/code-norm-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" itemprop="url" rel="index">
+                    <span itemprop="name">code-norm 代码规范</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/" class="leancloud_visitors" data-flag-title="ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识"><a href="#Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识" class="headerlink" title="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识"></a>Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识</h1><p><strong><a href="https://prettier.io/docs/en/install.html" target="_blank" rel="noopener">Prettier</a> ：</strong> 代码格式化<code>例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号</code></p>
+<blockquote>
+<p><code>prettier</code> 就是把你的代码转化成一个抽象语法树 <code>AST</code> 然后根据 <code>AST</code> 将代码按照 <code>prettier</code> 的风格输出即可。可以用 <code>prettier</code> 官方提供的<a href="https://prettier.io/playground/" target="_blank" rel="noopener" title="检测网站">检测网站</a>来看 <code>prettier</code> 的转化过程。</p>
+</blockquote>
+<p><strong><a href="https://eslint.org/docs/user-guide/getting-started" target="_blank" rel="noopener">Eslint</a>：</strong> 代码质量的校验。<code>例如使用了未定义的变量、三等号、api语法错误、修改const变量等等</code></p>
+<ul>
+<li>命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">检查 eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br><span class="line">自动修复 eslint --fix src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/standard/eslint-config-standard" target="_blank" rel="noopener">eslint-config-standard</a>配置包扩展社区中流行的最佳实践的风格指南。</li>
+<li><a href="https://github.com/prettier/eslint-config-prettier" target="_blank" rel="noopener"><code>eslint-config-prettier</code></a> 关闭 Eslint 中与 Prettier 冲突的选项，只会关闭冲突的选项，不会启用Prettier的规则</li>
+<li><a href="https://github.com/prettier/eslint-plugin-prettier" target="_blank" rel="noopener"><code>eslint-plugin-prettier</code></a> 先使用Prettier对代码进行格式化，再并对不一致的地方进行标记</li>
+</ul>
+<p><strong><a href="https://stylelint.docschina.org/user-guide/rules/" target="_blank" rel="noopener">stylelint</a>：</strong> stylelint 是一个强大和现代的 CSS 审查工具，有助于开发者推行统一的代码规范，避免样式错误<code>stylelint拥有超过150条的规则，包括捕捉错误、最佳实践、控制可以使用的语言特性和强制代码风格规范。</code>。stylelint 由 PostCSS 提供技术支持，所以它也可以理解 PostCSS 解析的语法，比如 SCSS。<br>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;</span><br></pre></td></tr></table></figure>
+<p>插件：</p>
+<ul>
+<li><a href="https://github.com/prettier/stylelint-config-prettier" target="_blank" rel="noopener"><code>stylelint-config-prettier</code></a>：禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
+<li><a href="https://github.com/AndyOGo/stylelint-declaration-strict-value" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>：官网提供的 css 标准</li>
+<li><a href="https://github.com/sh-waqar/stylelint-declaration-use-variable" target="_blank" rel="noopener"><code>stylelint-prettier</code></a>：基于 prettier 代码风格的 stylelint 规则</li>
+<li><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</li>
+</ul>
+<p><strong><a href="http://editorconfig.org" target="_blank" rel="noopener">EditorConfig</a>：</strong> 生成 .editorconfig 配置文件，规定当前编辑器的一些设定。抹平编辑器的差异。<code>格式化的生效策略：自定义配置&gt;editorconfig&gt;编辑器的setting</code></p>
+<p><strong><a href="https://github.com/typicode/husky" target="_blank" rel="noopener">husky</a> ：</strong> git 操作的钩子。</p>
+<p><strong><a href="https://github.com/okonet/lint-staged" target="_blank" rel="noopener">lint-staged</a> ：</strong> 只对 git 中staged（变更）的文件进行代码格式的校验和代码质量的校验操作。而不是项目中所有的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;报错 在lint-staged命令中移除git add 命令本身自带git add</span><br><span class="line"></span><br><span class="line">‼ Some of your tasks use &#96;git add&#96; command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.</span><br></pre></td></tr></table></figure>
+<h1 id="ESLint和Prettier区别"><a href="#ESLint和Prettier区别" class="headerlink" title="ESLint和Prettier区别"></a>ESLint和Prettier区别</h1><p>1、ESLint 主要包含代码格式的校验，代码质量的校验，ESLint 在出<code>--fix</code>自动修复功能前只会提示一些warning和error，改起来非常复杂。<br>2、Prettier 只是格式化代码 。<br>*<em>tips：如果你觉得的eslint自带的修复功能就足够的话可以不加Prettier *</em></p>
+<h1 id="ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量"><a href="#ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量" class="headerlink" title="ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量"></a>ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量</h1><blockquote>
+<p>通过pre-commit阶段增量校验的模式，尽量避免对老旧代码的影响；稳健地逐步完善老项目的强制校验和格式化提高前端项目质量、统一项目代码风格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add husky lint-staged prettier eslint-plugin-prettier eslint-config-prettier stylelint stylelint-config-prettier stylelint-config-standard stylelint-prettier -D</span><br></pre></td></tr></table></figure>
+<p>我在项目中的配置可能不是很完美，有问题可以提出来<br>.eslintrc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;amd&quot;: true,</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;node&quot;: true,</span><br><span class="line">        &quot;es6&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;react-app&quot;,</span><br><span class="line">        &quot;plugin:prettier&#x2F;recommended&quot;,</span><br><span class="line">        &quot;prettier&#x2F;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;prettier&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;prettier&#x2F;prettier&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.stylelintrc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-recommended&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;stylelint-prettier&#x2F;recommended&quot;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;:  &#123;</span><br><span class="line">    &quot;selector-pseudo-class-no-unknown&quot;: [true, &#123;</span><br><span class="line">      ignorePseudoClasses: [&quot;global&quot;]</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;length-zero-no-unit&quot;: null,</span><br><span class="line">    &quot;indentation&quot;: 2,</span><br><span class="line">    &quot;max-empty-lines&quot;: 1,</span><br><span class="line">    &quot;block-no-empty&quot;: true,</span><br><span class="line">    &quot;block-opening-brace-newline-after&quot;: &quot;always-multi-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-after&quot;: &quot;always-single-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-before&quot;: &quot;always&quot;,</span><br><span class="line">    &quot;block-closing-brace-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-block-no-duplicate-properties&quot;: true,</span><br><span class="line">    &quot;declaration-block-no-redundant-longhand-properties&quot;: true,</span><br><span class="line">    &quot;shorthand-property-no-redundant-values&quot;: true,</span><br><span class="line">    &quot;no-empty-source&quot;: true,</span><br><span class="line">    &quot;no-eol-whitespace&quot;: true,</span><br><span class="line">    &quot;no-extra-semicolons&quot;: true,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: true,</span><br><span class="line">    &quot;no-missing-end-of-source-newline&quot;: true,</span><br><span class="line">    &quot;at-rule-no-unknown&quot;: null,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.editorconfig</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">indent_size &#x3D; 2 # 用两个空格代替制表符；</span><br><span class="line">end_of_line &#x3D; lf # win用cr lf，linux&#x2F;unix用lf，mac用cr。统一window和mac</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">trim_trailing_whitespace &#x3D; true# 在保存时删除尾部的空白字符；</span><br><span class="line">insert_final_newline &#x3D; true# 在文件结尾添加一个空白行；</span><br><span class="line">max_line_length &#x3D; 160# 每行代码最大宽度 160</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace &#x3D; false</span><br></pre></td></tr></table></figure>
+<p>package.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;xxx_front&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;antd-mobile&quot;: &quot;^2.3.1&quot;,</span><br><span class="line">    &quot;axios&quot;: &quot;^0.19.0&quot;,</span><br><span class="line">    &quot;babel-plugin-import&quot;: &quot;^1.12.2&quot;,</span><br><span class="line">    &quot;babel-plugin-syntax-dynamic-import&quot;: &quot;^6.18.0&quot;,</span><br><span class="line">    &quot;chart.js&quot;: &quot;^2.9.4&quot;,</span><br><span class="line">    &quot;copy-to-clipboard&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">    &quot;crypto-js&quot;: &quot;^3.1.9-1&quot;,</span><br><span class="line">    &quot;customize-cra&quot;: &quot;^0.8.0&quot;,</span><br><span class="line">    &quot;http-proxy-middleware&quot;: &quot;^0.20.0&quot;,</span><br><span class="line">    &quot;js-cookie&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;less&quot;: &quot;^3.10.3&quot;,</span><br><span class="line">    &quot;less-loader&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;node-sass&quot;: &quot;^4.14.1&quot;,</span><br><span class="line">    &quot;qs&quot;: &quot;^6.9.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-app-rewired&quot;: &quot;^2.1.4&quot;,</span><br><span class="line">    &quot;react-document-title&quot;: &quot;^2.0.3&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-loadable&quot;: &quot;^5.5.0&quot;,</span><br><span class="line">    &quot;react-redux&quot;: &quot;^7.1.1&quot;,</span><br><span class="line">    &quot;react-router&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-router-dom&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-scripts&quot;: &quot;3.2.0&quot;,</span><br><span class="line">    &quot;react-sticky&quot;: &quot;^6.0.3&quot;,</span><br><span class="line">    &quot;redux&quot;: &quot;^4.0.4&quot;,</span><br><span class="line">    &quot;redux-thunk&quot;: &quot;^2.3.0&quot;,</span><br><span class="line">    &quot;url-parse&quot;: &quot;^1.4.7&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;4.41.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot; react-app-rewired start&quot;,</span><br><span class="line">    &quot;build:analyze&quot;: &quot;set REACT_APP_BUILD_ENV&#x3D;production &amp;&amp; react-app-rewired build  --analyze&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;fix&quot;: &quot;prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;lint:style&quot;: &quot;stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;css,scss&#125;&quot;: [</span><br><span class="line">      &quot;stylelint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;: [</span><br><span class="line">      &quot;eslint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;browserslist&quot;: &#123;</span><br><span class="line">    &quot;production&quot;: [</span><br><span class="line">      &quot;&gt; 1%&quot;,</span><br><span class="line">      &quot;last 5 versions&quot;,</span><br><span class="line">      &quot;IOS &gt; 8&quot;,</span><br><span class="line">      &quot;Android &gt; 4.6&quot;,</span><br><span class="line">      &quot;UCAndroid &gt;&#x3D; 9&quot;,</span><br><span class="line">      &quot;QQAndroid &gt;&#x3D; 8.2&quot;,</span><br><span class="line">      &quot;not dead&quot;,</span><br><span class="line">      &quot;not ie &lt;&#x3D; 11&quot;,</span><br><span class="line">      &quot;not op_mini all&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;development&quot;: [</span><br><span class="line">      &quot;last 1 chrome version&quot;,</span><br><span class="line">      &quot;last 1 firefox version&quot;,</span><br><span class="line">      &quot;last 1 safari version&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;eslint-config-prettier&quot;: &quot;^7.2.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-prettier&quot;: &quot;^3.3.1&quot;,</span><br><span class="line">    &quot;husky&quot;: &quot;^4.3.8&quot;,</span><br><span class="line">    &quot;lint-staged&quot;: &quot;^10.5.3&quot;,</span><br><span class="line">    &quot;prettier&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;stylelint&quot;: &quot;^13.9.0&quot;,</span><br><span class="line">    &quot;stylelint-config-prettier&quot;: &quot;^8.0.2&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;: &quot;^20.0.0&quot;,</span><br><span class="line">    &quot;stylelint-prettier&quot;: &quot;^1.1.2&quot;,</span><br><span class="line">    &quot;webpack-bundle-analyzer&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.10&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提交commit之后</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验成功"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-591cb2019cd36e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验失败"></p>
+<h3 id="vscode插件推荐。"><a href="#vscode插件推荐。" class="headerlink" title="vscode插件推荐。"></a>vscode插件推荐。</h3><p>EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。<br>ESLint：代码质量检查。<br>styleLint：css代码质量检查。<br>Prettier：格式化代码<br>Code Spell Checker：单词拼写检查。<br>Indent-Rainbow：彩虹缩进，缩进不规范时会标红提示。</p>
+<p>vscode 的 setting.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;workbench.colorTheme&quot;: &quot;Dracula Soft&quot;,</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,&#x2F;&#x2F;保存时使用VSCode 自身格式化程序格式化</span><br><span class="line">  &quot;javascript.format.enable&quot;: false,&#x2F;&#x2F;关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次，解决editor.formatOnSave的兼容问题</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For ESLint</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For TSLint</span><br><span class="line">    &quot;source.fixAll.tslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For Stylelint</span><br><span class="line">    &quot;source.fixAll.stylelint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslint.probe&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;typescript&quot;,</span><br><span class="line">    &quot;typescriptreact&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Prettier/" rel="tag"># Prettier</a>
+          
+            <a href="/tags/husky/" rel="tag"># husky</a>
+          
+            <a href="/tags/stylelint/" rel="tag"># stylelint</a>
+          
+            <a href="/tags/lint-staged/" rel="tag"># lint-staged</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/24/docker%20%E4%B8%8A%E6%89%8B%E5%AE%89%E8%A3%85mongo%E3%80%81node%E3%80%81yapi%20%E9%83%A8%E7%BD%B2%E4%BB%A5%E5%8F%8Adockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F/" rel="next" title="docker上手安装mongo、node、yapi部署以及dockerfile定制镜像">
+                <i class="fa fa-chevron-left"></i> docker上手安装mongo、node、yapi部署以及dockerfile定制镜像
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/03/prettier/" rel="prev" title="prettier">
+                prettier <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"
+                alt="Amy Chen" />
+            
+              <p class="site-author-name" itemprop="name">Amy Chen</p>
+              <p class="site-description motion-element" itemprop="description">All problems in computer science can be solved by another level of indirection. -by David John Wheeler</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sailormillet" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="sailormillet@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:sailor_mi_1|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/b6624224c411" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识"><span class="nav-number">1.</span> <span class="nav-text">Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ESLint和Prettier区别"><span class="nav-number">2.</span> <span class="nav-text">ESLint和Prettier区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量"><span class="nav-number">3.</span> <span class="nav-text">ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode插件推荐。"><span class="nav-number">3.0.1.</span> <span class="nav-text">vscode插件推荐。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Amy Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz',
+        appKey: 'QPnljEINGsMuEYIg2DKqi8ne',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BDCMutf3dNHy2R5IaGeXubrj-gzGzoHsz", "QPnljEINGsMuEYIg2DKqi8ne");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

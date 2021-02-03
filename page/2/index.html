@@ -300,6 +300,467 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="url">如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:10:50+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">开发机、虚拟机</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" class="leancloud_visitors" data-flag-title="如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>快速配置开发机（虚拟机）登录操作<br>vim 修改当前文件夹下的config文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh&#x2F;config </span><br><span class="line">或</span><br><span class="line">vim ~&#x2F;.ssh&#x2F;config</span><br></pre></td></tr></table></figure>
+<p>查看.ssh目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;.ssh</span><br><span class="line">或者</span><br><span class="line">cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+<p>然后将ssh放进去，就可以不用每次输入用户名密码了<br>.ssh/config文件如下配置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##测试环境跳板机##</span><br><span class="line">Host test</span><br><span class="line">HostName 10.1.xxx.xxx</span><br><span class="line">User 用户名</span><br><span class="line">Port 22</span><br></pre></td></tr></table></figure>
+<p>保存后打开terminal 执行<code>ssh test</code>则登陆test的跳板机（虚拟机）上面了</p>
+<p>如果没权限，输入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+<p>当然还有更加高效的工具就是secureCRT 可以记录密码等可视化便捷操作<br><a href="https://www.jianshu.com/p/637d154d0458" target="_blank" rel="noopener">windows 安装操作secureCRT</a><br>mac 安装操作secureCRT 待补充，还可以做一些配色操作让界面看起来非常舒适</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/H5%E5%94%A4%E8%B5%B7App/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" itemprop="url">H5唤起App</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:08:29+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/H5-wake-up-APP/" itemprop="url" rel="index">
+                    <span itemprop="name">H5 wake-up APP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/H5%E5%94%A4%E8%B5%B7App/" class="leancloud_visitors" data-flag-title="H5唤起App">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近总接到落地页的需求，落地页的职责主要是引流，有以下几种类型<br>1、引导已经下载App的用户打开App<br>2、引导未下载App的用户下载App<br>3、引导未注册的用户注册<br>4、引导已经注册的用户进入我们的主页或者其他的操作<br>从数据上可以体现在用户停留在App的时间多了，或者增加了用户量</p>
+</blockquote>
+<h3 id="唤起App主要的媒介是什么呢？"><a href="#唤起App主要的媒介是什么呢？" class="headerlink" title="唤起App主要的媒介是什么呢？"></a>唤起App主要的媒介是什么呢？</h3><h4 id="URL-Scheme"><a href="#URL-Scheme" class="headerlink" title="URL Scheme"></a>URL Scheme</h4><p>URL Scheme的组成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[scheme:][<span class="comment">//authority][path][?query][#fragment]</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>微信</th>
+<th>支付宝</th>
+<th>淘宝</th>
+<th>微博</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL Scheme</td>
+<td>weixin://</td>
+<td>alipay://</td>
+<td>taobao://</td>
+<td>sinaweibo://</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     行为(应用的某个功能)    </span><br><span class="line">            |</span><br><span class="line">scheme:&#x2F;&#x2F;[path][?query]</span><br><span class="line">   |               |</span><br><span class="line">应用标识       功能需要的参数</span><br></pre></td></tr></table></figure>
+
+<p><code>URL Scheme 在 ios 9+ 上诸如 safari、UC、QQ浏览器中， iframe 均无法成功唤起 APP，只能通过 window.location 才能成功唤端。</code></p>
+<h4 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h4><p>安卓的原生谷歌浏览器自从 chrome25 版本开始对于唤端功能做了一些变化，URL Scheme 无法再启动Android应用。 例如，通过 iframe 指向 weixin://，即使用户安装了微信也无法打开。所以，APP需要实现谷歌官方提供的 intent: 语法，或者实现让用户通过自定义手势来打开APP。<br><code>安卓版本 4.4.4 以上机型的安卓自带浏览器、chrome 浏览器，需要通过 intent 跳转</code><br><a href="https://developer.chrome.com/multidevice/android/intents" target="_blank" rel="noopener">intents文档</a></p>
+<ul>
+<li>Intent 语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">intent:</span><br><span class="line">   HOST&#x2F;URI-path &#x2F;&#x2F; Optional host </span><br><span class="line">   #Intent; </span><br><span class="line">      package&#x3D;[string]; </span><br><span class="line">      action&#x3D;[string]; </span><br><span class="line">      category&#x3D;[string]; </span><br><span class="line">      component&#x3D;[string]; </span><br><span class="line">      scheme&#x3D;[string]; </span><br><span class="line">   end;</span><br></pre></td></tr></table></figure>
+如果用户未安装 APP，则会跳转到系统默认商店。当然，如果你想要指定一个唤起失败的跳转地址，添加下面的字符串在 end; 前就可以了:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S.browser_fallback_url&#x3D;[encoded_full_url]</span><br></pre></td></tr></table></figure></li>
+<li>示例<br>下面是打开 Zxing 二维码扫描 APP 的 intent。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">intent:</span><br><span class="line">   &#x2F;&#x2F;scan&#x2F;</span><br><span class="line">   #Intent; </span><br><span class="line">      package&#x3D;com.google.zxing.client.android; </span><br><span class="line">      scheme&#x3D;zxing; </span><br><span class="line">   end;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;intent:&#x2F;&#x2F;scan&#x2F;#Intent;scheme&#x3D;zxing;package&#x3D;com.google.zxing.client.android;S.browser_fallback_url&#x3D;http%3A%2F%2Fzxing.org;end&quot;&gt; Take a QR code &lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Universal-Link"><a href="#Universal-Link" class="headerlink" title="Universal Link"></a>Universal Link</h4><h4 id="为什么要使用-Universal-Link"><a href="#为什么要使用-Universal-Link" class="headerlink" title="为什么要使用 Universal Link"></a>为什么要使用 Universal Link</h4></li>
+</ul>
+<p>传统的 Scheme 链接有以下几个痛点：</p>
+<ul>
+<li>在 ios 上会有确认弹窗提示用户是否打开，对于用户来说唤端，多出了一步操作。若用户未安装 APP ，也会有一个提示窗，告知我们 “打不开该网页，因为网址无效”</li>
+<li>传统 Scheme 跳转无法得知唤端是否成功，Universal Link 唤端失败可以直接打开此链接对应的页面</li>
+<li>Scheme 在微信、微博、QQ浏览器、手百中都已经被禁止使用，使用 Universal Link 可以避开它们的屏蔽（ 截止到 18年8月21日，微信和QQ浏览器已经禁止了 Universal Link，其他主流APP未发现有禁止 ）</li>
+</ul>
+<h4 id="如何让-APP-支持-Universal-Link"><a href="#如何让-APP-支持-Universal-Link" class="headerlink" title="如何让 APP 支持 Universal Link"></a>如何让 APP 支持 Universal Link</h4><p>有大量的文章会详细的告诉我们如何配置，你也可以去看<a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="noopener">官方文档</a>，我这里简单的写一个12345。</p>
+<ol>
+<li>拥有一个支持 <strong>https</strong> 的域名</li>
+<li>在 <a href="https://developer.apple.com/" target="_blank" rel="noopener">开发者中心</a> ，Identifiers 下 AppIDs 找到自己的 App ID，编辑打开 Associated Domains 服务。</li>
+<li>打开工程配置中的 Associated Domains ，在其中的 Domains 中填入你想支持的域名，必须以 <code>applinks:</code> 为前缀</li>
+<li>配置 <code>apple-app-site-association</code> 文件，文件名必须为 <code>apple-app-site-association</code> ，<strong>不带任何后缀</strong></li>
+<li>上传该文件到你的 HTTPS 服务器的 <strong>根目录</strong> 或者 <code>.well-known</code> 目录下</li>
+</ol>
+<h4 id="Universal-Link-配置中的坑"><a href="#Universal-Link-配置中的坑" class="headerlink" title="Universal Link 配置中的坑"></a>Universal Link 配置中的坑</h4><p>这里放一下我们在配置过程中遇到的坑，当然首先你在配置过程中必须得严格按照上面的要求去做，尤其是加粗的地方。</p>
+<ul>
+<li>域名问题</li>
+</ul>
+<p>Universal Link 支持的域名最多只能支持到二级域名，如果你用到了三级域名，Universal Link 唤端是不会生效的。</p>
+<ul>
+<li>跨域问题</li>
+</ul>
+<p>IOS 9.2 以后，必须要触发跨域才能支持 Universal Link 唤端。</p>
+<p>IOS 那边有这样一个判断，如果你要打开的 Universal Link 和 当前页面是同一域名，ios 尊重用户最可能的意图，直接打开链接所对应的页面。如果不在同一域名下，则在你的 APP 中打开链接，也就是执行具体的唤端操作。</p>
+<ul>
+<li>Universal Link 是空页面</li>
+</ul>
+<p>Universal Link 本质上是个空页面，如果未安装 APP，Universal Link 被当做普通的页面链接，自然会跳到 404 页面，所以我们需要将它绑定到我们的中转页或者下载页。</p>
+<h4 id="唤端方式"><a href="#唤端方式" class="headerlink" title="唤端方式"></a>唤端方式</h4><ul>
+<li><p><code>Android</code>中，不同浏览器对唤起APP有严重的兼容性问题，主要处理方案有以下几种：<br>1、window.location.href<br>2、通过创建 iframe 并为其 src 赋值（主要）<br>3、通过 intent<br>4、通过制造不可见 a 链接，并触发点击</p>
+</li>
+<li><p><code>ios</code>中，不同浏览器对唤起APP有严重的兼容性问题，主要处理方案有以下几种：<br>1、系统版本在 8 以下时，可以监听页面的 pagehide / visibilitychange 事件。<br>2、 window.location.href （主要）<br><code>系统版本大于 8 以后可以 URL scheme 进行跳转。
+IOS9  可以使用 universal Link</code></p>
+</li>
+</ul>
+<p>这里我们结合了两种来处理。</p>
+<h4 id="判断唤端是否成功"><a href="#判断唤端是否成功" class="headerlink" title="判断唤端是否成功"></a>判断唤端是否成功</h4><blockquote>
+<p>在浏览器实际上是没有能力判断手机里是否安装了某个App的，所以只能够采取一种投机取巧的方式。APP 如果被唤起的话，页面就会进入后台运行。setInterval 在 ios 中不会停止运行，在 android 中停止运行。</p>
+</blockquote>
+<ul>
+<li>ios 通过 document.hidden 和 document.webkitHidden 属性来判断 APP 在 ios 中是否被正常唤起，2000ms 内，页面转入后台运行，document.hidden 会返回 true，代表唤端成功，反之则代表失败。</li>
+<li>Android 我们的判断条件比预期时间多设置了 500ms，所以如果安卓中 setInterval 内的函数执行 100 次以内所费时间超过 2500ms，则说明 APP 唤起成功，反之则代表失败。<br>在JavaScript中判断页面是否进入后台来判断打开成功。Html5提供了下列事件和属性可以利用：<br>pagehide : 页面隐藏时触发<br>visibilitychange : 页面隐藏没有在当前显示时触发(切换tab也会触发该事件)<br>document.hidden ： 当页面隐藏时，该值为true，显示时为false<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> waitTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> checkOpen = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   count++;</span><br><span class="line">   waitTime = <span class="keyword">new</span> <span class="built_in">Date</span>() - initialTime;</span><br><span class="line">   <span class="keyword">if</span> (waitTime &gt; <span class="number">2500</span>) &#123;</span><br><span class="line">      clearInterval(checkOpen);</span><br><span class="line">      cb();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (counter &lt; <span class="number">100</span>) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">const</span> hide = <span class="built_in">document</span>.hidden || <span class="built_in">document</span>.webkitHidden;</span><br><span class="line">   <span class="keyword">if</span> (!hide) &#123;</span><br><span class="line">      cb(); <span class="comment">// 唤端失败的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果唤端失败（APP 未安装），我们总是要做一些处理的，可以是跳转下载页，可以是 ios 下跳转 App Store… 但是Js 并不能提供给我们获取 APP 唤起状态的能力，Android Intent 以及 Universal Link 倒是不用担心，它们俩的自身机制允许它们唤端失败后直接导航至相应的页面，但是 URL Scheme 并不具备这样的能力，所以我们只能通过一些很 hack 的方式来实现 APP 唤起检测功能。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browser = &#123;</span><br><span class="line">    getBrowser: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> u = navigator.userAgent,</span><br><span class="line">            app = navigator.appVersion;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            trident: u.indexOf(<span class="string">'Trident'</span>) &gt; <span class="number">-1</span>, <span class="comment">//IE内核</span></span><br><span class="line">            presto: u.indexOf(<span class="string">'Presto'</span>) &gt; <span class="number">-1</span>, <span class="comment">//opera内核</span></span><br><span class="line">            webKit: u.indexOf(<span class="string">'AppleWebKit'</span>) &gt; <span class="number">-1</span>, <span class="comment">//苹果、谷歌内核</span></span><br><span class="line">            gecko: u.indexOf(<span class="string">'Gecko'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'KHTML'</span>) == <span class="number">-1</span>, <span class="comment">//火狐内核</span></span><br><span class="line">            opera: u.indexOf(<span class="string">'Opera'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            chrome: u.indexOf(<span class="string">'Chrome'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            firefox: u.indexOf(<span class="string">'Firefox'</span>) &gt; <span class="number">-1</span>,</span><br><span class="line">            safari: u.indexOf(<span class="string">'Safari'</span>) &gt; <span class="number">-1</span>, <span class="comment">//注意chrome浏览器此项也为true，非chrome且此项为true则可确定为Safari</span></span><br><span class="line">            ie: u.indexOf(<span class="string">'compatible'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'MSIE'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'Gecko'</span>) == <span class="number">-1</span>,</span><br><span class="line">            mobile: u.search(<span class="regexp">/AppleWebKit.*Mobile/</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为移动终端</span></span><br><span class="line">            ios: u.search(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>) &gt; <span class="number">-1</span>, <span class="comment">//ios终端</span></span><br><span class="line">            android: u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Adr'</span>) &gt; <span class="number">-1</span>, <span class="comment">//android终端</span></span><br><span class="line">            winPhone: u.search(<span class="regexp">/Windows Phone/</span>) &gt; <span class="number">-1</span>, <span class="comment">//windows phone终端</span></span><br><span class="line">            iPhone: u.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否为iPhon</span></span><br><span class="line">            iPad: u.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否iPad</span></span><br><span class="line">            webApp: u.indexOf(<span class="string">'Safari'</span>) == <span class="number">-1</span>, <span class="comment">//是否Safari web应该程序，没有头部与底部</span></span><br><span class="line">            weibo: u.search(<span class="regexp">/WeiBo/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否微博</span></span><br><span class="line">            weixin: u.search(<span class="regexp">/MicroMessenger/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否微信</span></span><br><span class="line">            qq: u.search(<span class="regexp">/\sQQ/i</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否QQ</span></span><br><span class="line">            mQQ: u.search(<span class="regexp">/MQQBrowser/</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否QQ手机浏览器</span></span><br><span class="line">            uc: u.search(<span class="regexp">/UCBrowser/</span>) &gt; <span class="number">-1</span> <span class="comment">//是否UC浏览器</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;(),</span><br><span class="line">  getIOSVersion:  <span class="function"><span class="keyword">function</span> <span class="title">getIOSVersion</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> verion = navigator.appVersion.match(<span class="regexp">/OS (\d+)_(\d+)_?(\d+)?/</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">parseInt</span>(verion[<span class="number">1</span>], <span class="number">10</span>);</span><br><span class="line">&#125;()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * [evokeApp 唤起APP]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param  <span class="type">&#123;[Object]&#125;</span> </span>config  [跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.ios.url &#123;[String]&#125; [iOS跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.ios.data &#123;[String]&#125; [iOS URL参数]</span></span><br><span class="line"><span class="comment"> * config.ios.callback &#123;[function]&#125; //android的回掉如果没有下载app就执行操作</span></span><br><span class="line"><span class="comment"> * config.android.url &#123;[String]&#125; [android跳转的URL]</span></span><br><span class="line"><span class="comment"> * config.android.data &#123;[String]&#125; [android URL参数]</span></span><br><span class="line"><span class="comment"> * config.android.callback &#123;[function]&#125; //android的回掉如果没有下载app就执行操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> evokeApp = <span class="function">(<span class="params">config</span>) =&gt;</span>&#123;</span><br><span class="line"><span class="comment">//对微信，微博，qq做处理弹窗</span></span><br><span class="line"><span class="keyword">if</span> (browser.versions.weibo || browser.versions.weixin || browser.versions.qq) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">let</span> browserVersions = browser.versions;</span><br><span class="line"><span class="keyword">let</span> evokeAppURL = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">let</span> cb;</span><br><span class="line">    <span class="keyword">if</span> (browserVersions.ios) &#123;</span><br><span class="line">        evokeAppURL = config.ios.data ? <span class="string">'authority://'</span> + config.ios.url + <span class="string">'?'</span> + config.ios.dataArr.join(<span class="string">'&amp;'</span>) : <span class="string">'authority://'</span> + config.ios.url;</span><br><span class="line">cb = config.ios.callback;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (browserVersions.android) &#123;</span><br><span class="line">      evokeAppURL = config.android.data ? <span class="string">'authority://'</span> + config.android.url + <span class="string">'?'</span> + config.android.dataArr.join(<span class="string">'&amp;'</span>) : <span class="string">'authority://'</span> + config.android.url;</span><br><span class="line">cb = config.android.callback;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">const</span> initialTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> waitTime = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> checkOpen = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   count++;</span><br><span class="line">   waitTime = <span class="keyword">new</span> <span class="built_in">Date</span>() - initialTime;</span><br><span class="line">   <span class="keyword">if</span> (waitTime &gt; <span class="number">2500</span>) &#123;</span><br><span class="line">      clearInterval(checkOpen);</span><br><span class="line">      cb &amp;&amp; cb();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (counter &lt; <span class="number">100</span>) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">const</span> hide = <span class="built_in">document</span>.hidden || <span class="built_in">document</span>.webkitHidden;</span><br><span class="line">   <span class="keyword">if</span> (!hide) &#123;</span><br><span class="line">      cb &amp;&amp; cb(); <span class="comment">// 唤端失败的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;, <span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>1、h5在微信中无法唤醒App，需要“用浏览器打开”<br>微信对所有的分享连接做了scheme屏蔽，也就是说分享连接中所有对于scheme的调用都被微信封掉了。</p>
+<ol start="2">
+<li><p>在询问是否打开APP的时候，如果选择了“取消”，则再唤起APP的时候会不起作用。目前并没有什么解决方案，在chrome Android,UC Android上会复现问题。需再次刷新页面才行。</p>
+</li>
+<li><p>在ios手机中，用location.href唤起app，本地如果没装app，会弹窗提示<code>safari浏览器打不开该网页，网址无效</code>，后面在用location.href来下载安装包的话也会显示同样的错误，即使你的下载链接是有效的。解决办法：IOS9及以上使用  <strong><a href="https://www.jianshu.com/p/734c3eff8feb" target="_blank" rel="noopener">Universal Links</a></strong>。</p>
+</li>
+</ol>
+<p><a href="https://suanmei.github.io/2018/08/23/h5_call_app/" target="_blank" rel="noopener">感谢作者</a><br><a href="https://github.com/AlanZhang001/H5CallUpNative" target="_blank" rel="noopener">参考博客</a><br><a href="https://awhisper.github.io/2017/09/02/universallink/" target="_blank" rel="noopener">实现文章</a></p>
+<h2 id="问题跨域"><a href="#问题跨域" class="headerlink" title="问题跨域"></a>问题跨域</h2><p>前端开发经常面临跨域问题，恩Universal Link也有跨域问题，但不一样的是，Universal Link，必须要求跨域，如果不跨域，就不行，就失效，就不工作。（iOS 9.2之后的改动，苹果就这么规定这么设计的）</p>
+<p>这也是上面拿知乎举例子的时候重点强调的一个问题，知乎为什么使用<code>oia.zhihu.com</code>做Universal Link？</p>
+<ul>
+<li>假如当前网页的域名是 A</li>
+<li>当前网页发起跳转的域名是 B</li>
+<li>必须要求 B 和 A 是不同域名，才会触发Universal Link</li>
+<li>如果B 和 A 是相同域名，只会继续在当前WebView里面进行跳转，哪怕你的Universal Link一切正常，根本不会打开App</li>
+</ul>
+<p>是不是不太好理解，那直接拿知乎举例子</p>
+<p><a href="https://www.zhihu.com/question/22914651" target="_blank" rel="noopener">https://www.zhihu.com/question/22914651</a></p>
+<p>知乎的一般网页URL都是<code>www.zhihu.com</code>域名，你在微信朋友圈看到了知乎的问题分享，如果copy url 你就能看到这样的链接<br>微信里其实是屏蔽Schema的，但是你依然能看到大大的一个按钮App内打开，这确实就是通过Universal Link来实现的，但如果知乎把Universal Link 配在了<a href="http://www.zhihu.com域名，那么即便已经安装了App，Universal" target="_blank" rel="noopener">www.zhihu.com域名，那么即便已经安装了App，Universal</a> Link也是不会生效的。</p>
+<p>一般的公司都会有自己的主域名，比如知乎的<a href="http://www.zhihu.com，在各处分享传播的时候，也都是直接分享基于主域名的url，但为了解决苹果强制要求跨域才生效的问题，Universal" target="_blank" rel="noopener">www.zhihu.com，在各处分享传播的时候，也都是直接分享基于主域名的url，但为了解决苹果强制要求跨域才生效的问题，Universal</a> Link就不能配置在主域名下，于是知乎才会准备一个oia.zhihu.com域名，专为Universal Link使用，不会跟任何主动传播分享的域名撞车，从而在任何活动WAP页面里，都能顺利让Universal Link生效。</p>
+<p>简单一句话</p>
+<p>只有当前webview的url域名，与跳转目标url域名不一致时，Universal Link 才生效<br>Universal Link不是必须通过a标签的href来跳转，我遇到一个问题就是我的页面没有识别Universal Link，因为异步渲染页面，导致没有解析出来Universal Link，加了一个隐藏的a标签，href配置上Universal Link，页面里面所有需要跳转Universal Link都会被识别</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF(ios%E3%80%81android)%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%81%87%E5%88%B0%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -354,8 +815,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript%E3%80%81%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91%E3%80%81%E7%A7%BB%E5%8A%A8%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%97%AE%E9%A2%98%E3%80%81react/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript、移动开发、移动键盘弹出问题、react</span>
+                  <a href="/categories/Frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
                   </a>
                 </span>
 
@@ -538,8 +1010,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">开发机、虚拟机</span>
+                  <a href="/categories/Frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
                   </a>
                 </span>
 
@@ -657,7 +1140,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Amy Chen">
@@ -676,7 +1159,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" itemprop="url">JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</a></h1>
+                <a class="post-title-link" href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/" itemprop="url">JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</a></h1>
         
 
         <div class="post-meta">
@@ -711,8 +1194,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
                   </a>
                 </span>
 
@@ -729,8 +1223,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" itemprop="commentCount">0</span> comments
+                <a href="/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -738,7 +1232,7 @@
 
           
           
-             <span id="/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/" class="leancloud_visitors" data-flag-title="JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）">
+             <span id="/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/" class="leancloud_visitors" data-flag-title="JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -901,7 +1395,18 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Charles/" itemprop="url" rel="index">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/Charles/" itemprop="url" rel="index">
                     <span itemprop="name">Charles</span>
                   </a>
                 </span>
@@ -1685,433 +2190,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" itemprop="url">mac 安装nginx并配置SSL实现Https访问</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T22:29:44+08:00">
-                2020-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" class="leancloud_visitors" data-flag-title="mac 安装nginx并配置SSL实现Https访问">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br><span class="line">brew install nginx 安装nginx</span><br><span class="line">nginx -v 显示版本号</span><br></pre></td></tr></table></figure>
-<p>找到Nginx文件夹</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
-<p>启动nginx</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx </span><br><span class="line">or </span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
-<p>关闭nginx</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
-<p>重启nginx</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>检查nginx配置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -t nginx.conf</span><br><span class="line">or</span><br><span class="line">sudo nginx -t nginx.conf</span><br></pre></td></tr></table></figure>
-<p>查日志</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/<span class="keyword">var</span>/log/nginx</span><br><span class="line">tail -f access.log</span><br><span class="line">tail -f error.log</span><br></pre></td></tr></table></figure>
-<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>1、找到Nginx文件夹</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
-<p>2、openssl生成自签名证书</p>
-<p>创建服务器私钥，命令会让你输入一个口令</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.key <span class="number">1024</span></span><br></pre></td></tr></table></figure>
-<p>根据私钥生成证书申请,创建签名请求的证书（CSR）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -<span class="keyword">new</span> -key server.key -out server.csr</span><br></pre></td></tr></table></figure>
-<p>下面的选项至少写一个，才可以生成证书成功</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Country Name (<span class="number">2</span> letter code) []:ch</span><br><span class="line">State or Province Name (full name) []:</span><br><span class="line">Locality Name (eg, city) []:</span><br><span class="line">Organization Name (eg, company) []:</span><br><span class="line">Organizational Unit Name (eg, section) []:</span><br><span class="line">Common Name (eg, fully qualified host name) []:</span><br><span class="line">Email Address []:</span><br></pre></td></tr></table></figure>
-
-<p>在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cp server.key server.key.org</span><br><span class="line"></span><br><span class="line">$ openssl rsa -<span class="keyword">in</span> server.key.org -out server.key</span><br></pre></td></tr></table></figure>
-
-<p>最后标记证书使用上述私钥和CSR</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -out server.crt -signkey server.key -days <span class="number">3650</span></span><br></pre></td></tr></table></figure>
-
-<p>4、配置nginx：修改/usr/local/etc/nginx/nginx.conf 文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">root  html（当前静态文件的路径）;</span><br><span class="line"></span><br><span class="line">index  index.html index.htm;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不过最好不要把配置写到/usr/local/etc/nginx/nginx.conf里面,而是写在当前目录下面的servers的文件夹下，创建不同的config更加清晰：<br>例如：servers下建立一个millet.conf<br>在millet.conf里面配置</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">443</span> ssl;</span><br><span class="line">        server_name  <span class="keyword">static</span>.millet.com;</span><br><span class="line">         #server.crt和server.key都在nginx下面</span><br><span class="line">        ssl_certificate      server.crt;</span><br><span class="line">        ssl_certificate_key  server.key;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   （当前静态文件的路径）;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>ihost</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="keyword">static</span>.millet.com</span><br></pre></td></tr></table></figure>
-<h4 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br><span class="line">或者</span><br><span class="line">sudo brew services stop nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line">或者</span><br><span class="line">sudo brew services restart nginx</span><br></pre></td></tr></table></figure>
-<h4 id="安装常见问题："><a href="#安装常见问题：" class="headerlink" title="安装常见问题："></a>安装常见问题：</h4><p>安装Nginx输入命令brew install nginx报错</p>
-<p>You have not agreed to the Xcode license. Please resolve this by running:</p>
-<p>sudo xcodebuild -license</p>
-<p>nginx设置本地跨域</p>
-<p>在mac 终端运行命令的时候会被提示没有同意xcode 证书 ，这个时候需要在Terminal中同意license</p>
-<p>此时 输入命令 sudo xcodebuild -license 空格到最后 输入agree 就可以了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2019/12/31/html2canvas%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/31/html2canvas%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD/" itemprop="url">HTML2canvas截图 解决 canvas 将图片转为base64报错 Uncaught DOMException Failed to execute 'toDataURL' on 'HTMLCanvasElement' Tainted canvases may not be exported</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-31T15:06:27+08:00">
-                2019-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/frontend%E3%80%81canvas%E3%80%81react%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%90%8C%E6%BA%90/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend、canvas、react、浏览器同源</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/12/31/html2canvas%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2019/12/31/html2canvas%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/12/31/html2canvas%E6%88%AA%E5%9B%BE%E5%8A%9F%E8%83%BD/" class="leancloud_visitors" data-flag-title="HTML2canvas截图 解决 canvas 将图片转为base64报错 Uncaught DOMException Failed to execute 'toDataURL' on 'HTMLCanvasElement' Tainted canvases may not be exported">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>最近在做一个分享生成海报的功能，用户进到页面，开始根据用户信息展示html网页，然后用html2canvas生成图片，用户长按图片保存到本地的功能 </p>
-</blockquote>
-<p>1、html2canvas <a href="http://html2canvas.hertzen.com/" target="_blank" rel="noopener">官网</a><br><code>html2canvas</code>的详细介绍可以点击<a href="https://html2canvas.hertzen.com/documentation" target="_blank" rel="noopener">这里</a>查看,其实简单来说就是通过<code>canvas</code>将<code>HTML</code>生成的<code>DOM</code>节点绘制到画布上,再可以通过自己的需求转换成图片.所以官方文档也说了,最后生成的效果不是100%相同的,这一点大家要有心理准备,无论怎样,一点点小瑕疵是肯定有的。</p>
-<p>2、Code to Image  <a href="https://github.com/akira-cn/code-to-image" target="_blank" rel="noopener">github地址</a></p>
-<p>3、dom-to-image   <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas" target="_blank" rel="noopener">官网</a></p>
-<h3 id="html2canvas"><a href="#html2canvas" class="headerlink" title="html2canvas"></a>html2canvas</h3><p>html代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">""</span>  crossorigin=<span class="string">"Anonymous"</span>&gt;&lt;<span class="regexp">/img&gt;</span></span><br></pre></td></tr></table></figure>
-<p>js代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">".main-picture"</span>)  中 main-<span class="function"><span class="params">picture</span>=&gt;</span>是你要截图的最外层的选择器</span><br><span class="line"></span><br><span class="line">html2canvas(<span class="built_in">document</span>.querySelector(<span class="string">".main-picture"</span>),&#123;</span><br><span class="line"></span><br><span class="line">useCORS:<span class="literal">true</span>,<span class="comment">//设置可以素材可以跨域，移动端不兼容</span></span><br><span class="line"></span><br><span class="line">allowTaint: <span class="literal">false</span>,<span class="comment">//默认就是false，允许跨域</span></span><br><span class="line"></span><br><span class="line">taintTest: <span class="literal">true</span>,<span class="comment">//默认就是false，是否在渲染前测试图片</span></span><br><span class="line"></span><br><span class="line">scale:<span class="built_in">window</span>.devicePixelRatio,<span class="comment">//解决清晰度的问题可以改变scale的值</span></span><br><span class="line"></span><br><span class="line">&#125;).then(<span class="function"><span class="params">canvas</span> =&gt;</span> &#123; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dataUrl = canvas.toDataURL();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> newImg = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</span><br><span class="line"></span><br><span class="line">newImg.src =  dataUrl;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(newImg);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>但是发现一个问题，就是背景图片，或者说所有的图片都没有被截图截上，原因：</p>
-<p>2、<code>关于图片需要截图，所有的元素需要动态创建元素document.createElement(&#39;img&#39;)
-这样图片就可以截图截出来了</code>关于这一点，我可能被误导了，因为html2canvas里面有这段动态创建的代码，为什么我当时跨域也设置了但是没有截到加入的图片是因为，图片是一个静态资源，我通过nginx或者node服务器将资源指向本地方便测试，因为资源指向本地，而本地的nginx以及node配置的服务器上面没有配置header头加的access-control-allow-origion：*，所以产生了误解要动态创建</p>
-<h5 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h5><p><strong>跨域问题</strong><br>就是背景图片，或者说所有的图片都没有被截图截上，原因：</p>
-<p>如果页面上有跨域的图片需要做处理,同事html2canvas需要传允许跨域的字段，后端也要加允许跨域才可以<br><img src="https://upload-images.jianshu.io/upload_images/2790249-4b81b4068599b204.jpeg" alt="WechatIMG11.jpeg"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     html2canvas(this.imgRef.current, &#123;</span><br><span class="line">       useCORS: true &#x2F;&#x2F; 开启跨域设置，需要后台设置cors</span><br><span class="line">     &#125;).then((canvas) &#x3D;&gt; &#123;</span><br><span class="line">       &#x2F;&#x2F; toDataURL函数生成img标签的可用数据  图片格式转成 base64</span><br><span class="line">       let dataURL &#x3D; canvas.toDataURL(&quot;image&#x2F;png&quot;)</span><br><span class="line">       console.log(dataURL)</span><br><span class="line">     &#125;)</span><br><span class="line">&lt;img  crossOrigin&#x3D;&#39;anonymous&#39;</span><br><span class="line">           src&#x3D;&quot;https:&#x2F;&#x2F;xxx.com&#x2F;a.jpeg&quot; className&#x3D;&quot;w100&quot; alt&#x3D;&quot;&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<p>这是为什么呢？<br>因为<code>canvas</code>将<code>HTML</code>生成的<code>DOM</code>节点绘制到画布上，然后用canvas.toDataURL导出图片，如果是读图片内容，是有浏览器同源限制，toDataURL是读取图片</p>
-<p>2、返回图片是base64即可</p>
-<h4 id="接下来纯canvas绘制遇到的问题"><a href="#接下来纯canvas绘制遇到的问题" class="headerlink" title="接下来纯canvas绘制遇到的问题"></a>接下来纯canvas绘制遇到的问题</h4><p>用html2canvas转base64 ，但是在图片转base64的过程中遇到了两个问题</p>
-<ul>
-<li>1、图片无法绘制，转成的base64 用浏览器打开是空的透明画布，如图</li>
-</ul>
-<p><img src="//upload-images.jianshu.io/upload_images/6359034-33eb49815f4e1cf3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/472/format/webp" alt="image"></p>
-<p>代码片段如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var canvas&#x3D;document.getElementById(&quot;canvas&quot;),&#x2F;&#x2F;获取canvas</span><br><span class="line">    ctx &#x3D; canvas.getContext(&quot;2d&quot;), &#x2F;&#x2F;对应的CanvasRenderingContext2D对象(画笔)</span><br><span class="line">    img &#x3D; new Image(),&#x2F;&#x2F;创建新的图片对象</span><br><span class="line">    base64 &#x3D; &#39;&#39; ;&#x2F;&#x2F;base64 </span><br><span class="line"></span><br><span class="line">img.src &#x3D; &#39;http:&#x2F;&#x2F;www.xxxx.png&#39;;</span><br><span class="line">ctx.drawImage(img,0,0);</span><br><span class="line">base64 &#x3D; canvas.toDataURL(&quot;image&#x2F;png&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>这个时候我想到问题应该是 <strong>图片还没加载完毕</strong> 就已经绘制了，既然是这样，那么修改为以下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var canvas&#x3D;document.getElementById(&quot;canvas&quot;),&#x2F;&#x2F;获取canvas</span><br><span class="line">    ctx &#x3D; canvas.getContext(&quot;2d&quot;), &#x2F;&#x2F;对应的CanvasRenderingContext2D对象(画笔)</span><br><span class="line">    img &#x3D; new Image(),&#x2F;&#x2F;创建新的图片对象</span><br><span class="line">    base64 &#x3D; &#39;&#39; ;&#x2F;&#x2F;base64 </span><br><span class="line">img.src &#x3D; &#39;http:&#x2F;&#x2F;www.xxxx.png&#39;;</span><br><span class="line">img.onload &#x3D; function()&#123;&#x2F;&#x2F;图片加载完，再draw 和 toDataURL</span><br><span class="line">     ctx.drawImage(img,0,0);    </span><br><span class="line">     base64 &#x3D; canvas.toDataURL(&quot;image&#x2F;png&quot;); </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>修改完毕我正要打算喝杯水庆祝一下，一刷新页面，一口老血喷了出来，chrome控制台又报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught DOMException: Failed to execute &#39;toDataURL&#39; on &#39;HTMLCanvasElement&#39;: Tainted canvases may not be exported.</span><br></pre></td></tr></table></figure>
-
-<p>大概意思是<strong>canvas无法执行toDataURL方法：污染的画布无法输出</strong>，请原谅我的灵魂翻译。<br>经google 发现原来是受限于 CORS 策略，会存在跨域问题，虽然可以使用图像（比如append到页面上）但是绘制到画布上会污染画布，一旦一个画布被污染,就无法提取画布的数据，比如无法使用使用画布toBlob(),toDataURL(),或getImageData()方法;当使用这些方法的时候 会抛出一个安全错误，读图片内容，是有同源限制，canvas的drawimage应该是绘制，toBlob(),toDataURL(),或getImageData()读取图片内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught DOMException: Failed to execute &#39;toDataURL&#39; on &#39;HTMLCanvasElement&#39;: Tainted canvases may not be exported.</span><br></pre></td></tr></table></figure>
-
-<p>具体详情附上一个链接非常详细如下：<a href="https://link.jianshu.com?t=https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image</a>，非常值得一看，个人理解可能不到到位，还是建议读读这个链接。</p>
-<p><strong>解决方案：</strong></p>
-<blockquote>
-<p>图片设置 ：crossOrigin属性<br>代码片段：img.setAttribute(“crossOrigin”,’Anonymous’)</p>
-</blockquote>
-<p><strong>完整代码:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;</span><br><span class="line">  var canvas&#x3D;document.getElementById(&quot;canvas&quot;),&#x2F;&#x2F;获取canvas</span><br><span class="line">      ctx &#x3D; canvas.getContext(&quot;2d&quot;), &#x2F;&#x2F;对应的CanvasRenderingContext2D对象(画笔)</span><br><span class="line">      img &#x3D; new Image(),&#x2F;&#x2F;创建新的图片对象</span><br><span class="line">      base64 &#x3D; &#39;&#39; ;&#x2F;&#x2F;base64 </span><br><span class="line">  img.src &#x3D; &#39;http:&#x2F;&#x2F;www.xxxx.png&#39;;</span><br><span class="line">  img.setAttribute(&quot;crossOrigin&quot;,&#39;Anonymous&#39;)</span><br><span class="line">  img.onload &#x3D; function()&#123;&#x2F;&#x2F;图片加载完，再draw 和 toDataURL</span><br><span class="line">       ctx.drawImage(img,0,0);    </span><br><span class="line">       base64 &#x3D; canvas.toDataURL(&quot;image&#x2F;png&quot;); </span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>stackoverflow上解决方案：</strong><br>地址：<a href="https://link.jianshu.com?t=https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror" target="_blank" rel="noopener">https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror</a></p>
-<p><strong>Tips</strong>:如果遇到其他canvas 关于SecurityError 的问题，也可以尝试一下这个解决方法。<br>另外经过多次搜索，总结了几个小窍门</p>
-<blockquote>
-<p>1:使用google 。baidu搜索的都是转来转去的几篇文章，干扰太大。<br>2:首先搜索bug之家 ：stackoverflow，总有解决你的bug的方案，链接：<a href="https://link.jianshu.com?t=https://stackoverflow.com/" target="_blank" rel="noopener">https://stackoverflow.com/</a><br>3:web文档之家：mozilla的web文档 ，非常权威，非常详尽。链接：<a href="https://link.jianshu.com?t=https://developer.mozilla.org/en-US/" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/</a></p>
-</blockquote>
-<h3 id="html2canvas在微信浏览器中遇到的问题"><a href="#html2canvas在微信浏览器中遇到的问题" class="headerlink" title="html2canvas在微信浏览器中遇到的问题"></a>html2canvas在微信浏览器中遇到的问题</h3><h5 id="微信浏览器中截不了图不会走then函数中"><a href="#微信浏览器中截不了图不会走then函数中" class="headerlink" title="微信浏览器中截不了图不会走then函数中"></a>微信浏览器中截不了图不会走then函数中</h5><p>在真机ios的微信浏览器中截图会有问题，截不了图，这个时候将html2canvas版本回滚到1.0.0-rc.4即可，如果不行，记得清除微信的缓存再试试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“html2canvas”: “1.0.0-rc.4”</span><br></pre></td></tr></table></figure>
-<h5 id="html2canvas截图不全的问题"><a href="#html2canvas截图不全的问题" class="headerlink" title="html2canvas截图不全的问题"></a>html2canvas截图不全的问题</h5><p><img src="https://upload-images.jianshu.io/upload_images/2790249-17734d2bc28dd805.png" alt="image.png"><br><strong>原因：</strong><br>我所知道的原因有两点，</p>
-<p><strong>第一点</strong>：在点击保存图片时，此时要保存的资源较多，造成模块并没有完全加载完毕，就已经生成了截图；<br>解决方案：(加上一个延时操作)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 利用 html2canvas 下载 canvas</span><br><span class="line">      setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">        html2canvas(img, &#123; canvas: canvas &#125;).then(function(canvas) &#123;</span><br><span class="line">          _this.photoUrl &#x3D; canvas.toDataURL();</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, 500);</span><br></pre></td></tr></table></figure>
-<p><strong>第二点</strong>：滚轮滑动造成的，主要是html2canvas是根据body进行截图，若内容高度高于body时，就会出现这样的问题(大概意思就是有滚动条时造成的)<br>解决方案：body内加一层div设置高度是100vh超出滚动，这样就不会高于body了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2166,7 +2244,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2177,7 +2255,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2188,7 +2266,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2260,7 +2338,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

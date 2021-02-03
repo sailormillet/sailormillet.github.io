@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</title>
-    <url>/2020/06/26/%20SecureCRT%20%20FX%208.0.0%EF%BC%88%20build%201063%20%EF%BC%89for%20Windows%20%E7%A0%B4%E8%A7%A3%E7%89%88/</url>
-    <content><![CDATA[<h1 id="SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版"><a href="#SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版" class="headerlink" title="SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版"></a>SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</h1><ul>
-<li><p>By <a href="https://ccie.lol/blog/author/viska/" target="_blank" rel="noopener" title="由Ricky发布">Ricky</a></p>
-</li>
-<li><p>Under <a href="https://ccie.lol/blog/category/software/" target="_blank" rel="noopener">Software</a></p>
-</li>
-</ul>
-<p>| 如需注册 @ccie.engineer、@ccde.engineer、@ccar.engineer、@hcie.engineer、@rhce.engineer 和 @cissp.engineer 邮箱，请<a href="https://ccie.lol/blog/2016/12/17/mail/" target="_blank" rel="noopener">点击这里</a>。 |</p>
-<h3 id="1、应用介绍："><a href="#1、应用介绍：" class="headerlink" title="1、应用介绍："></a><strong>1、应用介绍：</strong></h3><p>SecureCRT 是一款 Windows 上专业的终端 SSH 工具，类似于 Windows 中的 Putty ，SecureCRT 支持 SSH1 、SSH2 、Telnet 等远程连接，同时具有很多实用和专业的辅助功能，支持广泛的终端仿真、文件传输、脚本等，非常的优秀！</p>
-<h3 id="2、破解方法："><a href="#2、破解方法：" class="headerlink" title="2、破解方法："></a><strong>2、破解方法：</strong></h3><h4 id="7-3-4-amp-8-0-0"><a href="#7-3-4-amp-8-0-0" class="headerlink" title="7.3.4 &amp; 8.0.0"></a><strong>7.3.4 &amp; 8.0.0</strong></h4><ol>
-<li>安装好 SecureCRT 软件；</li>
-<li>确保 SecureCRT 软件处于关闭状态；</li>
-<li>将注册机（注册机文件在压缩包里，文件名一般是 keygen.exe ）复制到 SecureCRT 软件的安装目录下，安装目录默认是：C:\Program Files\VanDyke Software\SecureCRT\ ；</li>
-<li>运行注册机，点击 Patch 按钮，此时会让你替换掉两个可执行文件（分别是 SecureCRT.exe 和 LicenseHelper.exe ），在弹出的窗口中先选择 SecureCRT.exe ，然后再选择 LicenseHelper.exe 即可完成替换，替换是否成功是会有提示的；</li>
-<li>最后打开 SecureCRT 软件，此时会弹出一个输入 key 的页面，什么都不输入，点击 Continue ，再点击 Enter License Manually 就会看到输入 Name 和 Company 等信息的页面了，在这个页面输入注册机上显示的信息即可激活 SecureCRT 软件（在注册机上点击 Generate 按钮即可重新生成这些信息）。</li>
-</ol>
-<h3 id="3、下载链接："><a href="#3、下载链接：" class="headerlink" title="3、下载链接："></a><strong>3、下载链接：</strong></h3><p>（注：主链接下载服务器位于中国境内的阿里云数据中心华南区，每月大约有 100 GB 的下载流量，超量后会停止提供下载服务；备用链接下载服务器位于美国境内，为私有云，流量充足）</p>
-<p>SecureCRT 8.0.0（ build 1063 ）for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">SecureCRT_8.0.0.7z</a>（<a href="http://pan.baidu.com/s/1hs0rQ88" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">备用链接</a>）<br>SecureCRT 7.3.4 for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">SecureCRT_7.3.4.7z</a>（<a href="http://pan.baidu.com/s/1mhNAdeC" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">备用链接</a>）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">md5sum ：</span><br><span class="line"></span><br><span class="line">1f1d6c12830ccc1915b37840c4a3de58 SecureCRT_7.3.4.7z</span><br><span class="line">e8cade759ada7112a18c7291c951444e SecureCRT_8.0.0.7z</span><br></pre></td></tr></table></figure>
-
-<p>设置密码记录按钮<br>view-&gt; button bar </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b27bc56d4c40c27b.png" alt="view"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-187b0dedc13f004e.png" alt=" button bar 勾选上（会显示在操作界面底部）"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0b62dcf738fe38da.png" alt="按此图配置"><br>每次输入固定密码的时候可以点击即完毕，非常方便</p>
-]]></content>
-      <categories>
-        <category>工具、tool、SecureCRT、windows</category>
-      </categories>
-      <tags>
-        <tag>工具、tool、SecureCRT、windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>H5唤起App</title>
     <url>/2020/06/26/H5%E5%94%A4%E8%B5%B7App/</url>
     <content><![CDATA[<blockquote>
@@ -142,49 +110,11 @@ IOS9  可以使用 universal Link</code></p>
 <p>只有当前webview的url域名，与跳转目标url域名不一致时，Universal Link 才生效<br>Universal Link不是必须通过a标签的href来跳转，我遇到一个问题就是我的页面没有识别Universal Link，因为异步渲染页面，导致没有解析出来Universal Link，加了一个隐藏的a标签，href配置上Universal Link，页面里面所有需要跳转Universal Link都会被识别</p>
 ]]></content>
       <categories>
-        <category>JavaScript、移动开发、h5</category>
+        <category>Frontend</category>
+        <category>H5 wake-up APP</category>
       </categories>
       <tags>
         <tag>JavaScript、移动开发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</title>
-    <url>/2020/04/09/JavaScript%E3%80%81vue%E4%B8%AD%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%EF%BC%88%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%89/</url>
-    <content><![CDATA[<p>最近做了一个需求的，其中有一个效果是点击按钮将表单滚动到可视区域，这本来是很常见的效果。我们有很多种方案去实现。<br><strong>一、 scrollTo、scroll or scrollBy</strong><br><img src="http://upload-images.jianshu.io/upload_images/2790249-202b5bc8de7957ea.png" alt="image.png"><br>这显示不支持safari on ios ，但是我的手机版本是13.3.1的safari可以运行没有问题，但是安卓手机完全无效果</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    left: 100,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>vue中可以根据ref来操作dom</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.$refs.xxx.$el.scrollTo(&#123;</span><br><span class="line">       top: 1000,</span><br><span class="line">       behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.scroll(&#123;</span><br><span class="line">  top: 100,</span><br><span class="line">  left: 100,</span><br><span class="line">  behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollBy(0, 1000);</span><br></pre></td></tr></table></figure>
-<p><strong>二、scrollTop 获取当前页面的滚动条纵坐标位置去改变其值</strong></p>
-<blockquote>
-<ul>
-<li>对于没有doctype声明的页面里可以使用 document.body.scrollTop 来获取 scrollTop高度 ；</li>
-<li>对于有doctype声明的页面则可以使用 document.documentElement.scrollTop； Safari</li>
-<li>safari 比较特别，有自己获取scrollTop的函数 ： window.pageYOffset ； Firefox</li>
-<li>火狐等等相对标准些的浏览器就省心多了，直接用 document.documentElement.scrollTop ；</li>
-</ul>
-</blockquote>
-<p>浏览器和ios都可以生效，但是安卓手机手机完全无效果，测试了一下，安卓手机设置完scrollTop再去console出scrollTop的值，发现并没有赋值成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.body.scrollTop &#x3D; document.documentElement.scrollTop &#x3D; window.pageYOffset &#x3D; 1000;</span><br></pre></td></tr></table></figure>
-<p><strong>三、scrollIntoView 与 scrollIntoViewIfNeeded API</strong> （安卓、ios手机支持，浏览器测试结果看来也没问题）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法让当前的元素滚动到浏览器窗口的可视区域内。<code>这是一个实验中的功能</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-59550f82ab6e38df.png" alt="image.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">element.scrollIntoView(true);</span><br><span class="line">或者</span><br><span class="line">element.scrollIntoView(&#123;behavior: &quot;instant&quot;, block: &quot;start&quot;, inline: &quot;nearest&quot;&#125;);</span><br><span class="line">vue中</span><br><span class="line">this.$refs.xxxx.$el.scrollIntoView();</span><br></pre></td></tr></table></figure>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoViewIfNeeded" target="_blank" rel="noopener">Element. scrollIntoViewIfNeeded()</a><br> 如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动。 此方法是标准的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法的专有变体。<code>非标准
-该特性是非标准的，请尽量不要在生产环境中使用它！</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-2da34c6761ebc8d1.png" alt="image.png"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">element. scrollIntoViewIfNeeded(true);</span><br></pre></td></tr></table></figure>
-<p>vue中根据ref来操作dom</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.$refs.xxxx.$el. scrollIntoViewIfNeeded();</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/pageYOffset" target="_blank" rel="noopener">Window.pageYOffset</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2790249-781c331bdbd5cb9a.png" alt="image.png"></p>
-<p><strong>监听，取消监听滚动事件</strong><br><code>注意scroll监听的匿名事件是不可以取消监听事件的，我想要的是页面中所有需要曝光的地方曝光结束后，取消监听事件</code><br>可以参照<a href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/">埋点之眼球曝光</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">window.removeEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">const handleScroll &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(111111)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript、vue、android</tag>
       </tags>
   </entry>
   <entry>
@@ -269,7 +199,8 @@ IOS9  可以使用 universal Link</code></p>
 <p>二、解决vuex requires a Promise polyfill in this browser问题<br>添加babel-polyfill插件<br>webpack.base.conf.js</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  context: path.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  <span class="comment">//entry: &#123;app: './src/main.js'&#125;</span></span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: [<span class="string">'babel-polyfill'</span>,<span class="string">'./src/main.js'</span>]<span class="comment">//babel-polyfill会仿效一个完整的 ES2015+ 环境，并意图运行于一个应用中而不是一个库/工具。</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>frontend</category>
+        <category>Frontend</category>
+        <category>预渲染</category>
       </categories>
       <tags>
         <tag>Search Engine</tag>
@@ -340,10 +271,11 @@ IOS9  可以使用 universal Link</code></p>
 <p>提交到远程报错fatal: refusing to merge unrelated histories<br>git pull origin master –allow-unrelated-histories</p>
 ]]></content>
       <categories>
-        <category>git、tool</category>
+        <category>Tools</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>git、tool</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -370,10 +302,11 @@ IOS9  可以使用 universal Link</code></p>
 <p>你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了</p>
 ]]></content>
       <categories>
-        <category>git、tool</category>
+        <category>Tools</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>git、tool</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -383,10 +316,11 @@ IOS9  可以使用 universal Link</code></p>
 
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">git rebase --skip与--abort的区别是什么</span><br><span class="line">git rebase --abort 是无风险的操作，会回到rebase操作之前的状态，<span class="number">2</span>个分支的commits毫发无损。</span><br><span class="line">git rebase --skip 是高风险的操作，引起冲突的commits会被丢弃（这部分代码修改会丢失）。</span><br><span class="line">git rebase --<span class="keyword">continue</span> 用于修复冲突，提示开发者，一步一步地有没有解决冲突，fix conflicts and then run <span class="string">"git rebase --continue"</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>git、tool</category>
+        <category>Tools</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>git、tool</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -449,7 +383,8 @@ IOS9  可以使用 universal Link</code></p>
 <p><strong>第二点</strong>：滚轮滑动造成的，主要是html2canvas是根据body进行截图，若内容高度高于body时，就会出现这样的问题(大概意思就是有滚动条时造成的)<br>解决方案：body内加一层div设置高度是100vh超出滚动，这样就不会高于body了</p>
 ]]></content>
       <categories>
-        <category>frontend、canvas、react、浏览器同源</category>
+        <category>Frontend</category>
+        <category>HTML2canvas screenshot</category>
       </categories>
       <tags>
         <tag>frontend</tag>
@@ -529,7 +464,9 @@ IOS9  可以使用 universal Link</code></p>
 <p>当我的node版本变为v10.6.0，发现我的代理需要/repos/(.<em>)变回为/repos/</em><br>mocker-api 的version为1.9.0我需要这样去匹配路由/repos/(.*)<br>mocker-api 的version不同版本是否为不同的匹配规则有待验证</p>
 ]]></content>
       <categories>
-        <category>frontend</category>
+        <category>Frontend</category>
+        <category>team-norm 团队规范</category>
+        <category>mock-data-norm 模拟数据规范</category>
       </categories>
       <tags>
         <tag>frontend</tag>
@@ -599,10 +536,11 @@ IOS9  可以使用 universal Link</code></p>
 
 ]]></content>
       <categories>
-        <category>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</category>
+        <category>Tools</category>
+        <category>zsh、oh-my-zsh、oh-my-zsh插件、iTerm2</category>
       </categories>
       <tags>
-        <tag>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</tag>
+        <tag>zsh、oh-my-zsh、oh-my-zsh插件、iTerm2</tag>
       </tags>
   </entry>
   <entry>
@@ -615,7 +553,7 @@ IOS9  可以使用 universal Link</code></p>
 
 <h3 id="切换zsh"><a href="#切换zsh" class="headerlink" title="切换zsh"></a>切换zsh</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</category>
+        <category>Tools</category>
       </categories>
       <tags>
         <tag>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</tag>
@@ -641,8 +579,12 @@ IOS9  可以使用 universal Link</code></p>
  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ro = object.getBoundingClientRect();</span><br><span class="line"><span class="keyword">var</span> Width = ro.right - ro.left;</span><br><span class="line"><span class="keyword">var</span> Height = ro.bottom - ro.top;</span><br><span class="line"></span><br><span class="line"><span class="comment">//兼容所有浏览器写法：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ro = object.getBoundingClientRect();</span><br><span class="line"><span class="keyword">var</span> Top = ro.top;</span><br><span class="line"><span class="keyword">var</span> Bottom = ro.bottom;</span><br><span class="line"><span class="keyword">var</span> Left = ro.left;</span><br><span class="line"><span class="keyword">var</span> Right = ro.right;</span><br><span class="line"><span class="keyword">var</span> Width = ro.width||Right - Left;</span><br><span class="line"><span class="keyword">var</span> Height = ro.height||Bottom - Top;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>frontend</category>
+        <category>Frontend</category>
+        <category>埋点</category>
       </categories>
+      <tags>
+        <tag>埋点之眼球曝光</tag>
+      </tags>
   </entry>
   <entry>
     <title>移动开发h5表单键盘弹出问题</title>
@@ -660,7 +602,8 @@ IOS9  可以使用 universal Link</code></p>
 <p>安卓手机有延迟，有时生效，有时会失效，可能setTimeout设置的延迟事件不够，我设置100的时候还会经常没生效，但是设置200貌似就好很多</p>
 ]]></content>
       <categories>
-        <category>开发机、虚拟机</category>
+        <category>Frontend</category>
+        <category>H5</category>
       </categories>
       <tags>
         <tag>JavaScript、移动开发、移动键盘弹出问题、vue</tag>
@@ -677,6 +620,7 @@ IOS9  可以使用 universal Link</code></p>
 <p>现在客户端环境下，我们已经可以随时调试本地的H5代码了。<br>Charles结合nginx和ihost开发，在nginx代理的时候在开启charles用手机访问开发文件可能访问不到，可能是自制证书不信任的问题，需要对nginx和chrome做特殊处理<br><a href="https://www.jianshu.com/p/71095e5ca9b3" target="_blank" rel="noopener">设置本地 nginx 的 HTTPS（证书设置信任）</a></p>
 ]]></content>
       <categories>
+        <category>Tools</category>
         <category>Charles</category>
       </categories>
       <tags>
@@ -700,6 +644,7 @@ IOS9  可以使用 universal Link</code></p>
 ]]></content>
       <categories>
         <category>开发机、虚拟机</category>
+        <category>ssh</category>
       </categories>
       <tags>
         <tag>开发机、虚拟机</tag>
@@ -732,10 +677,11 @@ IOS9  可以使用 universal Link</code></p>
 <p><a href="https://juejin.im/post/5d54d27df265da03ce39d1a3" target="_blank" rel="noopener">参照文章</a><br><a href="https://www.jianshu.com/p/bc3f6076b36e" target="_blank" rel="noopener">参照文章</a><br><a href="https://www.zhangxinxu.com/wordpress/2017/05/canvas-picture-watermark-synthesis/" target="_blank" rel="noopener">参照文章水印合成</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript、移动开发、移动键盘弹出问题、react</category>
+        <category>Frontend</category>
+        <category>H5</category>
       </categories>
       <tags>
-        <tag>JavaScript、移动开发、移动键盘弹出问题、react</tag>
+        <tag>移动端(ios、android)</tag>
       </tags>
   </entry>
   <entry>
@@ -756,9 +702,9 @@ IOS9  可以使用 universal Link</code></p>
 <p>Dockerfile.web</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FROM jayfong&#x2F;yapi:latest</span><br><span class="line"></span><br><span class="line">ENV YAPI_ADMIN_ACCOUNT&#x3D;admin@163.com</span><br><span class="line">ENV YAPI_ADMIN_PASSWORD&#x3D;admin</span><br><span class="line">ENV YAPI_CLOSE_REGISTER&#x3D;false</span><br><span class="line">ENV YAPI_DB_SERVERNAME&#x3D;127.0.0.1</span><br><span class="line">ENV YAPI_DB_PORT&#x3D;27017</span><br><span class="line">ENV YAPI_DB_DATABASE&#x3D;yapi</span><br><span class="line">ENV YAPI_MAIL_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_LDAP_LOGIN_ENABLE&#x3D;false</span><br><span class="line">ENV YAPI_PLUGINS&#x3D;[]</span><br><span class="line"></span><br><span class="line">RUN echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;main&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  echo &#39;http:&#x2F;&#x2F;dl-cdn.alpinelinux.org&#x2F;alpine&#x2F;v3.6&#x2F;community&#39; &gt;&gt; &#x2F;etc&#x2F;apk&#x2F;repositories &amp;&amp; \</span><br><span class="line">  apk add --update --no-cache mongodb &amp;&amp; \</span><br><span class="line">  mkdir -p &#x2F;data&#x2F;db</span><br><span class="line"></span><br><span class="line">EXPOSE $PORT</span><br><span class="line"></span><br><span class="line">CMD mongod --fork --logpath&#x3D;mongodb.log &amp;&amp; node &#x2F;yapi&#x2F;vendors&#x2F;start.js</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Docker</category>
-        <category>mongo</category>
-        <category>yapi</category>
+        <category>Frontend</category>
+        <category>team-norm 团队规范</category>
+        <category>mock-data-norm 模拟数据规范</category>
       </categories>
       <tags>
         <tag>Docker</tag>
@@ -846,6 +792,163 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</title>
+    <url>/2020/06/26/SecureCRT/</url>
+    <content><![CDATA[<h1 id="SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版"><a href="#SecureCRT-FX-8-0-0（-build-1063-）for-Windows-破解版" class="headerlink" title="SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版"></a>SecureCRT / FX 8.0.0（ build 1063 ）for Windows 破解版</h1><ul>
+<li><p>By <a href="https://ccie.lol/blog/author/viska/" target="_blank" rel="noopener" title="由Ricky发布">Ricky</a></p>
+</li>
+<li><p>Under <a href="https://ccie.lol/blog/category/software/" target="_blank" rel="noopener">Software</a></p>
+</li>
+</ul>
+<p>| 如需注册 @ccie.engineer、@ccde.engineer、@ccar.engineer、@hcie.engineer、@rhce.engineer 和 @cissp.engineer 邮箱，请<a href="https://ccie.lol/blog/2016/12/17/mail/" target="_blank" rel="noopener">点击这里</a>。 |</p>
+<h3 id="1、应用介绍："><a href="#1、应用介绍：" class="headerlink" title="1、应用介绍："></a><strong>1、应用介绍：</strong></h3><p>SecureCRT 是一款 Windows 上专业的终端 SSH 工具，类似于 Windows 中的 Putty ，SecureCRT 支持 SSH1 、SSH2 、Telnet 等远程连接，同时具有很多实用和专业的辅助功能，支持广泛的终端仿真、文件传输、脚本等，非常的优秀！</p>
+<h3 id="2、破解方法："><a href="#2、破解方法：" class="headerlink" title="2、破解方法："></a><strong>2、破解方法：</strong></h3><h4 id="7-3-4-amp-8-0-0"><a href="#7-3-4-amp-8-0-0" class="headerlink" title="7.3.4 &amp; 8.0.0"></a><strong>7.3.4 &amp; 8.0.0</strong></h4><ol>
+<li>安装好 SecureCRT 软件；</li>
+<li>确保 SecureCRT 软件处于关闭状态；</li>
+<li>将注册机（注册机文件在压缩包里，文件名一般是 keygen.exe ）复制到 SecureCRT 软件的安装目录下，安装目录默认是：C:\Program Files\VanDyke Software\SecureCRT\ ；</li>
+<li>运行注册机，点击 Patch 按钮，此时会让你替换掉两个可执行文件（分别是 SecureCRT.exe 和 LicenseHelper.exe ），在弹出的窗口中先选择 SecureCRT.exe ，然后再选择 LicenseHelper.exe 即可完成替换，替换是否成功是会有提示的；</li>
+<li>最后打开 SecureCRT 软件，此时会弹出一个输入 key 的页面，什么都不输入，点击 Continue ，再点击 Enter License Manually 就会看到输入 Name 和 Company 等信息的页面了，在这个页面输入注册机上显示的信息即可激活 SecureCRT 软件（在注册机上点击 Generate 按钮即可重新生成这些信息）。</li>
+</ol>
+<h3 id="3、下载链接："><a href="#3、下载链接：" class="headerlink" title="3、下载链接："></a><strong>3、下载链接：</strong></h3><p>（注：主链接下载服务器位于中国境内的阿里云数据中心华南区，每月大约有 100 GB 的下载流量，超量后会停止提供下载服务；备用链接下载服务器位于美国境内，为私有云，流量充足）</p>
+<p>SecureCRT 8.0.0（ build 1063 ）for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">SecureCRT_8.0.0.7z</a>（<a href="http://pan.baidu.com/s/1hs0rQ88" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_8.0.0.7z" target="_blank" rel="noopener">备用链接</a>）<br>SecureCRT 7.3.4 for Windows ：<a href="http://ccie.oss-cn-shenzhen.aliyuncs.com/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">SecureCRT_7.3.4.7z</a>（<a href="http://pan.baidu.com/s/1mhNAdeC" target="_blank" rel="noopener">百度云盘</a>，<a href="https://pan.ccie.lol:44944/file/SecureCRT/SecureCRT_7.3.4.7z" target="_blank" rel="noopener">备用链接</a>）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">md5sum ：</span><br><span class="line"></span><br><span class="line">1f1d6c12830ccc1915b37840c4a3de58 SecureCRT_7.3.4.7z</span><br><span class="line">e8cade759ada7112a18c7291c951444e SecureCRT_8.0.0.7z</span><br></pre></td></tr></table></figure>
+
+<p>设置密码记录按钮<br>view-&gt; button bar </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b27bc56d4c40c27b.png" alt="view"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-187b0dedc13f004e.png" alt=" button bar 勾选上（会显示在操作界面底部）"><br><img src="http://upload-images.jianshu.io/upload_images/2790249-0b62dcf738fe38da.png" alt="按此图配置"><br>每次输入固定密码的时候可以点击即完毕，非常方便</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+        <category>SecureCRT</category>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>SecureCRT</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践</title>
+    <url>/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<h1 id="Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识"><a href="#Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识" class="headerlink" title="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识"></a>Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识</h1><p><strong><a href="https://prettier.io/docs/en/install.html" target="_blank" rel="noopener">Prettier</a> ：</strong> 代码格式化<code>例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号</code></p>
+<blockquote>
+<p><code>prettier</code> 就是把你的代码转化成一个抽象语法树 <code>AST</code> 然后根据 <code>AST</code> 将代码按照 <code>prettier</code> 的风格输出即可。可以用 <code>prettier</code> 官方提供的<a href="https://prettier.io/playground/" target="_blank" rel="noopener" title="检测网站">检测网站</a>来看 <code>prettier</code> 的转化过程。</p>
+</blockquote>
+<p><strong><a href="https://eslint.org/docs/user-guide/getting-started" target="_blank" rel="noopener">Eslint</a>：</strong> 代码质量的校验。<code>例如使用了未定义的变量、三等号、api语法错误、修改const变量等等</code></p>
+<ul>
+<li>命令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">检查 eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br><span class="line">自动修复 eslint --fix src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/standard/eslint-config-standard" target="_blank" rel="noopener">eslint-config-standard</a>配置包扩展社区中流行的最佳实践的风格指南。</li>
+<li><a href="https://github.com/prettier/eslint-config-prettier" target="_blank" rel="noopener"><code>eslint-config-prettier</code></a> 关闭 Eslint 中与 Prettier 冲突的选项，只会关闭冲突的选项，不会启用Prettier的规则</li>
+<li><a href="https://github.com/prettier/eslint-plugin-prettier" target="_blank" rel="noopener"><code>eslint-plugin-prettier</code></a> 先使用Prettier对代码进行格式化，再并对不一致的地方进行标记</li>
+</ul>
+<p><strong><a href="https://stylelint.docschina.org/user-guide/rules/" target="_blank" rel="noopener">stylelint</a>：</strong> stylelint 是一个强大和现代的 CSS 审查工具，有助于开发者推行统一的代码规范，避免样式错误<code>stylelint拥有超过150条的规则，包括捕捉错误、最佳实践、控制可以使用的语言特性和强制代码风格规范。</code>。stylelint 由 PostCSS 提供技术支持，所以它也可以理解 PostCSS 解析的语法，比如 SCSS。<br>命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;</span><br></pre></td></tr></table></figure>
+<p>插件：</p>
+<ul>
+<li><a href="https://github.com/prettier/stylelint-config-prettier" target="_blank" rel="noopener"><code>stylelint-config-prettier</code></a>：禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
+<li><a href="https://github.com/AndyOGo/stylelint-declaration-strict-value" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>：官网提供的 css 标准</li>
+<li><a href="https://github.com/sh-waqar/stylelint-declaration-use-variable" target="_blank" rel="noopener"><code>stylelint-prettier</code></a>：基于 prettier 代码风格的 stylelint 规则</li>
+<li><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</li>
+</ul>
+<p><strong><a href="http://editorconfig.org" target="_blank" rel="noopener">EditorConfig</a>：</strong> 生成 .editorconfig 配置文件，规定当前编辑器的一些设定。抹平编辑器的差异。<code>格式化的生效策略：自定义配置&gt;editorconfig&gt;编辑器的setting</code></p>
+<p><strong><a href="https://github.com/typicode/husky" target="_blank" rel="noopener">husky</a> ：</strong> git 操作的钩子。</p>
+<p><strong><a href="https://github.com/okonet/lint-staged" target="_blank" rel="noopener">lint-staged</a> ：</strong> 只对 git 中staged（变更）的文件进行代码格式的校验和代码质量的校验操作。而不是项目中所有的文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;报错 在lint-staged命令中移除git add 命令本身自带git add</span><br><span class="line"></span><br><span class="line">‼ Some of your tasks use &#96;git add&#96; command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.</span><br></pre></td></tr></table></figure>
+<h1 id="ESLint和Prettier区别"><a href="#ESLint和Prettier区别" class="headerlink" title="ESLint和Prettier区别"></a>ESLint和Prettier区别</h1><p>1、ESLint 主要包含代码格式的校验，代码质量的校验，ESLint 在出<code>--fix</code>自动修复功能前只会提示一些warning和error，改起来非常复杂。<br>2、Prettier 只是格式化代码 。<br>*<em>tips：如果你觉得的eslint自带的修复功能就足够的话可以不加Prettier *</em></p>
+<h1 id="ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量"><a href="#ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量" class="headerlink" title="ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量"></a>ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量</h1><blockquote>
+<p>通过pre-commit阶段增量校验的模式，尽量避免对老旧代码的影响；稳健地逐步完善老项目的强制校验和格式化提高前端项目质量、统一项目代码风格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add husky lint-staged prettier eslint-plugin-prettier eslint-config-prettier stylelint stylelint-config-prettier stylelint-config-standard stylelint-prettier -D</span><br></pre></td></tr></table></figure>
+<p>我在项目中的配置可能不是很完美，有问题可以提出来<br>.eslintrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;amd&quot;: true,</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;node&quot;: true,</span><br><span class="line">        &quot;es6&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;react-app&quot;,</span><br><span class="line">        &quot;plugin:prettier&#x2F;recommended&quot;,</span><br><span class="line">        &quot;prettier&#x2F;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;prettier&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;prettier&#x2F;prettier&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.stylelintrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-recommended&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;stylelint-prettier&#x2F;recommended&quot;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;:  &#123;</span><br><span class="line">    &quot;selector-pseudo-class-no-unknown&quot;: [true, &#123;</span><br><span class="line">      ignorePseudoClasses: [&quot;global&quot;]</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;length-zero-no-unit&quot;: null,</span><br><span class="line">    &quot;indentation&quot;: 2,</span><br><span class="line">    &quot;max-empty-lines&quot;: 1,</span><br><span class="line">    &quot;block-no-empty&quot;: true,</span><br><span class="line">    &quot;block-opening-brace-newline-after&quot;: &quot;always-multi-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-after&quot;: &quot;always-single-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-before&quot;: &quot;always&quot;,</span><br><span class="line">    &quot;block-closing-brace-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-block-no-duplicate-properties&quot;: true,</span><br><span class="line">    &quot;declaration-block-no-redundant-longhand-properties&quot;: true,</span><br><span class="line">    &quot;shorthand-property-no-redundant-values&quot;: true,</span><br><span class="line">    &quot;no-empty-source&quot;: true,</span><br><span class="line">    &quot;no-eol-whitespace&quot;: true,</span><br><span class="line">    &quot;no-extra-semicolons&quot;: true,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: true,</span><br><span class="line">    &quot;no-missing-end-of-source-newline&quot;: true,</span><br><span class="line">    &quot;at-rule-no-unknown&quot;: null,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.editorconfig</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">indent_size &#x3D; 2 # 用两个空格代替制表符；</span><br><span class="line">end_of_line &#x3D; lf # win用cr lf，linux&#x2F;unix用lf，mac用cr。统一window和mac</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">trim_trailing_whitespace &#x3D; true# 在保存时删除尾部的空白字符；</span><br><span class="line">insert_final_newline &#x3D; true# 在文件结尾添加一个空白行；</span><br><span class="line">max_line_length &#x3D; 160# 每行代码最大宽度 160</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace &#x3D; false</span><br></pre></td></tr></table></figure>
+<p>package.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;xxx_front&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;antd-mobile&quot;: &quot;^2.3.1&quot;,</span><br><span class="line">    &quot;axios&quot;: &quot;^0.19.0&quot;,</span><br><span class="line">    &quot;babel-plugin-import&quot;: &quot;^1.12.2&quot;,</span><br><span class="line">    &quot;babel-plugin-syntax-dynamic-import&quot;: &quot;^6.18.0&quot;,</span><br><span class="line">    &quot;chart.js&quot;: &quot;^2.9.4&quot;,</span><br><span class="line">    &quot;copy-to-clipboard&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">    &quot;crypto-js&quot;: &quot;^3.1.9-1&quot;,</span><br><span class="line">    &quot;customize-cra&quot;: &quot;^0.8.0&quot;,</span><br><span class="line">    &quot;http-proxy-middleware&quot;: &quot;^0.20.0&quot;,</span><br><span class="line">    &quot;js-cookie&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;less&quot;: &quot;^3.10.3&quot;,</span><br><span class="line">    &quot;less-loader&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;node-sass&quot;: &quot;^4.14.1&quot;,</span><br><span class="line">    &quot;qs&quot;: &quot;^6.9.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-app-rewired&quot;: &quot;^2.1.4&quot;,</span><br><span class="line">    &quot;react-document-title&quot;: &quot;^2.0.3&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-loadable&quot;: &quot;^5.5.0&quot;,</span><br><span class="line">    &quot;react-redux&quot;: &quot;^7.1.1&quot;,</span><br><span class="line">    &quot;react-router&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-router-dom&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-scripts&quot;: &quot;3.2.0&quot;,</span><br><span class="line">    &quot;react-sticky&quot;: &quot;^6.0.3&quot;,</span><br><span class="line">    &quot;redux&quot;: &quot;^4.0.4&quot;,</span><br><span class="line">    &quot;redux-thunk&quot;: &quot;^2.3.0&quot;,</span><br><span class="line">    &quot;url-parse&quot;: &quot;^1.4.7&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;4.41.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot; react-app-rewired start&quot;,</span><br><span class="line">    &quot;build:analyze&quot;: &quot;set REACT_APP_BUILD_ENV&#x3D;production &amp;&amp; react-app-rewired build  --analyze&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;fix&quot;: &quot;prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;lint:style&quot;: &quot;stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;css,scss&#125;&quot;: [</span><br><span class="line">      &quot;stylelint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;: [</span><br><span class="line">      &quot;eslint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;browserslist&quot;: &#123;</span><br><span class="line">    &quot;production&quot;: [</span><br><span class="line">      &quot;&gt; 1%&quot;,</span><br><span class="line">      &quot;last 5 versions&quot;,</span><br><span class="line">      &quot;IOS &gt; 8&quot;,</span><br><span class="line">      &quot;Android &gt; 4.6&quot;,</span><br><span class="line">      &quot;UCAndroid &gt;&#x3D; 9&quot;,</span><br><span class="line">      &quot;QQAndroid &gt;&#x3D; 8.2&quot;,</span><br><span class="line">      &quot;not dead&quot;,</span><br><span class="line">      &quot;not ie &lt;&#x3D; 11&quot;,</span><br><span class="line">      &quot;not op_mini all&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;development&quot;: [</span><br><span class="line">      &quot;last 1 chrome version&quot;,</span><br><span class="line">      &quot;last 1 firefox version&quot;,</span><br><span class="line">      &quot;last 1 safari version&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;eslint-config-prettier&quot;: &quot;^7.2.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-prettier&quot;: &quot;^3.3.1&quot;,</span><br><span class="line">    &quot;husky&quot;: &quot;^4.3.8&quot;,</span><br><span class="line">    &quot;lint-staged&quot;: &quot;^10.5.3&quot;,</span><br><span class="line">    &quot;prettier&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;stylelint&quot;: &quot;^13.9.0&quot;,</span><br><span class="line">    &quot;stylelint-config-prettier&quot;: &quot;^8.0.2&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;: &quot;^20.0.0&quot;,</span><br><span class="line">    &quot;stylelint-prettier&quot;: &quot;^1.1.2&quot;,</span><br><span class="line">    &quot;webpack-bundle-analyzer&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.10&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提交commit之后</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验成功"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-591cb2019cd36e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验失败"></p>
+<h3 id="vscode插件推荐。"><a href="#vscode插件推荐。" class="headerlink" title="vscode插件推荐。"></a>vscode插件推荐。</h3><p>EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。<br>ESLint：代码质量检查。<br>styleLint：css代码质量检查。<br>Prettier：格式化代码<br>Code Spell Checker：单词拼写检查。<br>Indent-Rainbow：彩虹缩进，缩进不规范时会标红提示。</p>
+<p>vscode 的 setting.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;workbench.colorTheme&quot;: &quot;Dracula Soft&quot;,</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,&#x2F;&#x2F;保存时使用VSCode 自身格式化程序格式化</span><br><span class="line">  &quot;javascript.format.enable&quot;: false,&#x2F;&#x2F;关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次，解决editor.formatOnSave的兼容问题</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For ESLint</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For TSLint</span><br><span class="line">    &quot;source.fixAll.tslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For Stylelint</span><br><span class="line">    &quot;source.fixAll.stylelint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslint.probe&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;typescript&quot;,</span><br><span class="line">    &quot;typescriptreact&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frontend</category>
+        <category>team-norm 团队规范</category>
+        <category>code-norm 代码规范</category>
+      </categories>
+      <tags>
+        <tag>Prettier</tag>
+        <tag>husky</tag>
+        <tag>stylelint</tag>
+        <tag>lint-staged</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>prettier</title>
+    <url>/2021/02/03/prettier/</url>
+    <content><![CDATA[<blockquote>
+<p>prettier是一款强势武断的代码格式化工具，它几乎移除了编辑器本身所有的对代码的操作格式，然后重新显示。就是为了让所有用这套规则的人有完全相同的代码。在团队协作开发的时候更是体现出它的优势。与eslint，tslint等各种格式化工具不同的是，prettier只关心代码格式化，而不关心语法问题。</p>
+</blockquote>
+<h1 id="编辑器使用prettier"><a href="#编辑器使用prettier" class="headerlink" title="编辑器使用prettier"></a>编辑器使用prettier</h1><h1 id="脚本使用prettier"><a href="#脚本使用prettier" class="headerlink" title="脚本使用prettier"></a>脚本使用prettier</h1><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add prettier -D</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">prettier--write &lt;文件路径+文件名&gt;</span><br><span class="line">例如</span><br><span class="line">prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义配置规则方式</p>
+<ul>
+<li>.prettierrc 文件，支持yaml和json格式；或者加上 .yaml/.yml/.json 后缀名<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;printWidth&quot;: 160,  &#x2F;&#x2F;超过160字符换行       </span><br><span class="line">    &quot;semi&quot;: false,                    </span><br><span class="line">    &quot;singleQuote&quot;: true,             </span><br><span class="line">    &quot;trailingComma&quot;: &quot;es5&quot;,          </span><br><span class="line">    &quot;bracketSpacing&quot;: true,          </span><br><span class="line">    &quot;jsxBracketSameLine&quot;: false,     </span><br><span class="line">    &quot;arrowParens&quot;: &quot;avoid&quot;,          </span><br><span class="line">    &quot;requirePragma&quot;: false,            </span><br><span class="line">    &quot;useTabs&quot;: false,</span><br><span class="line">    &quot;htmlWhitespaceSensitivity&quot;: &quot;css&quot;&#x2F;&#x2F;内联标签与块级标签格式化有区别</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>.prettierrc.toml 文件（当为toml格式的时候，后缀是必须的）</li>
+<li>prettier.config.js 或者 .prettierrc.js，需要返回一个对象</li>
+<li>package.json文件中加上”prettier”属性</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、.prettierrc 的优先级高于在vscode全局配置settings.json中格式化配置的优先级<br>2、 编辑器配置适合个人开发、脚本配置适合团队开发</p>
+]]></content>
+      <categories>
+        <category>Frontend</category>
+        <category>Prettier</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JavaScript、vue中控制滚动条位置（以及安卓手机中遇到的坑）</title>
+    <url>/2020/04/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1/</url>
+    <content><![CDATA[<p>最近做了一个需求的，其中有一个效果是点击按钮将表单滚动到可视区域，这本来是很常见的效果。我们有很多种方案去实现。<br><strong>一、 scrollTo、scroll or scrollBy</strong><br><img src="http://upload-images.jianshu.io/upload_images/2790249-202b5bc8de7957ea.png" alt="image.png"><br>这显示不支持safari on ios ，但是我的手机版本是13.3.1的safari可以运行没有问题，但是安卓手机完全无效果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    left: 100,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollTo(&#123;</span><br><span class="line">    top: 1000,</span><br><span class="line">    behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>vue中可以根据ref来操作dom</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.$refs.xxx.$el.scrollTo(&#123;</span><br><span class="line">       top: 1000,</span><br><span class="line">       behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.scroll(&#123;</span><br><span class="line">  top: 100,</span><br><span class="line">  left: 100,</span><br><span class="line">  behavior: &#39;smooth&#39;</span><br><span class="line">&#125;);</span><br><span class="line">document.body.scrollBy(0, 1000);</span><br></pre></td></tr></table></figure>
+<p><strong>二、scrollTop 获取当前页面的滚动条纵坐标位置去改变其值</strong></p>
+<blockquote>
+<ul>
+<li>对于没有doctype声明的页面里可以使用 document.body.scrollTop 来获取 scrollTop高度 ；</li>
+<li>对于有doctype声明的页面则可以使用 document.documentElement.scrollTop； Safari</li>
+<li>safari 比较特别，有自己获取scrollTop的函数 ： window.pageYOffset ； Firefox</li>
+<li>火狐等等相对标准些的浏览器就省心多了，直接用 document.documentElement.scrollTop ；</li>
+</ul>
+</blockquote>
+<p>浏览器和ios都可以生效，但是安卓手机手机完全无效果，测试了一下，安卓手机设置完scrollTop再去console出scrollTop的值，发现并没有赋值成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.body.scrollTop &#x3D; document.documentElement.scrollTop &#x3D; window.pageYOffset &#x3D; 1000;</span><br></pre></td></tr></table></figure>
+<p><strong>三、scrollIntoView 与 scrollIntoViewIfNeeded API</strong> （安卓、ios手机支持，浏览器测试结果看来也没问题）<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法让当前的元素滚动到浏览器窗口的可视区域内。<code>这是一个实验中的功能</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-59550f82ab6e38df.png" alt="image.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">element.scrollIntoView(true);</span><br><span class="line">或者</span><br><span class="line">element.scrollIntoView(&#123;behavior: &quot;instant&quot;, block: &quot;start&quot;, inline: &quot;nearest&quot;&#125;);</span><br><span class="line">vue中</span><br><span class="line">this.$refs.xxxx.$el.scrollIntoView();</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoViewIfNeeded" target="_blank" rel="noopener">Element. scrollIntoViewIfNeeded()</a><br> 如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动。 此方法是标准的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener">Element.scrollIntoView()</a>方法的专有变体。<code>非标准
+该特性是非标准的，请尽量不要在生产环境中使用它！</code><br><img src="http://upload-images.jianshu.io/upload_images/2790249-2da34c6761ebc8d1.png" alt="image.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">element. scrollIntoViewIfNeeded(true);</span><br></pre></td></tr></table></figure>
+<p>vue中根据ref来操作dom</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.$refs.xxxx.$el. scrollIntoViewIfNeeded();</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/pageYOffset" target="_blank" rel="noopener">Window.pageYOffset</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2790249-781c331bdbd5cb9a.png" alt="image.png"></p>
+<p><strong>监听，取消监听滚动事件</strong><br><code>注意scroll监听的匿名事件是不可以取消监听事件的，我想要的是页面中所有需要曝光的地方曝光结束后，取消监听事件</code><br>可以参照<a href="https://sailormillet.github.io/2019/12/31/%E5%9F%8B%E7%82%B9%E4%B9%8B%E7%9C%BC%E7%90%83%E6%9B%9D%E5%85%89/">埋点之眼球曝光</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">window.removeEventListener(&#39;scroll&#39;, this.handleScroll);</span><br><span class="line">const handleScroll &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    console.log(111111)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Frontend</category>
+        <category>H5</category>
+      </categories>
+      <tags>
+        <tag>JavaScript、vue、android</tag>
       </tags>
   </entry>
 </search>
