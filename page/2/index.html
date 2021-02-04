@@ -300,194 +300,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2021/02/03/prettier/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/03/prettier/" itemprop="url">代码格式化工具prettier</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T16:38:01+08:00">
-                2021-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">Frontend前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/Prettier/" itemprop="url" rel="index">
-                    <span itemprop="name">Prettier</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/02/03/prettier/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2021/02/03/prettier/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2021/02/03/prettier/" class="leancloud_visitors" data-flag-title="代码格式化工具prettier">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>prettier是一款强势武断的代码格式化工具，它几乎移除了编辑器本身所有的对代码的操作格式，然后重新显示。就是为了让所有用这套规则的人有完全相同的代码。在团队协作开发的时候更是体现出它的优势。与eslint，tslint等各种格式化工具不同的是，prettier只关心代码格式化，而不关心语法问题。</p>
-</blockquote>
-<h1 id="编辑器使用prettier"><a href="#编辑器使用prettier" class="headerlink" title="编辑器使用prettier"></a>编辑器使用prettier</h1><h1 id="脚本使用prettier"><a href="#脚本使用prettier" class="headerlink" title="脚本使用prettier"></a>脚本使用prettier</h1><p>安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prettier -D</span><br></pre></td></tr></table></figure>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prettier--write &lt;文件路径+文件名&gt;</span><br><span class="line">例如</span><br><span class="line">prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure>
-<p>自定义配置规则方式</p>
-<ul>
-<li>.prettierrc 文件，支持yaml和json格式；或者加上 .yaml/.yml/.json 后缀名<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;printWidth&quot;: 160,  &#x2F;&#x2F;超过160字符换行       </span><br><span class="line">    &quot;semi&quot;: false,                    </span><br><span class="line">    &quot;singleQuote&quot;: true,             </span><br><span class="line">    &quot;trailingComma&quot;: &quot;es5&quot;,          </span><br><span class="line">    &quot;bracketSpacing&quot;: true,          </span><br><span class="line">    &quot;jsxBracketSameLine&quot;: false,     </span><br><span class="line">    &quot;arrowParens&quot;: &quot;avoid&quot;,          </span><br><span class="line">    &quot;requirePragma&quot;: false,            </span><br><span class="line">    &quot;useTabs&quot;: false,</span><br><span class="line">    &quot;htmlWhitespaceSensitivity&quot;: &quot;css&quot;&#x2F;&#x2F;内联标签与块级标签格式化有区别</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>.prettierrc.toml 文件（当为toml格式的时候，后缀是必须的）</li>
-<li>prettier.config.js 或者 .prettierrc.js，需要返回一个对象</li>
-<li>package.json文件中加上”prettier”属性</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、.prettierrc 的优先级高于在vscode全局配置settings.json中格式化配置的优先级<br>2、 编辑器配置适合个人开发、脚本配置适合团队开发</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2299,6 +2111,189 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="url">如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:10:50+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">开发机、虚拟机</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" class="leancloud_visitors" data-flag-title="如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>快速配置开发机（虚拟机）登录操作<br>vim 修改当前文件夹下的config文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh&#x2F;config </span><br><span class="line">或</span><br><span class="line">vim ~&#x2F;.ssh&#x2F;config</span><br></pre></td></tr></table></figure>
+<p>查看.ssh目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;.ssh</span><br><span class="line">或者</span><br><span class="line">cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+<p>然后将ssh放进去，就可以不用每次输入用户名密码了<br>.ssh/config文件如下配置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##测试环境跳板机##</span><br><span class="line">Host test</span><br><span class="line">HostName 10.1.xxx.xxx</span><br><span class="line">User 用户名</span><br><span class="line">Port 22</span><br></pre></td></tr></table></figure>
+<p>保存后打开terminal 执行<code>ssh test</code>则登陆test的跳板机（虚拟机）上面了</p>
+<p>如果没权限，输入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+<p>当然还有更加高效的工具就是secureCRT 可以记录密码等可视化便捷操作<br><a href="https://www.jianshu.com/p/637d154d0458" target="_blank" rel="noopener">windows 安装操作secureCRT</a><br>mac 安装操作secureCRT 待补充，还可以做一些配色操作让界面看起来非常舒适</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2364,7 +2359,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

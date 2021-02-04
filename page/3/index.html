@@ -300,189 +300,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Amy Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="url">如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-26T12:10:50+08:00">
-                2020-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">开发机、虚拟机</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9C%BA%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA/ssh/" itemprop="url" rel="index">
-                    <span itemprop="name">ssh</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2020/06/26/%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84ssh%EF%BC%8C%E8%B7%B3%E6%9D%BF%E6%9C%BA%E9%85%8D%E7%BD%AEssh%20%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%AE%80%E5%8C%96%E8%BE%93%E5%85%A5/" class="leancloud_visitors" data-flag-title="如何配置虚拟机的ssh，跳板机配置ssh 文件可以简化输入">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>快速配置开发机（虚拟机）登录操作<br>vim 修改当前文件夹下的config文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh&#x2F;config </span><br><span class="line">或</span><br><span class="line">vim ~&#x2F;.ssh&#x2F;config</span><br></pre></td></tr></table></figure>
-<p>查看.ssh目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;.ssh</span><br><span class="line">或者</span><br><span class="line">cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
-<p>然后将ssh放进去，就可以不用每次输入用户名密码了<br>.ssh/config文件如下配置 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##测试环境跳板机##</span><br><span class="line">Host test</span><br><span class="line">HostName 10.1.xxx.xxx</span><br><span class="line">User 用户名</span><br><span class="line">Port 22</span><br></pre></td></tr></table></figure>
-<p>保存后打开terminal 执行<code>ssh test</code>则登陆test的跳板机（虚拟机）上面了</p>
-<p>如果没权限，输入</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
-<p>当然还有更加高效的工具就是secureCRT 可以记录密码等可视化便捷操作<br><a href="https://www.jianshu.com/p/637d154d0458" target="_blank" rel="noopener">windows 安装操作secureCRT</a><br>mac 安装操作secureCRT 待补充，还可以做一些配色操作让界面看起来非常舒适</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/06/26/H5%E5%94%A4%E8%B5%B7App/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -548,8 +365,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/H5wakeUpAPP/" itemprop="url" rel="index">
-                    <span itemprop="name">H5wakeUpAPP</span>
+                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/H5WakeUpAPP/" itemprop="url" rel="index">
+                    <span itemprop="name">H5WakeUpAPP</span>
                   </a>
                 </span>
 
@@ -1194,7 +1011,18 @@ IOS9  可以使用 universal Link</code></p>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/H5/" itemprop="url" rel="index">
+                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">Frontend前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend%E5%89%8D%E7%AB%AF/H5/" itemprop="url" rel="index">
                     <span itemprop="name">H5</span>
                   </a>
                 </span>
@@ -2179,6 +2007,216 @@ IOS9  可以使用 universal Link</code></p>
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sailormillet.github.io/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Amy Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.jianshu.io/users/upload_avatars/2790249/169a94f81ed7.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" itemprop="url">mac 安装nginx并配置SSL实现Https访问</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T22:29:44+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://sailormillet.github.io/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/" class="leancloud_visitors" data-flag-title="mac 安装nginx并配置SSL实现Https访问">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br><span class="line">brew install nginx 安装nginx</span><br><span class="line">nginx -v 显示版本号</span><br></pre></td></tr></table></figure>
+<p>找到Nginx文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
+<p>启动nginx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx </span><br><span class="line">or </span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<p>关闭nginx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
+<p>重启nginx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>检查nginx配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -t nginx.conf</span><br><span class="line">or</span><br><span class="line">sudo nginx -t nginx.conf</span><br></pre></td></tr></table></figure>
+<p>查日志</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/<span class="keyword">var</span>/log/nginx</span><br><span class="line">tail -f access.log</span><br><span class="line">tail -f error.log</span><br></pre></td></tr></table></figure>
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>1、找到Nginx文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
+<p>2、openssl生成自签名证书</p>
+<p>创建服务器私钥，命令会让你输入一个口令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.key <span class="number">1024</span></span><br></pre></td></tr></table></figure>
+<p>根据私钥生成证书申请,创建签名请求的证书（CSR）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -<span class="keyword">new</span> -key server.key -out server.csr</span><br></pre></td></tr></table></figure>
+<p>下面的选项至少写一个，才可以生成证书成功</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Country Name (<span class="number">2</span> letter code) []:ch</span><br><span class="line">State or Province Name (full name) []:</span><br><span class="line">Locality Name (eg, city) []:</span><br><span class="line">Organization Name (eg, company) []:</span><br><span class="line">Organizational Unit Name (eg, section) []:</span><br><span class="line">Common Name (eg, fully qualified host name) []:</span><br><span class="line">Email Address []:</span><br></pre></td></tr></table></figure>
+
+<p>在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cp server.key server.key.org</span><br><span class="line"></span><br><span class="line">$ openssl rsa -<span class="keyword">in</span> server.key.org -out server.key</span><br></pre></td></tr></table></figure>
+
+<p>最后标记证书使用上述私钥和CSR</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -out server.crt -signkey server.key -days <span class="number">3650</span></span><br></pre></td></tr></table></figure>
+
+<p>4、配置nginx：修改/usr/local/etc/nginx/nginx.conf 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">root  html（当前静态文件的路径）;</span><br><span class="line"></span><br><span class="line">index  index.html index.htm;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不过最好不要把配置写到/usr/local/etc/nginx/nginx.conf里面,而是写在当前目录下面的servers的文件夹下，创建不同的config更加清晰：<br>例如：servers下建立一个millet.conf<br>在millet.conf里面配置</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">443</span> ssl;</span><br><span class="line">        server_name  <span class="keyword">static</span>.millet.com;</span><br><span class="line">         #server.crt和server.key都在nginx下面</span><br><span class="line">        ssl_certificate      server.crt;</span><br><span class="line">        ssl_certificate_key  server.key;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   （当前静态文件的路径）;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ihost</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="keyword">static</span>.millet.com</span><br></pre></td></tr></table></figure>
+<h4 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br><span class="line">或者</span><br><span class="line">sudo brew services stop nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line">或者</span><br><span class="line">sudo brew services restart nginx</span><br></pre></td></tr></table></figure>
+<h4 id="安装常见问题："><a href="#安装常见问题：" class="headerlink" title="安装常见问题："></a>安装常见问题：</h4><p>安装Nginx输入命令brew install nginx报错</p>
+<p>You have not agreed to the Xcode license. Please resolve this by running:</p>
+<p>sudo xcodebuild -license</p>
+<p>nginx设置本地跨域</p>
+<p>在mac 终端运行命令的时候会被提示没有同意xcode 证书 ，这个时候需要在Terminal中同意license</p>
+<p>此时 输入命令 sudo xcodebuild -license 空格到最后 输入agree 就可以了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2244,7 +2282,7 @@ IOS9  可以使用 universal Link</code></p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
