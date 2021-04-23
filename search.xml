@@ -245,6 +245,26 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
+    <title>Rollup.js | 解决打包react项目报错</title>
+    <url>/2021/02/03/RollupJs%20%E8%A7%A3%E5%86%B3%E6%89%93%E5%8C%85react%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<p>报错信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">react.development.js:12 Uncaught ReferenceError: process is not defined</span><br><span class="line">    at react.development.js:12</span><br><span class="line">    at createCommonjsModule (bundle.js:6)</span><br><span class="line">    at react.production.min.js:23</span><br><span class="line">    at index.js:10</span><br></pre></td></tr></table></figure>
+<p>process对象是nodejs的环境变量，浏览器端是没有的。<br>解决办法，在打包后的bundle.js里var一个process对象，例如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是每次重新构建bundle.js后，又要重新添加，所以可以在rollup.config.js里配置，</p>
+<p>例如： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import resolve from &#39;rollup-plugin-node-resolve&#39;</span><br><span class="line">import commonjs from &#39;rollup-plugin-commonjs&#39;</span><br><span class="line"> </span><br><span class="line">const Global &#x3D; &#96;var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#96;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">  output: &#123;</span><br><span class="line">     name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    banner: Global&#x2F;&#x2F;output.banner属性的作用是在打包后的文件顶部添加值。</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [resolve(), commonjs()]</span><br></pre></td></tr></table></figure>
+<p>或者rollup.config.js配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import replace from &quot;@rollup&#x2F;plugin-replace&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">    output: &#123;</span><br><span class="line">        name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        resolve(), &#x2F;&#x2F; tells Rollup how to find date-fns in node_modules</span><br><span class="line"></span><br><span class="line">        babel(&#123;</span><br><span class="line">            babelHelpers: &quot;bundled&quot;,</span><br><span class="line">            exclude: &quot;**&#x2F;node_modules&#x2F;**&quot;,</span><br><span class="line">        &#125;),</span><br><span class="line">        commonjs(), &#x2F;&#x2F; converts date-fns to ES modules</span><br><span class="line">         replace(&#123;</span><br><span class="line">             &quot;process.env.NODE_ENV&quot;: JSON.stringify(&quot;development&quot;),</span><br><span class="line">         &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>RollupJS</category>
+      </categories>
+      <tags>
+        <tag>RollupJS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Search Engine Optimization</title>
     <url>/2019/12/19/Search-Engine-Optimization/</url>
     <content><![CDATA[<blockquote>
@@ -353,26 +373,6 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>Rollup.js | 解决打包react项目报错</title>
-    <url>/2021/02/03/RollupJs%20%E8%A7%A3%E5%86%B3%E6%89%93%E5%8C%85react%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<p>报错信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">react.development.js:12 Uncaught ReferenceError: process is not defined</span><br><span class="line">    at react.development.js:12</span><br><span class="line">    at createCommonjsModule (bundle.js:6)</span><br><span class="line">    at react.production.min.js:23</span><br><span class="line">    at index.js:10</span><br></pre></td></tr></table></figure>
-<p>process对象是nodejs的环境变量，浏览器端是没有的。<br>解决办法，在打包后的bundle.js里var一个process对象，例如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是每次重新构建bundle.js后，又要重新添加，所以可以在rollup.config.js里配置，</p>
-<p>例如： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import resolve from &#39;rollup-plugin-node-resolve&#39;</span><br><span class="line">import commonjs from &#39;rollup-plugin-commonjs&#39;</span><br><span class="line"> </span><br><span class="line">const Global &#x3D; &#96;var process &#x3D; &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    NODE_ENV: &#39;production&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;&#96;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">  output: &#123;</span><br><span class="line">     name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    banner: Global&#x2F;&#x2F;output.banner属性的作用是在打包后的文件顶部添加值。</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [resolve(), commonjs()]</span><br></pre></td></tr></table></figure>
-<p>或者rollup.config.js配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import replace from &quot;@rollup&#x2F;plugin-replace&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">    input: pathResolve(&#39;src&#x2F;index.js&#39;),</span><br><span class="line">    output: &#123;</span><br><span class="line">        name: &#39;bundle&#39;,</span><br><span class="line">        file: pathResolve(&quot;dist&#x2F;js&#x2F;bundle.js&quot;),</span><br><span class="line">        format: &#39;iife&#39;,&#x2F;&#x2F;immediately-invoked function expression — suitable for &lt;script&gt; tags</span><br><span class="line">        sourcemap: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        resolve(), &#x2F;&#x2F; tells Rollup how to find date-fns in node_modules</span><br><span class="line"></span><br><span class="line">        babel(&#123;</span><br><span class="line">            babelHelpers: &quot;bundled&quot;,</span><br><span class="line">            exclude: &quot;**&#x2F;node_modules&#x2F;**&quot;,</span><br><span class="line">        &#125;),</span><br><span class="line">        commonjs(), &#x2F;&#x2F; converts date-fns to ES modules</span><br><span class="line">         replace(&#123;</span><br><span class="line">             &quot;process.env.NODE_ENV&quot;: JSON.stringify(&quot;development&quot;),</span><br><span class="line">         &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Frontend前端</category>
-        <category>RollupJS</category>
-      </categories>
-      <tags>
-        <tag>RollupJS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git clone https 和 SSH 的区别</title>
     <url>/2020/06/26/git%20clone%20https%20%E5%92%8C%20SSH%20%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<hr>
@@ -475,65 +475,6 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>mac 安装nginx并配置SSL实现Https访问</title>
-    <url>/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/</url>
-    <content><![CDATA[<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br><span class="line">brew install nginx 安装nginx</span><br><span class="line">nginx -v 显示版本号</span><br></pre></td></tr></table></figure>
-<p>找到Nginx文件夹</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
-<p>启动nginx</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx </span><br><span class="line">or </span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
-<p>关闭nginx</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
-<p>重启nginx</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>检查nginx配置</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">nginx -t nginx.conf</span><br><span class="line">or</span><br><span class="line">sudo nginx -t nginx.conf</span><br></pre></td></tr></table></figure>
-<p>查日志</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/<span class="keyword">var</span>/log/nginx</span><br><span class="line">tail -f access.log</span><br><span class="line">tail -f error.log</span><br></pre></td></tr></table></figure>
-<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>1、找到Nginx文件夹</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
-<p>2、openssl生成自签名证书</p>
-<p>创建服务器私钥，命令会让你输入一个口令</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl genrsa -out server.key <span class="number">1024</span></span><br></pre></td></tr></table></figure>
-<p>根据私钥生成证书申请,创建签名请求的证书（CSR）</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl req -<span class="keyword">new</span> -key server.key -out server.csr</span><br></pre></td></tr></table></figure>
-<p>下面的选项至少写一个，才可以生成证书成功</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Country Name (<span class="number">2</span> letter code) []:ch</span><br><span class="line">State or Province Name (full name) []:</span><br><span class="line">Locality Name (eg, city) []:</span><br><span class="line">Organization Name (eg, company) []:</span><br><span class="line">Organizational Unit Name (eg, section) []:</span><br><span class="line">Common Name (eg, fully qualified host name) []:</span><br><span class="line">Email Address []:</span><br></pre></td></tr></table></figure>
-
-<p>在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$ cp server.key server.key.org</span><br><span class="line"></span><br><span class="line">$ openssl rsa -<span class="keyword">in</span> server.key.org -out server.key</span><br></pre></td></tr></table></figure>
-
-<p>最后标记证书使用上述私钥和CSR</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -out server.crt -signkey server.key -days <span class="number">3650</span></span><br></pre></td></tr></table></figure>
-
-<p>4、配置nginx：修改/usr/local/etc/nginx/nginx.conf 文件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">root  html（当前静态文件的路径）;</span><br><span class="line"></span><br><span class="line">index  index.html index.htm;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不过最好不要把配置写到/usr/local/etc/nginx/nginx.conf里面,而是写在当前目录下面的servers的文件夹下，创建不同的config更加清晰：<br>例如：servers下建立一个millet.conf<br>在millet.conf里面配置</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">443</span> ssl;</span><br><span class="line">        server_name  <span class="keyword">static</span>.millet.com;</span><br><span class="line">         #server.crt和server.key都在nginx下面</span><br><span class="line">        ssl_certificate      server.crt;</span><br><span class="line">        ssl_certificate_key  server.key;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   （当前静态文件的路径）;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>ihost</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="keyword">static</span>.millet.com</span><br></pre></td></tr></table></figure>
-<h4 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s stop</span><br><span class="line">或者</span><br><span class="line">sudo brew services stop nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line">或者</span><br><span class="line">sudo brew services restart nginx</span><br></pre></td></tr></table></figure>
-<h4 id="安装常见问题："><a href="#安装常见问题：" class="headerlink" title="安装常见问题："></a>安装常见问题：</h4><p>安装Nginx输入命令brew install nginx报错</p>
-<p>You have not agreed to the Xcode license. Please resolve this by running:</p>
-<p>sudo xcodebuild -license</p>
-<p>nginx设置本地跨域</p>
-<p>在mac 终端运行命令的时候会被提示没有同意xcode 证书 ，这个时候需要在Terminal中同意license</p>
-<p>此时 输入命令 sudo xcodebuild -license 空格到最后 输入agree 就可以了</p>
-]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git遇到的错误</title>
     <url>/2020/06/26/git%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/</url>
     <content><![CDATA[<h3 id="1、Could-not-open-file-git-rebase-merge-done-for-reading-No-such-file-or-directory"><a href="#1、Could-not-open-file-git-rebase-merge-done-for-reading-No-such-file-or-directory" class="headerlink" title="1、Could not open file .git/rebase-merge/done for reading: No such file or directory"></a>1、Could not open file .git/rebase-merge/done for reading: No such file or directory</h3><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
@@ -545,28 +486,6 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>moker-api</title>
-    <url>/2019/12/31/moker-api/</url>
-    <content><![CDATA[<p>mocker-api这里主要讲我在反向代理遇见的问题，其他的请看官方文档。<br>在我主要用来进行开发的公司的电脑上这样匹配接口就可以代理上，但是按照文档上的直接反向代理的写法却代理不成功</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/*'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
-<p>但是在我自己的电脑上接口竟然没匹配到!<br>开始我以为是新版本的webpack-dev-server的问题导致我本地服务起的有问题，虽然爆出了这个警告，但是我可以访问我的页面，只是mock反向代理不成功而已，直接mock假数据就可以成功<br><img src="http://upload-images.jianshu.io/upload_images/2790249-3542a5fc3e348ecd.png" alt="WeChat3ccbcd8e228a5aa0ae7d7538fb46be26.png"><br>最后发现按照文档上以正则匹配的形式去写才可以匹配上!</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = &#123;</span><br><span class="line">  <span class="comment">// Priority processing.</span></span><br><span class="line">  <span class="comment">// apiMocker(app, path, option)</span></span><br><span class="line">  <span class="comment">// This is the option parameter setting for apiMocker</span></span><br><span class="line">  _proxy: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/repos/(.*)'</span>: <span class="string">'https://api.github.com/'</span>,</span><br><span class="line">      <span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    changeHost: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// modify the http-proxy options</span></span><br><span class="line">    httpProxy: &#123;</span><br><span class="line">      options: &#123;</span><br><span class="line">        ignorePath: <span class="literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      listeners: &#123;</span><br><span class="line">        proxyReq: <span class="function"><span class="keyword">function</span> (<span class="params">proxyReq, req, res, options</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'proxyReq'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,    </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = proxy;</span><br></pre></td></tr></table></figure>
-<p>当我的node版本变为v10.6.0，发现我的代理需要/repos/(.<em>)变回为/repos/</em><br>mocker-api 的version为1.9.0我需要这样去匹配路由/repos/(.*)<br>mocker-api 的version不同版本是否为不同的匹配规则有待验证</p>
-]]></content>
-      <categories>
-        <category>Frontend前端</category>
-        <category>team-norm团队规范</category>
-        <category>mock-data-norm模拟数据规范</category>
-      </categories>
-      <tags>
-        <tag>frontend</tag>
-        <tag>moker-api</tag>
       </tags>
   </entry>
   <entry>
@@ -639,6 +558,87 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
+    <title>mac 安装nginx并配置SSL实现Https访问</title>
+    <url>/2020/03/03/mac-%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E9%85%8D%E7%BD%AESSL%E5%AE%9E%E7%8E%B0Https%E8%AE%BF%E9%97%AE/</url>
+    <content><![CDATA[<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br><span class="line">brew install nginx 安装nginx</span><br><span class="line">nginx -v 显示版本号</span><br></pre></td></tr></table></figure>
+<p>找到Nginx文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
+<p>启动nginx</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx </span><br><span class="line">or </span><br><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<p>关闭nginx</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
+<p>重启nginx</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>检查nginx配置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">nginx -t nginx.conf</span><br><span class="line">or</span><br><span class="line">sudo nginx -t nginx.conf</span><br></pre></td></tr></table></figure>
+<p>查日志</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/<span class="keyword">var</span>/log/nginx</span><br><span class="line">tail -f access.log</span><br><span class="line">tail -f error.log</span><br></pre></td></tr></table></figure>
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>1、找到Nginx文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
+<p>2、openssl生成自签名证书</p>
+<p>创建服务器私钥，命令会让你输入一个口令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl genrsa -out server.key <span class="number">1024</span></span><br></pre></td></tr></table></figure>
+<p>根据私钥生成证书申请,创建签名请求的证书（CSR）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl req -<span class="keyword">new</span> -key server.key -out server.csr</span><br></pre></td></tr></table></figure>
+<p>下面的选项至少写一个，才可以生成证书成功</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Country Name (<span class="number">2</span> letter code) []:ch</span><br><span class="line">State or Province Name (full name) []:</span><br><span class="line">Locality Name (eg, city) []:</span><br><span class="line">Organization Name (eg, company) []:</span><br><span class="line">Organizational Unit Name (eg, section) []:</span><br><span class="line">Common Name (eg, fully qualified host name) []:</span><br><span class="line">Email Address []:</span><br></pre></td></tr></table></figure>
+
+<p>在加载SSL支持的Nginx并使用上述私钥时除去必须的口令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$ cp server.key server.key.org</span><br><span class="line"></span><br><span class="line">$ openssl rsa -<span class="keyword">in</span> server.key.org -out server.key</span><br></pre></td></tr></table></figure>
+
+<p>最后标记证书使用上述私钥和CSR</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -out server.crt -signkey server.key -days <span class="number">3650</span></span><br></pre></td></tr></table></figure>
+
+<p>4、配置nginx：修改/usr/local/etc/nginx/nginx.conf 文件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">root  html（当前静态文件的路径）;</span><br><span class="line"></span><br><span class="line">index  index.html index.htm;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不过最好不要把配置写到/usr/local/etc/nginx/nginx.conf里面,而是写在当前目录下面的servers的文件夹下，创建不同的config更加清晰：<br>例如：servers下建立一个millet.conf<br>在millet.conf里面配置</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       <span class="number">443</span> ssl;</span><br><span class="line">        server_name  <span class="keyword">static</span>.millet.com;</span><br><span class="line">         #server.crt和server.key都在nginx下面</span><br><span class="line">        ssl_certificate      server.crt;</span><br><span class="line">        ssl_certificate_key  server.key;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   （当前静态文件的路径）;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ihost</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="keyword">static</span>.millet.com</span><br></pre></td></tr></table></figure>
+<h4 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br><span class="line">或者</span><br><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止nginx"><a href="#停止nginx" class="headerlink" title="停止nginx"></a>停止nginx</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s stop</span><br><span class="line">或者</span><br><span class="line">sudo brew services stop nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line">或者</span><br><span class="line">sudo brew services restart nginx</span><br></pre></td></tr></table></figure>
+<h4 id="安装常见问题："><a href="#安装常见问题：" class="headerlink" title="安装常见问题："></a>安装常见问题：</h4><p>安装Nginx输入命令brew install nginx报错</p>
+<p>You have not agreed to the Xcode license. Please resolve this by running:</p>
+<p>sudo xcodebuild -license</p>
+<p>nginx设置本地跨域</p>
+<p>在mac 终端运行命令的时候会被提示没有同意xcode 证书 ，这个时候需要在Terminal中同意license</p>
+<p>此时 输入命令 sudo xcodebuild -license 空格到最后 输入agree 就可以了</p>
+]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>moker-api</title>
+    <url>/2019/12/31/moker-api/</url>
+    <content><![CDATA[<p>mocker-api这里主要讲我在反向代理遇见的问题，其他的请看官方文档。<br>在我主要用来进行开发的公司的电脑上这样匹配接口就可以代理上，但是按照文档上的直接反向代理的写法却代理不成功</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/*'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
+<p>但是在我自己的电脑上接口竟然没匹配到!<br>开始我以为是新版本的webpack-dev-server的问题导致我本地服务起的有问题，虽然爆出了这个警告，但是我可以访问我的页面，只是mock反向代理不成功而已，直接mock假数据就可以成功<br><img src="http://upload-images.jianshu.io/upload_images/2790249-3542a5fc3e348ecd.png" alt="WeChat3ccbcd8e228a5aa0ae7d7538fb46be26.png"><br>最后发现按照文档上以正则匹配的形式去写才可以匹配上!</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = &#123;</span><br><span class="line">  <span class="comment">// Priority processing.</span></span><br><span class="line">  <span class="comment">// apiMocker(app, path, option)</span></span><br><span class="line">  <span class="comment">// This is the option parameter setting for apiMocker</span></span><br><span class="line">  _proxy: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/repos/(.*)'</span>: <span class="string">'https://api.github.com/'</span>,</span><br><span class="line">      <span class="string">'/:owner/:repo/raw/:ref/(.*)'</span>: <span class="string">'http://127.0.0.1:2018'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    changeHost: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// modify the http-proxy options</span></span><br><span class="line">    httpProxy: &#123;</span><br><span class="line">      options: &#123;</span><br><span class="line">        ignorePath: <span class="literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      listeners: &#123;</span><br><span class="line">        proxyReq: <span class="function"><span class="keyword">function</span> (<span class="params">proxyReq, req, res, options</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'proxyReq'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,    </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = proxy;</span><br></pre></td></tr></table></figure>
+<p>当我的node版本变为v10.6.0，发现我的代理需要/repos/(.<em>)变回为/repos/</em><br>mocker-api 的version为1.9.0我需要这样去匹配路由/repos/(.*)<br>mocker-api 的version不同版本是否为不同的匹配规则有待验证</p>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>team-norm团队规范</category>
+        <category>mock-data-norm模拟数据规范</category>
+      </categories>
+      <tags>
+        <tag>frontend</tag>
+        <tag>moker-api</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx配置允许指定域名下所有二级域名跨域请求</title>
     <url>/2020/03/03/nginx%E9%85%8D%E7%BD%AE%E5%85%81%E8%AE%B8%E6%8C%87%E5%AE%9A%E5%9F%9F%E5%90%8D%E4%B8%8B%E6%89%80%E6%9C%89%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/a2dffad06a5a" target="_blank" rel="noopener">跨域资源共享 CORS</a><br>核心原理是根据请求域名匹配是否是某域名的二级域名判断是否添加允许跨越头。<br>比如你想设置amy.com和kk.com下的子域名都可以跨域方案<br>需要在请求不能设置*<br>可以用nginx用$http_origin这样配置</p>
@@ -670,58 +670,6 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>seo优化</title>
-    <url>/2019/10/24/seo%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<blockquote>
-<p>搜索引擎对您的内容进行排名之前，它首先需要知道它的存在。通常是通过”爬虫抓取”页面的数据。这里主要从技术方面去叙述我所知道的优化</p>
-</blockquote>
-<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><ul>
-<li>title 设置</li>
-<li>keywords 设置</li>
-<li>description 设置</li>
-<li>meta属性设置</li>
-<li>页面H1-H3标签的使用</li>
-<li>图片设置Alt属性</li>
-<li>404页面设置、301重定向</li>
-<li>Robot.txt</li>
-<li>删除页面无用代码，css、js优化</li>
-</ul>
-<h3 id="网站结构"><a href="#网站结构" class="headerlink" title="网站结构"></a>网站结构</h3><ul>
-<li>扁平化网站架构：扁平化的网站结构，意味着用户（和搜索引擎爬虫） 只需4次（或更少）点击， 就可以到达网站上的任何页面。</li>
-<li>导航和面包屑导航</li>
-<li>页面打开速度</li>
-<li>简化页面结构 重要的内容尽量排在从上到下从左到右的结构</li>
-<li>sitemap.xml</li>
-<li>使用内部链接<h3 id="网站地图"><a href="#网站地图" class="headerlink" title="网站地图"></a>网站地图</h3><h3 id="站点链接"><a href="#站点链接" class="headerlink" title="站点链接"></a>站点链接</h3></li>
-</ul>
-<ul>
-<li>不良内部链接： Google依靠内链来抓取您网站上的所有页面。没有内部链接的页面通常不会被抓取。</li>
-<li><a href="[https://zh.wikipedia.org/wiki/Robots.txt](https://zh.wikipedia.org/wiki/Robots.txt">robots.txt</a>作用: Robots.txt是一个文本文件，告诉Google它的爬虫是否可以在您的网站上访问。如果你用了这个文件，则谷歌不会抓取。</li>
-<li>不编入索引的页面: 您可以使用noindex元标记或HTTP标头把页面排除于谷歌索引之外。如果您网站上的其他网页只有来自noindexed页面的内链，谷歌很有可能无法找到他们。</li>
-<li>Nofollowed内链: 是HTML页面中a标签的属性值。这个标签的意义是告诉搜索引擎”不要追踪此网页上的链接或不要追踪此特定链接”。</li>
-</ul>
-<p><strong>nofollow的作用?</strong></p>
-<blockquote>
-<p>1、防止不可信的内容，最常见的是博客上的垃圾留言与评论中为了获取外链的垃圾链接，为了防止页面指向一些拉圾页面和站点。<br>2、为了防止付费链接影响Google的搜索结果排名。<br>3、引导爬虫抓取有效的页面，避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。</p>
-</blockquote>
-<p><strong>nofollow2个基本用法</strong></p>
-<ul>
-<li>用于<meta>标签，告诉搜索引擎（爬虫）该页面上所有链接都无需追踪（这种方法一般用的较少）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"nofollow"</span> /&gt;</span><br></pre></td></tr></table></figure></li>
-<li>用于<a>标签，告诉搜索引擎（爬虫）加上此属性的链接无需追踪（一般推荐用这种方法）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">"login.aspx"</span> rel=<span class="string">"nofollow"</span>&gt;登录&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Frontend前端</category>
-        <category>seo</category>
-      </categories>
-      <tags>
-        <tag>Search Engine</tag>
-        <tag>frontend</tag>
       </tags>
   </entry>
   <entry>
@@ -782,6 +730,58 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
+    <title>seo优化</title>
+    <url>/2019/10/24/seo%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>搜索引擎对您的内容进行排名之前，它首先需要知道它的存在。通常是通过”爬虫抓取”页面的数据。这里主要从技术方面去叙述我所知道的优化</p>
+</blockquote>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><ul>
+<li>title 设置</li>
+<li>keywords 设置</li>
+<li>description 设置</li>
+<li>meta属性设置</li>
+<li>页面H1-H3标签的使用</li>
+<li>图片设置Alt属性</li>
+<li>404页面设置、301重定向</li>
+<li>Robot.txt</li>
+<li>删除页面无用代码，css、js优化</li>
+</ul>
+<h3 id="网站结构"><a href="#网站结构" class="headerlink" title="网站结构"></a>网站结构</h3><ul>
+<li>扁平化网站架构：扁平化的网站结构，意味着用户（和搜索引擎爬虫） 只需4次（或更少）点击， 就可以到达网站上的任何页面。</li>
+<li>导航和面包屑导航</li>
+<li>页面打开速度</li>
+<li>简化页面结构 重要的内容尽量排在从上到下从左到右的结构</li>
+<li>sitemap.xml</li>
+<li>使用内部链接<h3 id="网站地图"><a href="#网站地图" class="headerlink" title="网站地图"></a>网站地图</h3><h3 id="站点链接"><a href="#站点链接" class="headerlink" title="站点链接"></a>站点链接</h3></li>
+</ul>
+<ul>
+<li>不良内部链接： Google依靠内链来抓取您网站上的所有页面。没有内部链接的页面通常不会被抓取。</li>
+<li><a href="[https://zh.wikipedia.org/wiki/Robots.txt](https://zh.wikipedia.org/wiki/Robots.txt">robots.txt</a>作用: Robots.txt是一个文本文件，告诉Google它的爬虫是否可以在您的网站上访问。如果你用了这个文件，则谷歌不会抓取。</li>
+<li>不编入索引的页面: 您可以使用noindex元标记或HTTP标头把页面排除于谷歌索引之外。如果您网站上的其他网页只有来自noindexed页面的内链，谷歌很有可能无法找到他们。</li>
+<li>Nofollowed内链: 是HTML页面中a标签的属性值。这个标签的意义是告诉搜索引擎”不要追踪此网页上的链接或不要追踪此特定链接”。</li>
+</ul>
+<p><strong>nofollow的作用?</strong></p>
+<blockquote>
+<p>1、防止不可信的内容，最常见的是博客上的垃圾留言与评论中为了获取外链的垃圾链接，为了防止页面指向一些拉圾页面和站点。<br>2、为了防止付费链接影响Google的搜索结果排名。<br>3、引导爬虫抓取有效的页面，避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。</p>
+</blockquote>
+<p><strong>nofollow2个基本用法</strong></p>
+<ul>
+<li>用于<meta>标签，告诉搜索引擎（爬虫）该页面上所有链接都无需追踪（这种方法一般用的较少）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"nofollow"</span> /&gt;</span><br></pre></td></tr></table></figure></li>
+<li>用于<a>标签，告诉搜索引擎（爬虫）加上此属性的链接无需追踪（一般推荐用这种方法）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">"login.aspx"</span> rel=<span class="string">"nofollow"</span>&gt;登录&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>seo</category>
+      </categories>
+      <tags>
+        <tag>Search Engine</tag>
+        <tag>frontend</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>stylelint-css代码格式化</title>
     <url>/2021/02/03/stylelint-css%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
     <content><![CDATA[<blockquote>
@@ -833,6 +833,21 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>stylelint</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vscode命令行打开文件夹</title>
+    <url>/2021/02/03/vscode%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<p>两种方式：</p>
+<p>1、在VSCode 中 打开 Command+Shift + P 输入Shell安装shell command: install code command in PATH</p>
+<p>2、在VSCode 中 按F1 输入code 找到shell command: install code command in PATH</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;目录&gt; </span><br><span class="line">code .</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>IDE</category>
+        <category>vscode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -930,21 +945,6 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>vscode命令行打开文件夹</title>
-    <url>/2021/02/03/vscode%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<p>两种方式：</p>
-<p>1、在VSCode 中 打开 Command+Shift + P 输入Shell安装shell command: install code command in PATH</p>
-<p>2、在VSCode 中 按F1 输入code 找到shell command: install code command in PATH</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &lt;目录&gt; </span><br><span class="line">code .</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>IDE</category>
-        <category>vscode</category>
-      </categories>
-      <tags>
-        <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vscode格式化不符合预期</title>
     <url>/2021/02/03/vscode%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8D%E7%AC%A6%E5%90%88%E9%A2%84%E6%9C%9F/</url>
     <content><![CDATA[<p>vscode 的 setting.json</p>
@@ -957,22 +957,6 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>vscode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>zsh切换bash bash切换zsh</title>
-    <url>/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/</url>
-    <content><![CDATA[<blockquote>
-<p>iTerm2是一种 OSX 的终端模拟器而非 Shell 本身。<br>   Bash是目前最通用、最常见的Shell，也是众多Linux发行版的标配。<br>   Zsh是一种更强大的、被成为“终极”的Shell，意思是Shell能具备的功能它基本都提供了。跟Bash相比，Zsh的补全功能强大了许多，可以自动补全命令、参数、文件名、进程、用户名、变量、权限符，等等…… 另外，还支持插件，通过插件又可以扩展出许多功能来。<br>   看到了一个写的很好的关于bash和Zsh的文章： <a href="https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html" target="_blank" rel="noopener">https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html</a></p>
-</blockquote>
-<h3 id="切换bash"><a href="#切换bash" class="headerlink" title="切换bash"></a>切换bash</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="切换zsh"><a href="#切换zsh" class="headerlink" title="切换zsh"></a>切换zsh</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</tag>
       </tags>
   </entry>
   <entry>
@@ -1009,6 +993,22 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>zsh、oh-my-zsh、oh-my-zsh插件、iTerm2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>zsh切换bash bash切换zsh</title>
+    <url>/2020/06/26/zsh%E5%88%87%E6%8D%A2bash%20bash%E5%88%87%E6%8D%A2zsh/</url>
+    <content><![CDATA[<blockquote>
+<p>iTerm2是一种 OSX 的终端模拟器而非 Shell 本身。<br>   Bash是目前最通用、最常见的Shell，也是众多Linux发行版的标配。<br>   Zsh是一种更强大的、被成为“终极”的Shell，意思是Shell能具备的功能它基本都提供了。跟Bash相比，Zsh的补全功能强大了许多，可以自动补全命令、参数、文件名、进程、用户名、变量、权限符，等等…… 另外，还支持插件，通过插件又可以扩展出许多功能来。<br>   看到了一个写的很好的关于bash和Zsh的文章： <a href="https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html" target="_blank" rel="noopener">https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html</a></p>
+</blockquote>
+<h3 id="切换bash"><a href="#切换bash" class="headerlink" title="切换bash"></a>切换bash</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换zsh"><a href="#切换zsh" class="headerlink" title="切换zsh"></a>切换zsh</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>工具、tool、zsh、 oh-my-zsh、 oh-my-zsh插件、iTerm2</tag>
       </tags>
   </entry>
   <entry>
@@ -1111,43 +1111,61 @@ IOS9  可以使用 universal Link</code></p>
       </tags>
   </entry>
   <entry>
-    <title>安卓下微信点击返回键popstate事件不能触发监听</title>
-    <url>/2021/04/23/%E5%AE%89%E5%8D%93%E4%B8%8B%E5%BE%AE%E4%BF%A1%E7%82%B9%E5%87%BB%E8%BF%94%E5%9B%9E%E9%94%AEpopstate%E4%BA%8B%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%A7%A6%E5%8F%91%E7%9B%91%E5%90%AC/</url>
-    <content><![CDATA[<blockquote>
-<p>在做一个项目回退的功能的时候，用pushState添加一条历史记录,然后监听popState的回退功能，发现在安卓手机中增加了记录console.log(“当前浏览器记录”,window.history)，当前的history.length长度是2，但是回退的话安卓手机直接退出微信的webview，然后测试滚动页面之后在回退依旧直接退出微信的webview，当点击一下页面空白位置或者交互一下发现，回退才触发popstate,<br>在安卓机中触发popstate监听有个条件就是必须和页面产生交互后才能触发。那我就通过js自动播放音频文件的方式让页面产生模拟交互。当然这个音频文件可以不用存在。</p>
+    <title>ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践</title>
+    <url>/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<h1 id="Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识"><a href="#Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识" class="headerlink" title="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识"></a>Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识</h1><p><strong><a href="https://prettier.io/docs/en/install.html" target="_blank" rel="noopener">Prettier</a> ：</strong> 代码格式化<code>例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号</code></p>
+<blockquote>
+<p><code>prettier</code> 就是把你的代码转化成一个抽象语法树 <code>AST</code> 然后根据 <code>AST</code> 将代码按照 <code>prettier</code> 的风格输出即可。可以用 <code>prettier</code> 官方提供的<a href="https://prettier.io/playground/" target="_blank" rel="noopener" title="检测网站">检测网站</a>来看 <code>prettier</code> 的转化过程。</p>
 </blockquote>
-<p>加入如下代码可以解决安卓部分机型(都说安卓的7.0.16未生效，但是我测试的生效了，所见的机型都可以应用)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (UserAgent.env.android) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">          window.tbs_bridge.nativeExec(&#39;network&#39;, &#39;type&#39;, 0, null);</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">          console.error(e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>HTML5 新API</p>
-<p>history.pushState(state, title, url); 添加一条历史记录，不刷新页面<br>history.replaceState(state, title, url); 替换一条历史记录，不刷新页面</p>
-<p>事件<br>popState事件：历史记录发生变化时触发，调用history.pushState()或history.replaceState()不会触发此事件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;popstate&#39;, handlePopstate);</span><br></pre></td></tr></table></figure>
-<p>hashchange事件：页面hash值发生改变时触发</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;hashchange&#39;, handleHashChange);</span><br></pre></td></tr></table></figure>
-<h4 id="关于部分安卓机使用手势返回-物理返回键监听不了的问题"><a href="#关于部分安卓机使用手势返回-物理返回键监听不了的问题" class="headerlink" title="关于部分安卓机使用手势返回/物理返回键监听不了的问题"></a>关于部分安卓机使用手势返回/物理返回键监听不了的问题</h4><p>上面的代码在IOS中是没有问题的，但是在调试的时候发现部分安卓尽然监听不了popstate；</p>
-<p>关于此问题，微信社区也看到了，但是工作人员都没有给出一个满意的解决方案（直接搜一下popstate，会出现关于这个问题的讨论）：</p>
+<p><strong><a href="https://eslint.org/docs/user-guide/getting-started" target="_blank" rel="noopener">Eslint</a>：</strong> 代码质量的校验。<code>例如使用了未定义的变量、三等号、api语法错误、修改const变量等等</code></p>
 <ul>
-<li><a href="https://developers.weixin.qq.com/community/develop/doc/0000a6fe0a89809f176a302cf56000?highLine=popstate" target="_blank" rel="noopener">公众号中监听popstate 事件在vivoY3手机中不执行？</a></li>
-<li><a href="https://developers.weixin.qq.com/community/develop/doc/000a2a57968cc0bc9d7aa0b6b5b800?highLine=popstate" target="_blank" rel="noopener">安卓手机测试发现至少需要手指点击页面任何部分之后返回才会触发popstate</a></li>
+<li>命令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">检查 eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br><span class="line">自动修复 eslint --fix src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/standard/eslint-config-standard" target="_blank" rel="noopener">eslint-config-standard</a>配置包扩展社区中流行的最佳实践的风格指南。</li>
+<li><a href="https://github.com/prettier/eslint-config-prettier" target="_blank" rel="noopener"><code>eslint-config-prettier</code></a> 关闭 Eslint 中与 Prettier 冲突的选项，只会关闭冲突的选项，不会启用Prettier的规则</li>
+<li><a href="https://github.com/prettier/eslint-plugin-prettier" target="_blank" rel="noopener"><code>eslint-plugin-prettier</code></a> 先使用Prettier对代码进行格式化，再并对不一致的地方进行标记</li>
 </ul>
-<hr>
-<p>然后也在网上搜一下这个问题（相关文章）：</p>
+<p><strong><a href="https://stylelint.docschina.org/user-guide/rules/" target="_blank" rel="noopener">stylelint</a>：</strong> stylelint 是一个强大和现代的 CSS 审查工具，有助于开发者推行统一的代码规范，避免样式错误<code>stylelint拥有超过150条的规则，包括捕捉错误、最佳实践、控制可以使用的语言特性和强制代码风格规范。</code>。stylelint 由 PostCSS 提供技术支持，所以它也可以理解 PostCSS 解析的语法，比如 SCSS。<br>命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;</span><br></pre></td></tr></table></figure>
+<p>插件：</p>
 <ul>
-<li><p><a href="https://www.xiaoheidiannao.com/210678.html" target="_blank" rel="noopener">微信内置浏览器返回键popstate事件监听不触发问题（安卓）</a></p>
-</li>
-<li><p><a href="https://www.v2ex.com/t/675105" target="_blank" rel="noopener">很多安卓手机微信浏览器无法监听 popstate、hashchange 事件</a></p>
-</li>
-<li><p><a href="https://www.520ym.net/xuexi/biji/9347.html" target="_blank" rel="noopener">https://www.520ym.net/xuexi/biji/9347.html</a></p>
-</li>
+<li><a href="https://github.com/prettier/stylelint-config-prettier" target="_blank" rel="noopener"><code>stylelint-config-prettier</code></a>：禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
+<li><a href="https://github.com/AndyOGo/stylelint-declaration-strict-value" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>：官网提供的 css 标准</li>
+<li><a href="https://github.com/sh-waqar/stylelint-declaration-use-variable" target="_blank" rel="noopener"><code>stylelint-prettier</code></a>：基于 prettier 代码风格的 stylelint 规则</li>
+<li><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</li>
 </ul>
-]]></content>
+<p><strong><a href="http://editorconfig.org" target="_blank" rel="noopener">EditorConfig</a>：</strong> 生成 .editorconfig 配置文件，规定当前编辑器的一些设定。抹平编辑器的差异。<code>格式化的生效策略：自定义配置&gt;editorconfig&gt;编辑器的setting</code></p>
+<p><strong><a href="https://github.com/typicode/husky" target="_blank" rel="noopener">husky</a> ：</strong> git 操作的钩子。</p>
+<p><strong><a href="https://github.com/okonet/lint-staged" target="_blank" rel="noopener">lint-staged</a> ：</strong> 只对 git 中staged（变更）的文件进行代码格式的校验和代码质量的校验操作。而不是项目中所有的文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;报错 在lint-staged命令中移除git add 命令本身自带git add</span><br><span class="line"></span><br><span class="line">‼ Some of your tasks use &#96;git add&#96; command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.</span><br></pre></td></tr></table></figure>
+<h1 id="ESLint和Prettier区别"><a href="#ESLint和Prettier区别" class="headerlink" title="ESLint和Prettier区别"></a>ESLint和Prettier区别</h1><p>1、ESLint 主要包含代码格式的校验，代码质量的校验，ESLint 在出<code>--fix</code>自动修复功能前只会提示一些warning和error，改起来非常复杂。<br>2、Prettier 只是格式化代码 。<br>*<em>tips：如果你觉得的eslint自带的修复功能就足够的话可以不加Prettier *</em></p>
+<h1 id="ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量"><a href="#ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量" class="headerlink" title="ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量"></a>ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量</h1><blockquote>
+<p>通过pre-commit阶段增量校验的模式，尽量避免对老旧代码的影响；稳健地逐步完善老项目的强制校验和格式化提高前端项目质量、统一项目代码风格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add husky lint-staged prettier eslint-plugin-prettier eslint-config-prettier stylelint stylelint-config-prettier stylelint-config-standard stylelint-prettier -D</span><br></pre></td></tr></table></figure>
+<p>我在项目中的配置可能不是很完美，有问题可以提出来<br>.eslintrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;amd&quot;: true,</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;node&quot;: true,</span><br><span class="line">        &quot;es6&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;react-app&quot;,</span><br><span class="line">        &quot;plugin:prettier&#x2F;recommended&quot;,</span><br><span class="line">        &quot;prettier&#x2F;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;prettier&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;prettier&#x2F;prettier&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.stylelintrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-recommended&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;stylelint-prettier&#x2F;recommended&quot;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;:  &#123;</span><br><span class="line">    &quot;selector-pseudo-class-no-unknown&quot;: [true, &#123;</span><br><span class="line">      ignorePseudoClasses: [&quot;global&quot;]</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;length-zero-no-unit&quot;: null,</span><br><span class="line">    &quot;indentation&quot;: 2,</span><br><span class="line">    &quot;max-empty-lines&quot;: 1,</span><br><span class="line">    &quot;block-no-empty&quot;: true,</span><br><span class="line">    &quot;block-opening-brace-newline-after&quot;: &quot;always-multi-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-after&quot;: &quot;always-single-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-before&quot;: &quot;always&quot;,</span><br><span class="line">    &quot;block-closing-brace-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-block-no-duplicate-properties&quot;: true,</span><br><span class="line">    &quot;declaration-block-no-redundant-longhand-properties&quot;: true,</span><br><span class="line">    &quot;shorthand-property-no-redundant-values&quot;: true,</span><br><span class="line">    &quot;no-empty-source&quot;: true,</span><br><span class="line">    &quot;no-eol-whitespace&quot;: true,</span><br><span class="line">    &quot;no-extra-semicolons&quot;: true,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: true,</span><br><span class="line">    &quot;no-missing-end-of-source-newline&quot;: true,</span><br><span class="line">    &quot;at-rule-no-unknown&quot;: null,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.editorconfig</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">indent_size &#x3D; 2 # 用两个空格代替制表符；</span><br><span class="line">end_of_line &#x3D; lf # win用cr lf，linux&#x2F;unix用lf，mac用cr。统一window和mac</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">trim_trailing_whitespace &#x3D; true# 在保存时删除尾部的空白字符；</span><br><span class="line">insert_final_newline &#x3D; true# 在文件结尾添加一个空白行；</span><br><span class="line">max_line_length &#x3D; 160# 每行代码最大宽度 160</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace &#x3D; false</span><br></pre></td></tr></table></figure>
+<p>package.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;xxx_front&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;antd-mobile&quot;: &quot;^2.3.1&quot;,</span><br><span class="line">    &quot;axios&quot;: &quot;^0.19.0&quot;,</span><br><span class="line">    &quot;babel-plugin-import&quot;: &quot;^1.12.2&quot;,</span><br><span class="line">    &quot;babel-plugin-syntax-dynamic-import&quot;: &quot;^6.18.0&quot;,</span><br><span class="line">    &quot;chart.js&quot;: &quot;^2.9.4&quot;,</span><br><span class="line">    &quot;copy-to-clipboard&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">    &quot;crypto-js&quot;: &quot;^3.1.9-1&quot;,</span><br><span class="line">    &quot;customize-cra&quot;: &quot;^0.8.0&quot;,</span><br><span class="line">    &quot;http-proxy-middleware&quot;: &quot;^0.20.0&quot;,</span><br><span class="line">    &quot;js-cookie&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;less&quot;: &quot;^3.10.3&quot;,</span><br><span class="line">    &quot;less-loader&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;node-sass&quot;: &quot;^4.14.1&quot;,</span><br><span class="line">    &quot;qs&quot;: &quot;^6.9.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-app-rewired&quot;: &quot;^2.1.4&quot;,</span><br><span class="line">    &quot;react-document-title&quot;: &quot;^2.0.3&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-loadable&quot;: &quot;^5.5.0&quot;,</span><br><span class="line">    &quot;react-redux&quot;: &quot;^7.1.1&quot;,</span><br><span class="line">    &quot;react-router&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-router-dom&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-scripts&quot;: &quot;3.2.0&quot;,</span><br><span class="line">    &quot;react-sticky&quot;: &quot;^6.0.3&quot;,</span><br><span class="line">    &quot;redux&quot;: &quot;^4.0.4&quot;,</span><br><span class="line">    &quot;redux-thunk&quot;: &quot;^2.3.0&quot;,</span><br><span class="line">    &quot;url-parse&quot;: &quot;^1.4.7&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;4.41.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot; react-app-rewired start&quot;,</span><br><span class="line">    &quot;build:analyze&quot;: &quot;set REACT_APP_BUILD_ENV&#x3D;production &amp;&amp; react-app-rewired build  --analyze&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;fix&quot;: &quot;prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;lint:style&quot;: &quot;stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;css,scss&#125;&quot;: [</span><br><span class="line">      &quot;stylelint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;: [</span><br><span class="line">      &quot;eslint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;browserslist&quot;: &#123;</span><br><span class="line">    &quot;production&quot;: [</span><br><span class="line">      &quot;&gt; 1%&quot;,</span><br><span class="line">      &quot;last 5 versions&quot;,</span><br><span class="line">      &quot;IOS &gt; 8&quot;,</span><br><span class="line">      &quot;Android &gt; 4.6&quot;,</span><br><span class="line">      &quot;UCAndroid &gt;&#x3D; 9&quot;,</span><br><span class="line">      &quot;QQAndroid &gt;&#x3D; 8.2&quot;,</span><br><span class="line">      &quot;not dead&quot;,</span><br><span class="line">      &quot;not ie &lt;&#x3D; 11&quot;,</span><br><span class="line">      &quot;not op_mini all&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;development&quot;: [</span><br><span class="line">      &quot;last 1 chrome version&quot;,</span><br><span class="line">      &quot;last 1 firefox version&quot;,</span><br><span class="line">      &quot;last 1 safari version&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;eslint-config-prettier&quot;: &quot;^7.2.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-prettier&quot;: &quot;^3.3.1&quot;,</span><br><span class="line">    &quot;husky&quot;: &quot;^4.3.8&quot;,</span><br><span class="line">    &quot;lint-staged&quot;: &quot;^10.5.3&quot;,</span><br><span class="line">    &quot;prettier&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;stylelint&quot;: &quot;^13.9.0&quot;,</span><br><span class="line">    &quot;stylelint-config-prettier&quot;: &quot;^8.0.2&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;: &quot;^20.0.0&quot;,</span><br><span class="line">    &quot;stylelint-prettier&quot;: &quot;^1.1.2&quot;,</span><br><span class="line">    &quot;webpack-bundle-analyzer&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.10&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提交commit之后</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验成功"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2790249-591cb2019cd36e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验失败"></p>
+<h3 id="vscode插件推荐。"><a href="#vscode插件推荐。" class="headerlink" title="vscode插件推荐。"></a>vscode插件推荐。</h3><p>EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。<br>ESLint：代码质量检查。<br>styleLint：css代码质量检查。<br>Prettier：格式化代码<br>Code Spell Checker：单词拼写检查。<br>Indent-Rainbow：彩虹缩进，缩进不规范时会标红提示。</p>
+<p>vscode 的 setting.json</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;workbench.colorTheme&quot;: &quot;Dracula Soft&quot;,</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,&#x2F;&#x2F;保存时使用VSCode 自身格式化程序格式化</span><br><span class="line">  &quot;javascript.format.enable&quot;: false,&#x2F;&#x2F;关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次，解决editor.formatOnSave的兼容问题</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For ESLint</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For TSLint</span><br><span class="line">    &quot;source.fixAll.tslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For Stylelint</span><br><span class="line">    &quot;source.fixAll.stylelint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslint.probe&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;typescript&quot;,</span><br><span class="line">    &quot;typescriptreact&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Frontend前端</category>
-        <category>weChatH5</category>
+        <category>team-norm团队规范</category>
+        <category>code-norm代码规范</category>
       </categories>
       <tags>
-        <tag>weChatH5</tag>
+        <tag>Prettier</tag>
+        <tag>stylelint</tag>
+        <tag>husky</tag>
+        <tag>lint-staged</tag>
       </tags>
   </entry>
   <entry>
@@ -1197,6 +1215,46 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>开发机、虚拟机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓下微信点击返回键popstate事件不能触发监听</title>
+    <url>/2021/04/23/%E5%AE%89%E5%8D%93%E4%B8%8B%E5%BE%AE%E4%BF%A1%E7%82%B9%E5%87%BB%E8%BF%94%E5%9B%9E%E9%94%AEpopstate%E4%BA%8B%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%A7%A6%E5%8F%91%E7%9B%91%E5%90%AC/</url>
+    <content><![CDATA[<blockquote>
+<p>在做一个项目回退的功能的时候，用pushState添加一条历史记录,然后监听popState的回退功能，发现在安卓手机中增加了记录console.log(“当前浏览器记录”,window.history)，当前的history.length长度是2，但是回退的话安卓手机直接退出微信的webview，然后测试滚动页面之后在回退依旧直接退出微信的webview，当点击一下页面空白位置或者交互一下发现，回退才触发popstate,<br>在安卓机中触发popstate监听有个条件就是必须和页面产生交互后才能触发。那我就通过js自动播放音频文件的方式让页面产生模拟交互。当然这个音频文件可以不用存在。</p>
+</blockquote>
+<p>加入如下代码可以解决安卓部分机型(都说安卓的7.0.16未生效，但是我测试的生效了，所见的机型都可以应用)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (UserAgent.env.android) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">          window.tbs_bridge.nativeExec(&#39;network&#39;, &#39;type&#39;, 0, null);</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">          console.error(e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>HTML5 新API</p>
+<p>history.pushState(state, title, url); 添加一条历史记录，不刷新页面<br>history.replaceState(state, title, url); 替换一条历史记录，不刷新页面</p>
+<p>事件<br>popState事件：历史记录发生变化时触发，调用history.pushState()或history.replaceState()不会触发此事件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;popstate&#39;, handlePopstate);</span><br></pre></td></tr></table></figure>
+<p>hashchange事件：页面hash值发生改变时触发</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#39;hashchange&#39;, handleHashChange);</span><br></pre></td></tr></table></figure>
+<h4 id="关于部分安卓机使用手势返回-物理返回键监听不了的问题"><a href="#关于部分安卓机使用手势返回-物理返回键监听不了的问题" class="headerlink" title="关于部分安卓机使用手势返回/物理返回键监听不了的问题"></a>关于部分安卓机使用手势返回/物理返回键监听不了的问题</h4><p>上面的代码在IOS中是没有问题的，但是在调试的时候发现部分安卓尽然监听不了popstate；</p>
+<p>关于此问题，微信社区也看到了，但是工作人员都没有给出一个满意的解决方案（直接搜一下popstate，会出现关于这个问题的讨论）：</p>
+<ul>
+<li><a href="https://developers.weixin.qq.com/community/develop/doc/0000a6fe0a89809f176a302cf56000?highLine=popstate" target="_blank" rel="noopener">公众号中监听popstate 事件在vivoY3手机中不执行？</a></li>
+<li><a href="https://developers.weixin.qq.com/community/develop/doc/000a2a57968cc0bc9d7aa0b6b5b800?highLine=popstate" target="_blank" rel="noopener">安卓手机测试发现至少需要手指点击页面任何部分之后返回才会触发popstate</a></li>
+</ul>
+<hr>
+<p>然后也在网上搜一下这个问题（相关文章）：</p>
+<ul>
+<li><p><a href="https://www.xiaoheidiannao.com/210678.html" target="_blank" rel="noopener">微信内置浏览器返回键popstate事件监听不触发问题（安卓）</a></p>
+</li>
+<li><p><a href="https://www.v2ex.com/t/675105" target="_blank" rel="noopener">很多安卓手机微信浏览器无法监听 popstate、hashchange 事件</a></p>
+</li>
+<li><p><a href="https://www.520ym.net/xuexi/biji/9347.html" target="_blank" rel="noopener">https://www.520ym.net/xuexi/biji/9347.html</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Frontend前端</category>
+        <category>weChatH5</category>
+      </categories>
+      <tags>
+        <tag>weChatH5</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,64 +1408,6 @@ IOS9  可以使用 universal Link</code></p>
       </categories>
       <tags>
         <tag>模块化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ESLint+Prettier+ husky + stylelint +lint-staged代码规范实践</title>
-    <url>/2021/02/03/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%AE%9E%E8%B7%B5/</url>
-    <content><![CDATA[<h1 id="Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识"><a href="#Prettier、-ESLint-、stylelint、husky-、lint-staged基本知识" class="headerlink" title="Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识"></a>Prettier、 ESLint 、stylelint、husky 、lint-staged基本知识</h1><p><strong><a href="https://prettier.io/docs/en/install.html" target="_blank" rel="noopener">Prettier</a> ：</strong> 代码格式化<code>例如超过设置的行代码长度换行处理，结尾不使用分号，统一使用单引号</code></p>
-<blockquote>
-<p><code>prettier</code> 就是把你的代码转化成一个抽象语法树 <code>AST</code> 然后根据 <code>AST</code> 将代码按照 <code>prettier</code> 的风格输出即可。可以用 <code>prettier</code> 官方提供的<a href="https://prettier.io/playground/" target="_blank" rel="noopener" title="检测网站">检测网站</a>来看 <code>prettier</code> 的转化过程。</p>
-</blockquote>
-<p><strong><a href="https://eslint.org/docs/user-guide/getting-started" target="_blank" rel="noopener">Eslint</a>：</strong> 代码质量的校验。<code>例如使用了未定义的变量、三等号、api语法错误、修改const变量等等</code></p>
-<ul>
-<li>命令<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">检查 eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br><span class="line">自动修复 eslint --fix src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;</span><br></pre></td></tr></table></figure></li>
-<li><a href="https://github.com/standard/eslint-config-standard" target="_blank" rel="noopener">eslint-config-standard</a>配置包扩展社区中流行的最佳实践的风格指南。</li>
-<li><a href="https://github.com/prettier/eslint-config-prettier" target="_blank" rel="noopener"><code>eslint-config-prettier</code></a> 关闭 Eslint 中与 Prettier 冲突的选项，只会关闭冲突的选项，不会启用Prettier的规则</li>
-<li><a href="https://github.com/prettier/eslint-plugin-prettier" target="_blank" rel="noopener"><code>eslint-plugin-prettier</code></a> 先使用Prettier对代码进行格式化，再并对不一致的地方进行标记</li>
-</ul>
-<p><strong><a href="https://stylelint.docschina.org/user-guide/rules/" target="_blank" rel="noopener">stylelint</a>：</strong> stylelint 是一个强大和现代的 CSS 审查工具，有助于开发者推行统一的代码规范，避免样式错误<code>stylelint拥有超过150条的规则，包括捕捉错误、最佳实践、控制可以使用的语言特性和强制代码风格规范。</code>。stylelint 由 PostCSS 提供技术支持，所以它也可以理解 PostCSS 解析的语法，比如 SCSS。<br>命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;</span><br></pre></td></tr></table></figure>
-<p>插件：</p>
-<ul>
-<li><a href="https://github.com/prettier/stylelint-config-prettier" target="_blank" rel="noopener"><code>stylelint-config-prettier</code></a>：禁用所有与格式相关的 Stylelint 规则，解决 prettier 与 stylelint 规则冲突，确保将其放在 extends 队列最后，这样它将覆盖其他配置。</li>
-<li><a href="https://github.com/AndyOGo/stylelint-declaration-strict-value" target="_blank" rel="noopener"><code>stylelint-config-standard</code></a>：官网提供的 css 标准</li>
-<li><a href="https://github.com/sh-waqar/stylelint-declaration-use-variable" target="_blank" rel="noopener"><code>stylelint-prettier</code></a>：基于 prettier 代码风格的 stylelint 规则</li>
-<li><a href="https://github.com/stormwarning/stylelint-config-recess-order" target="_blank" rel="noopener">stylelint-config-recess-order：</a> 属性排列顺序</li>
-</ul>
-<p><strong><a href="http://editorconfig.org" target="_blank" rel="noopener">EditorConfig</a>：</strong> 生成 .editorconfig 配置文件，规定当前编辑器的一些设定。抹平编辑器的差异。<code>格式化的生效策略：自定义配置&gt;editorconfig&gt;编辑器的setting</code></p>
-<p><strong><a href="https://github.com/typicode/husky" target="_blank" rel="noopener">husky</a> ：</strong> git 操作的钩子。</p>
-<p><strong><a href="https://github.com/okonet/lint-staged" target="_blank" rel="noopener">lint-staged</a> ：</strong> 只对 git 中staged（变更）的文件进行代码格式的校验和代码质量的校验操作。而不是项目中所有的文件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;报错 在lint-staged命令中移除git add 命令本身自带git add</span><br><span class="line"></span><br><span class="line">‼ Some of your tasks use &#96;git add&#96; command. Please remove it from the config since all modifications made by tasks will be automatically added to the git commit index.</span><br></pre></td></tr></table></figure>
-<h1 id="ESLint和Prettier区别"><a href="#ESLint和Prettier区别" class="headerlink" title="ESLint和Prettier区别"></a>ESLint和Prettier区别</h1><p>1、ESLint 主要包含代码格式的校验，代码质量的校验，ESLint 在出<code>--fix</code>自动修复功能前只会提示一些warning和error，改起来非常复杂。<br>2、Prettier 只是格式化代码 。<br>*<em>tips：如果你觉得的eslint自带的修复功能就足够的话可以不加Prettier *</em></p>
-<h1 id="ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量"><a href="#ESLint-Prettier-husky-stylelint-lint-staged-提高前端项目质量" class="headerlink" title="ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量"></a>ESLint+Prettier+ husky + stylelint +lint-staged 提高前端项目质量</h1><blockquote>
-<p>通过pre-commit阶段增量校验的模式，尽量避免对老旧代码的影响；稳健地逐步完善老项目的强制校验和格式化提高前端项目质量、统一项目代码风格</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn add husky lint-staged prettier eslint-plugin-prettier eslint-config-prettier stylelint stylelint-config-prettier stylelint-config-standard stylelint-prettier -D</span><br></pre></td></tr></table></figure>
-<p>我在项目中的配置可能不是很完美，有问题可以提出来<br>.eslintrc</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;amd&quot;: true,</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;node&quot;: true,</span><br><span class="line">        &quot;es6&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;react-app&quot;,</span><br><span class="line">        &quot;plugin:prettier&#x2F;recommended&quot;,</span><br><span class="line">        &quot;prettier&#x2F;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;prettier&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;prettier&#x2F;prettier&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>.stylelintrc</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">  &quot;extends&quot;: [</span><br><span class="line">    &quot;stylelint-config-recommended&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;,</span><br><span class="line">    &quot;stylelint-prettier&#x2F;recommended&quot;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;:  &#123;</span><br><span class="line">    &quot;selector-pseudo-class-no-unknown&quot;: [true, &#123;</span><br><span class="line">      ignorePseudoClasses: [&quot;global&quot;]</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;length-zero-no-unit&quot;: null,</span><br><span class="line">    &quot;indentation&quot;: 2,</span><br><span class="line">    &quot;max-empty-lines&quot;: 1,</span><br><span class="line">    &quot;block-no-empty&quot;: true,</span><br><span class="line">    &quot;block-opening-brace-newline-after&quot;: &quot;always-multi-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-after&quot;: &quot;always-single-line&quot;,</span><br><span class="line">    &quot;block-opening-brace-space-before&quot;: &quot;always&quot;,</span><br><span class="line">    &quot;block-closing-brace-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-empty-line-before&quot;: &quot;never&quot;,</span><br><span class="line">    &quot;declaration-block-no-duplicate-properties&quot;: true,</span><br><span class="line">    &quot;declaration-block-no-redundant-longhand-properties&quot;: true,</span><br><span class="line">    &quot;shorthand-property-no-redundant-values&quot;: true,</span><br><span class="line">    &quot;no-empty-source&quot;: true,</span><br><span class="line">    &quot;no-eol-whitespace&quot;: true,</span><br><span class="line">    &quot;no-extra-semicolons&quot;: true,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: true,</span><br><span class="line">    &quot;no-missing-end-of-source-newline&quot;: true,</span><br><span class="line">    &quot;at-rule-no-unknown&quot;: null,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>.editorconfig</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># http:&#x2F;&#x2F;editorconfig.org</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line">[*]</span><br><span class="line">indent_style &#x3D; space</span><br><span class="line">indent_size &#x3D; 2 # 用两个空格代替制表符；</span><br><span class="line">end_of_line &#x3D; lf # win用cr lf，linux&#x2F;unix用lf，mac用cr。统一window和mac</span><br><span class="line">charset &#x3D; utf-8</span><br><span class="line">trim_trailing_whitespace &#x3D; true# 在保存时删除尾部的空白字符；</span><br><span class="line">insert_final_newline &#x3D; true# 在文件结尾添加一个空白行；</span><br><span class="line">max_line_length &#x3D; 160# 每行代码最大宽度 160</span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace &#x3D; false</span><br></pre></td></tr></table></figure>
-<p>package.json</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;xxx_front&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;antd-mobile&quot;: &quot;^2.3.1&quot;,</span><br><span class="line">    &quot;axios&quot;: &quot;^0.19.0&quot;,</span><br><span class="line">    &quot;babel-plugin-import&quot;: &quot;^1.12.2&quot;,</span><br><span class="line">    &quot;babel-plugin-syntax-dynamic-import&quot;: &quot;^6.18.0&quot;,</span><br><span class="line">    &quot;chart.js&quot;: &quot;^2.9.4&quot;,</span><br><span class="line">    &quot;copy-to-clipboard&quot;: &quot;^3.2.0&quot;,</span><br><span class="line">    &quot;crypto-js&quot;: &quot;^3.1.9-1&quot;,</span><br><span class="line">    &quot;customize-cra&quot;: &quot;^0.8.0&quot;,</span><br><span class="line">    &quot;http-proxy-middleware&quot;: &quot;^0.20.0&quot;,</span><br><span class="line">    &quot;js-cookie&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;less&quot;: &quot;^3.10.3&quot;,</span><br><span class="line">    &quot;less-loader&quot;: &quot;^5.0.0&quot;,</span><br><span class="line">    &quot;node-sass&quot;: &quot;^4.14.1&quot;,</span><br><span class="line">    &quot;qs&quot;: &quot;^6.9.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-app-rewired&quot;: &quot;^2.1.4&quot;,</span><br><span class="line">    &quot;react-document-title&quot;: &quot;^2.0.3&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.11.0&quot;,</span><br><span class="line">    &quot;react-loadable&quot;: &quot;^5.5.0&quot;,</span><br><span class="line">    &quot;react-redux&quot;: &quot;^7.1.1&quot;,</span><br><span class="line">    &quot;react-router&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-router-dom&quot;: &quot;^5.1.2&quot;,</span><br><span class="line">    &quot;react-scripts&quot;: &quot;3.2.0&quot;,</span><br><span class="line">    &quot;react-sticky&quot;: &quot;^6.0.3&quot;,</span><br><span class="line">    &quot;redux&quot;: &quot;^4.0.4&quot;,</span><br><span class="line">    &quot;redux-thunk&quot;: &quot;^2.3.0&quot;,</span><br><span class="line">    &quot;url-parse&quot;: &quot;^1.4.7&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;4.41.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot; react-app-rewired start&quot;,</span><br><span class="line">    &quot;build:analyze&quot;: &quot;set REACT_APP_BUILD_ENV&#x3D;production &amp;&amp; react-app-rewired build  --analyze&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;eslint src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;fix&quot;: &quot;prettier --write src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;,</span><br><span class="line">    &quot;lint:style&quot;: &quot;stylelint --fix src&#x2F;**&#x2F;*.&#123;html,css,scss&#125;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;css,scss&#125;&quot;: [</span><br><span class="line">      &quot;stylelint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;src&#x2F;**&#x2F;*.&#123;js,ts,tsx&#125;&quot;: [</span><br><span class="line">      &quot;eslint --fix&quot;,</span><br><span class="line">      &quot;prettier --write&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;browserslist&quot;: &#123;</span><br><span class="line">    &quot;production&quot;: [</span><br><span class="line">      &quot;&gt; 1%&quot;,</span><br><span class="line">      &quot;last 5 versions&quot;,</span><br><span class="line">      &quot;IOS &gt; 8&quot;,</span><br><span class="line">      &quot;Android &gt; 4.6&quot;,</span><br><span class="line">      &quot;UCAndroid &gt;&#x3D; 9&quot;,</span><br><span class="line">      &quot;QQAndroid &gt;&#x3D; 8.2&quot;,</span><br><span class="line">      &quot;not dead&quot;,</span><br><span class="line">      &quot;not ie &lt;&#x3D; 11&quot;,</span><br><span class="line">      &quot;not op_mini all&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;development&quot;: [</span><br><span class="line">      &quot;last 1 chrome version&quot;,</span><br><span class="line">      &quot;last 1 firefox version&quot;,</span><br><span class="line">      &quot;last 1 safari version&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;eslint-config-prettier&quot;: &quot;^7.2.0&quot;,</span><br><span class="line">    &quot;eslint-plugin-prettier&quot;: &quot;^3.3.1&quot;,</span><br><span class="line">    &quot;husky&quot;: &quot;^4.3.8&quot;,</span><br><span class="line">    &quot;lint-staged&quot;: &quot;^10.5.3&quot;,</span><br><span class="line">    &quot;prettier&quot;: &quot;^2.2.1&quot;,</span><br><span class="line">    &quot;stylelint&quot;: &quot;^13.9.0&quot;,</span><br><span class="line">    &quot;stylelint-config-prettier&quot;: &quot;^8.0.2&quot;,</span><br><span class="line">    &quot;stylelint-config-standard&quot;: &quot;^20.0.0&quot;,</span><br><span class="line">    &quot;stylelint-prettier&quot;: &quot;^1.1.2&quot;,</span><br><span class="line">    &quot;webpack-bundle-analyzer&quot;: &quot;^4.3.0&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.10&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>提交commit之后</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2790249-b35ab09d3d53e470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验成功"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2790249-591cb2019cd36e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校验失败"></p>
-<h3 id="vscode插件推荐。"><a href="#vscode插件推荐。" class="headerlink" title="vscode插件推荐。"></a>vscode插件推荐。</h3><p>EditorConfig：生成 .editorconfig 配置文件，规定当前编辑器的一些设定。<br>ESLint：代码质量检查。<br>styleLint：css代码质量检查。<br>Prettier：格式化代码<br>Code Spell Checker：单词拼写检查。<br>Indent-Rainbow：彩虹缩进，缩进不规范时会标红提示。</p>
-<p>vscode 的 setting.json</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;workbench.colorTheme&quot;: &quot;Dracula Soft&quot;,</span><br><span class="line">  &quot;editor.formatOnSave&quot;: true,&#x2F;&#x2F;保存时使用VSCode 自身格式化程序格式化</span><br><span class="line">  &quot;javascript.format.enable&quot;: false,&#x2F;&#x2F;关闭编辑器对 js 文件的格式化，交给 ESLint 来做格式化，否则会格式化两次，解决editor.formatOnSave的兼容问题</span><br><span class="line">  &quot;editor.codeActionsOnSave&quot;: &#123;</span><br><span class="line">    &quot;source.fixAll&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For ESLint</span><br><span class="line">    &quot;source.fixAll.eslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For TSLint</span><br><span class="line">    &quot;source.fixAll.tslint&quot;: true,</span><br><span class="line">    &#x2F;&#x2F; For Stylelint</span><br><span class="line">    &quot;source.fixAll.stylelint&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslint.probe&quot;: [</span><br><span class="line">    &quot;javascript&quot;,</span><br><span class="line">    &quot;javascriptreact&quot;,</span><br><span class="line">    &quot;typescript&quot;,</span><br><span class="line">    &quot;typescriptreact&quot;</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Frontend前端</category>
-        <category>team-norm团队规范</category>
-        <category>code-norm代码规范</category>
-      </categories>
-      <tags>
-        <tag>Prettier</tag>
-        <tag>stylelint</tag>
-        <tag>husky</tag>
-        <tag>lint-staged</tag>
       </tags>
   </entry>
   <entry>
